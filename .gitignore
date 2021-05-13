@@ -177,3 +177,4 @@ dotnet_3/*/Properties/
 
 dotnet_3/em/embedded/rest/*/warning.html
 
+/jdk_8_maven/em/external/rest/ind1/target/
