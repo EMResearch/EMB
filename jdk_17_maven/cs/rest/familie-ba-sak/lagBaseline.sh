@@ -1,0 +1,3 @@
+PGPASSWORD="test" pg_dump --host="localhost" --port="5432" --username="postgres" --dbname="familie-ba-sak" --no-owner --file="src/test/resources/db/migration-tests/V1__create_table.sql" --exclude-table=public."flyway_schema_history" &&
+PGPASSWORD="test" pg_dump --host="localhost" --port="5432" --username="postgres" --dbname="familie-ba-sak" --no-owner --file="src/test/resources/db/migration-tests/V2__FyllFlywaySchemaHistory.sql" --table=public."flyway_schema_history" --column-inserts --data-only &&
+sed -i '1, 24d' src/test/resources/db/migration-tests/V2__FyllFlywaySchemaHistory.sql

@@ -1,0 +1,66 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "get a charge request for a wallet payment - ledger",
+      "providerStates": [
+        {
+          "name": "a transaction with wallet type APPLE_PAY exists",
+          "params": {
+            "account_id": "123456",
+            "charge_id": "ch_123abc456xyz"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction/ch_123abc456xyz",
+        "query": {
+          "account_id": ["123456"],
+          "transaction_type": ["PAYMENT"],
+          "status_version": ["1"]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 100,
+          "state": {
+            "finished": false,
+            "status": "capturable"
+          },
+          "transaction_id": "ch_123abc456xyz",
+          "payment_provider": "sandbox",
+          "card_details": {
+            "cardholder_name": "J Doe"
+          },
+          "authorisation_mode": "web",
+          "wallet_type": "APPLE_PAY"
+        },
+        "matchingRules": {
+          "body": {
+            "$.wallet_type": {
+              "matchers": [{"match": "type"}]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

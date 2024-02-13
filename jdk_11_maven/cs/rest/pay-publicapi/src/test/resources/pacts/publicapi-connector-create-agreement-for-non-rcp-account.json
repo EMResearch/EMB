@@ -1,0 +1,47 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "a create agreement request for an non RCP account",
+      "providerStates": [
+        {
+          "name": "a gateway account with external id exists",
+          "params": {
+            "gateway_account_id": "123456789"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/123456789/agreements",
+        "body": {
+          "description": "Description for the paying user",
+          "reference": "Service agreement reference",
+          "user_identifier": "reference for the paying user"
+        }
+      },
+      "response": {
+        "status": 422,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "error_identifier": "RECURRING_CARD_PAYMENTS_NOT_ALLOWED"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

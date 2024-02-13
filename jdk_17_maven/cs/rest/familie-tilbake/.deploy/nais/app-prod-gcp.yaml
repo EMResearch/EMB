@@ -1,0 +1,116 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: familie-tilbake
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+
+spec:
+  image: {{ image }}
+  port: 8030
+  leaderElection: true
+  liveness:
+    path: /internal/status/isAlive
+    initialDelay: 30
+    failureThreshold: 10
+  readiness:
+    path: /internal/status/isAlive
+    initialDelay: 30
+    failureThreshold: 10
+  prometheus:
+    enabled: true
+    path: /internal/prometheus
+  vault:
+    enabled: false
+  gcp: # Database
+    sqlInstances:
+      - type: POSTGRES_14
+        tier: db-custom-1-3840
+        name: familie-tilbake
+        diskAutoresize: true
+        highAvailability: true
+        autoBackupTime: "03:00"
+        databases:
+          - name: familie-tilbake
+            envVarPrefix: DB
+  azure:
+    application:
+      claims:
+        extra:
+          - "NAVident"
+        groups:
+          - id: 847e3d72-9dc1-41c3-80ff-f5d4acdd5d46 # 0000-GA-Barnetrygd
+          - id: 7a271f87-39fb-468b-a9ee-6cf3c070f548 # 0000-GA-Barnetrygd-Beslutter
+          - id: 199c2b39-e535-4ae8-ac59-8ccbee7991ae # 0000-GA-Barnetrygd-Veileder
+          - id: e40090eb-c2fb-400e-b412-e9084019a73b # 0000-GA-Kontantstøtte
+          - id: 54cd86b8-2e23-48b2-8852-b05b5827bb0f # 0000-GA-Kontantstøtte-Veileder
+          - id: 3d718ae5-f25e-47a4-b4b3-084a97604c1d # teamfamilie-forvaltning
+          - id: 87190cf3-b278-457d-8ab7-1a5c55a9edd7 # Group_87190cf3-b278-457d-8ab7-1a5c55a9edd7 tilgang til prosessering
+          - id: 31778fd8-3b71-4867-8db6-a81235fbe001 # 0000-GA-Enslig-Forsorger-Veileder
+          - id: 6406aba2-b930-41d3-a85b-dd13731bc974 # 0000-GA-Enslig-Forsorger-Saksbehandler
+          - id: 5fcc0e1d-a4c2-49f0-93dc-27c9fea41e54 # 0000-GA-Enslig-Forsorger-Beslutter
+          - id: 54cd86b8-2e23-48b2-8852-b05b5827bb0f # 0000-GA-Kontantstøtte-Veileder
+          - id: e40090eb-c2fb-400e-b412-e9084019a73b # 0000-GA-Kontantstøtte
+          - id: 4e7f23d9-5db1-45c0-acec-89c86a9ec678 # 0000-GA-Kontantstøtte-Beslutter
+      enabled: true
+      replyURLs:
+        - "https://familie-tilbake.intern.nav.no/swagger-ui/oauth2-redirect.html"
+      singlePageApplication: true
+  accessPolicy:
+    inbound:
+      rules:
+        - application: familie-ba-sak
+          namespace: teamfamilie
+          cluster: prod-gcp
+        - application: familie-ks-sak
+          namespace: teamfamilie
+          cluster: prod-gcp
+        - application: familie-ef-sak
+          namespace: teamfamilie
+          cluster: prod-gcp
+        - application: familie-ef-iverksett
+          namespace: teamfamilie
+          cluster: prod-gcp
+        - application: familie-ks-sak
+          namespace: teamfamilie
+          cluster: prod-gcp
+        - application: familie-tilbake-frontend
+          namespace: teamfamilie
+          cluster: prod-gcp
+        - application: familie-prosessering
+          namespace: teamfamilie
+          cluster: prod-gcp
+    outbound:
+      rules:
+        - application: familie-historikk
+      external:
+        - host: teamfamilie-unleash-api.nav.cloud.nais.io
+        - host: familie-integrasjoner.prod-fss-pub.nais.io
+        - host: pdl-api.prod-fss-pub.nais.io
+        - host: mpls02.adeo.no
+          ports:
+            - name: mq
+              port: 1414
+              protocol: TCP
+  replicas:
+    min: 2
+    max: 4
+  resources:
+    limits:
+      memory: 1024Mi
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  secureLogs:
+    enabled: true
+  ingresses: # Optional. List of ingress URLs that will route HTTP traffic to the application.
+    - https://familie-tilbake.intern.nav.no
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: prod
+  envFrom:
+    - secret: familie-tilbake
+    - secret: familie-tilbake-unleash-api-token
+  kafka:
+    pool: nav-prod

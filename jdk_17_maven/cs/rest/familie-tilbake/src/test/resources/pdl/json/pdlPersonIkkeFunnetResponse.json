@@ -1,0 +1,28 @@
+{
+  "errors": [
+    {
+      "message": "Person ikke funnet",
+      "locations": [
+        {
+          "line": 2,
+          "column": 5
+        }
+      ],
+      "path": [
+        "hentPerson"
+      ],
+      "extensions": {
+        "code": "Not found",
+        "details": {
+          "type": "not-found",
+          "cause": "cause-0001-ikkefunnet",
+          "policy": "ikke-funnet"
+        },
+        "classification": "ExecutionAborted"
+      }
+    }
+  ],
+  "data": {
+    "hentPerson": null
+  }
+}

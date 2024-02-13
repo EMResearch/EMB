@@ -1,0 +1,37 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "cancel an agreement with active status",
+      "providerStates": [
+        {
+          "name": "a gateway account and an active agreement exists",
+          "params": {
+            "agreement_external_id": "agreement1234567",
+            "gateway_account_id": "123456"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/123456/agreements/agreement1234567/cancel"
+      },
+      "response": {
+        "status": 204
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "beskrivelse": "Reduksjon småbarnstillegg samtidig som endret utbetaling",
+  "_kommentar": "Småbarnstillegg-begrunnelsene bruker ikke... ",
+  "fom": "2021-09-01",
+  "tom": null,
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$REDUKSJON_SMÅBARNSTILLEGG_IKKE_LENGER_FULL_OVERGANGSSTØNAD"
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2020-09-03",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1654,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2021-09-03",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2021-09-03",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [
+            "DELT_BOSTED"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2021-09",
+            "tom": "2021-09"
+          },
+          "årsak": "DELT_BOSTED"
+        }
+      ],
+      "utbetalinger": [
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "UTVIDET_BARNETRYGD",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2020-08-10",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "UTVIDET_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": "",
+    "belop": 2708,
+    "antallBarn": 1,
+    "barnasFodselsdager": "03.09.20",
+    "begrunnelser": [
+      {
+        "gjelderSoker": true,
+        "barnasFodselsdatoer": "03.09.20 og 03.09.21",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "03.09.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 2,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 1,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "reduksjonSmaabarnstilleggIkkeLengerFullOvergangsstonad",
+        "belop": 2708,
+        "sokersRettTilUtvidet": "sokerFaarUtvidet"
+      }
+    ],
+    "type": "innvilgelse"
+  }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:no:nav:tilbakekreving:status:v1"
+            xmlns="urn:no:nav:tilbakekreving:status:v1"
+            xmlns:typer="urn:no:nav:tilbakekreving:typer:v1"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="urn:no:nav:tilbakekreving:typer:v1" schemaLocation="typer/typer.xsd"/>
+
+    <xsd:element name="endringKravOgVedtakstatus">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="kravOgVedtakstatus" type="KravOgVedtakstatus"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="KravOgVedtakstatus">
+        <xsd:annotation>
+            <xsd:documentation>437 - Endring krav og vedtakstatus</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="vedtakId" type="xsd:integer"/>
+            <xsd:element name="kodeStatusKrav" type="xsd:string"/>
+            <xsd:element name="kodeFagomraade" type="xsd:string"/>
+            <xsd:element name="fagsystemId" type="xsd:string"/>
+            <xsd:element name="vedtakGjelderId" type="typer:FnrOrgnrDto"/>
+            <xsd:element name="typeGjelderId" type="typer:TypeGjelderDto"/>
+            <xsd:element name="referanse" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

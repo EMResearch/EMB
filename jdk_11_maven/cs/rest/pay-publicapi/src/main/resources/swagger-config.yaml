@@ -1,0 +1,27 @@
+resourceClasses:
+  - uk.gov.pay.api.agreement.resource.AgreementsApiResource
+  - uk.gov.pay.api.resources.AuthorisationResource
+  - uk.gov.pay.api.resources.PaymentsResource
+  - uk.gov.pay.api.resources.PaymentRefundsResource
+  - uk.gov.pay.api.resources.SearchRefundsResource
+  - uk.gov.pay.api.resources.SearchDisputesResource
+readAllResources: false
+sortOutput: true
+openAPI:
+  info:
+    description: 'The GOV.UK Pay REST API. Read [our documentation](https://docs.payments.service.gov.uk/) for more details.'
+    version: '1.0.3'
+    title: 'GOV.UK Pay API'
+  servers:
+    - url: 'https://publicapi.payments.service.gov.uk'
+  tags:
+    - name: Agreements
+    - name: Card payments
+    - name: Refunding card payments
+
+  components:
+    securitySchemes:
+      BearerAuth:
+        type: http
+        scheme: bearer
+        description: "GOV.UK Pay authenticates API calls with [OAuth2 HTTP bearer tokens](http://tools.ietf.org/html/rfc6750). You need to use an `\"Authorization\"` HTTP header to provide your API key, with a `\"Bearer\"` prefix. For example: `Authorization: Bearer {YOUR_API_KEY_HERE}`"

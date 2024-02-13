@@ -1,0 +1,13 @@
+query($ident: ID!) {person: hentPerson(ident: $ident) {
+    bostedsadresse(historikk: false) {
+        utenlandskAdresse {
+            adressenavnNummer
+            bygningEtasjeLeilighet
+            postboksNummerNavn
+            postkode
+            bySted
+            regionDistriktOmraade
+            landkode
+        }
+    }
+}}

@@ -1,0 +1,77 @@
+{
+  "beskrivelse": "Avslag uregistrert barn",
+  "fom": null,
+  "tom": null,
+  "vedtaksperiodetype": "AVSLAG",
+  "begrunnelser": [
+    "Standardbegrunnelse$AVSLAG_UREGISTRERT_BARN"
+  ],
+  "fritekster": [
+    "Du har fått avslag fordi barnet ikke er registrert på samme adresse som deg og barnet ikke har fått norsk fødselsnummer ennå."
+  ],
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "1992-03-15",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOSATT_I_RIKET",
+          "periodeFom": "2021-03-11",
+          "periodeTom": null,
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        },
+        {
+          "vilkårType": "LOVLIG_OPPHOLD",
+          "periodeFom": "2021-03-11",
+          "periodeTom": null,
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "uregistrerteBarn": [
+    {
+      "personIdent": "",
+      "navn": "Barn Barnesen",
+      "fødselsdato": "2017-12-27"
+    }
+  ],
+  "erFørsteVedtaksperiodePåFagsak": true,
+  "brevMålform": "NB",
+  "forventetOutput": {
+    "fom": "",
+    "tom": "",
+    "barnasFodselsdager": "",
+    "antallBarn": 0,
+    "belop": 0,
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "27.12.17",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": null,
+        "maalform": "bokmaal",
+        "apiNavn": "avslagUregistrertBarn",
+        "belop": 0
+      },
+      {
+        "fritekst": "Du har fått avslag fordi barnet ikke er registrert på samme adresse som deg og barnet ikke har fått norsk fødselsnummer ennå.",
+        "type": "fritekst"
+      }
+    ],
+    "type": "avslagUtenPeriode"
+  }
+}

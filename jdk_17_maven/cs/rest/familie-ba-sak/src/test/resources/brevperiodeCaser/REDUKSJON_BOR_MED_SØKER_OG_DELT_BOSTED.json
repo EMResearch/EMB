@@ -1,0 +1,148 @@
+{
+  "beskrivelse": "Reduksjon start delt bosted og reduksjon barn flytter fra søker",
+  "fom": "2021-11-01",
+  "tom": "2021-12-31",
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$REDUKSJON_FLYTTET_BARN",
+    "Standardbegrunnelse$REDUKSJON_DELT_BARNETRYGD_ANNEN_FORELDER_SØKT"
+  ],
+  "fritekster": [],
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "1968-12-30",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "UTVIDET_BARNETRYGD",
+          "periodeFom": "2021-10-12",
+          "periodeTom": null,
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "UTVIDET_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2011-07-28",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2020-10-30",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "periodeFom": "2021-03-01",
+          "periodeTom": "2021-10-10",
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "2018-09-06",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "periodeFom": "2021-03-01",
+          "periodeTom": "2021-10-12",
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        },
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "periodeFom": "2021-10-13",
+          "periodeTom": null,
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [
+            "DELT_BOSTED"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 827,
+          "erPåvirketAvEndring": false,
+          "prosent": 50
+        }
+      ]
+    }
+  ],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "forventetOutput": {
+    "fom": "1. november 2021",
+    "tom": "til 31. desember 2021 ",
+    "belop": 2935,
+    "antallBarn": 2,
+    "barnasFodselsdager": "28.07.11 og 06.09.18",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "30.10.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "oktober 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "reduksjonFlyttetBarn",
+        "belop": 0,
+        "sokersRettTilUtvidet": "sokerFaarUtvidet"
+      },
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "06.09.18",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "06.09.18",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 1,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "oktober 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "reduksjonDeltBarnetrygdAnnenForelderSokt",
+        "belop": 827,
+        "sokersRettTilUtvidet": "sokerFaarUtvidet"
+      }
+    ],
+    "type": "innvilgelse"
+  }
+}

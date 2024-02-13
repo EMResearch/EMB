@@ -1,0 +1,101 @@
+{
+  "data": {
+    "pdlIdenter": {
+      "identer": [
+        {
+          "ident": "94556612349",
+          "historisk": false,
+          "gruppe": "FOLKEREGISTERIDENT"
+        }
+      ]
+    },
+    "person": {
+      "folkeregisteridentifikator": [
+        {
+          "identifikasjonsnummer": "94556612349",
+          "status": "I_BRUK",
+          "type": "FNR"
+        }
+      ],
+      "navn": [
+        {
+          "fornavn": "MOR",
+          "etternavn": "FYR"
+        }
+      ],
+      "foedsel": [
+        {
+          "foedselsdato": "1990-01-17"
+        }
+      ],
+      "kjoenn": [
+        {
+          "kjoenn": "KVINNE"
+        }
+      ],
+      "bostedsadresse": [
+        {
+          "vegadresse": {
+            "matrikkelId": "1234",
+            "husnummer": "3",
+            "husbokstav": null,
+            "bruksenhetsnummer": null,
+            "adressenavn": "OTTO SVERDRUPS VEG",
+            "kommunenummer": "1566",
+            "tilleggsnavn": null,
+            "postnummer": "6650"
+          },
+          "matrikkeladresse": null,
+          "ukjentBosted": null
+        }
+      ],
+      "sivilstand": [
+        {
+          "type": "UGIFT"
+        }
+      ],
+      "forelderBarnRelasjon": [
+        {
+          "relatertPersonsIdent": "32345678901",
+          "relatertPersonsRolle": "BARN"
+        },
+        {
+          "relatertPersonsIdent": "92345678901",
+          "relatertPersonsRolle": "BARN"
+        },
+        {
+          "relatertPersonsIdent": "92345678902",
+          "relatertPersonsRolle": "BARN"
+        }
+      ],
+      "adressebeskyttelse": [
+        {
+          "gradering": "UGRADERT"
+        }
+      ],
+      "statsborgerskap": [
+        {
+          "land": "XXX",
+          "gyldigFraOgMed": null,
+          "gyldigTilOgMed": null
+        }
+      ],
+      "opphold": [
+      ],
+      "doedsfall": [
+        {
+          "doedsdato": "2020-04-04"
+        }
+      ],
+      "kontaktinformasjonForDoedsbo": [
+        {
+          "adresse": {
+            "adresselinje1": "Gatenavn 1",
+            "postnummer": "1234",
+            "poststedsnavn": "Oslo"
+          }
+        }
+      ]
+    }
+  }
+}

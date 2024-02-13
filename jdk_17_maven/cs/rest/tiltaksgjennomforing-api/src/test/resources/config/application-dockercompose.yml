@@ -1,0 +1,95 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:6432/sample?user=sample&password=sample"
+  kafka:
+    properties:
+      security.protocol: PLAINTEXT
+      ssl:
+        keystore: null
+        truststore: null
+    bootstrap-servers: localhost:9092
+
+tiltaksgjennomforing:
+  kontoregister:
+    uri: http://localhost:8090/kontoregister/api/v1/hent-kontonr-org
+    consumerId: tiltak-refusjon-api
+    realClient: true
+  beslutter-ad-gruppe:
+    id: 1a1d2745-952f-4a0f-839f-9530145b1d4a
+  kafka:
+    enabled: true
+
+  altinn-tilgangsstyring:
+    uri: http://localhost:8090/altinn-tilgangsstyring
+    proxyUri: http://heh:9090/
+    beOmRettighetBaseUrl: https://arbeidsgiver-q.nav.no/min-side-arbeidsgiver/?fragment=be-om-tilgang
+    ltsMidlertidigServiceCode: 5516
+    ltsMidlertidigServiceEdition: 1
+    ltsVarigServiceCode: 5516
+    ltsVarigServiceEdition: 2
+    sommerjobbServiceCode: 5516
+    sommerjobbServiceEdition: 3
+    arbtreningServiceCode: 5332
+    arbtreningServiceEdition: 1
+    altinnApiKey: foo
+    apiGwApiKey: foo
+  ereg:
+    uri: http://localhost:8090/ereg
+  sts:
+    username: foo
+    password: bar
+    rest-uri: http://localhost:8090/sts/sts/token
+  axsys:
+    uri: http://localhost:8090/axsys
+  abac:
+    uri: http://localhost:8090/abac
+    nav-consumer-id: tiltaksgjennomforing-api
+  consumer:
+    system:
+      id: testsystem
+  persondata:
+    uri: http://localhost:8090/persondata
+  oppgave:
+    oppgave-uri: http://localhost:8090/api/v1/oppgaver
+  unleash:
+    mock: true
+  veilarbarena:
+    url: http://localhost:8090/veilarbarena/api/arena/status
+    nav-consumer-id: tiltaksgjennomforing-api
+  norg2:
+    geografisk:
+      url: http://localhost:8090/norg2/api/v1/enhet/navkontor/
+    enhet:
+      url: http://localhost:8090/norg2/api/v1/enhet/
+  dokgen:
+    uri: http://localhost:9000/template/tiltak-avtale/create-pdf
+  dvh-melding:
+    gruppe-tilgang: 1a1d2745-952f-4a0f-839f-9530145b1d4a
+    fixed-delay: 20000
+  avtale-hendelse-melding:
+    fixed-delay: 120
+  tilskuddsperioder:
+    tiltakstyper: SOMMERJOBB, MIDLERTIDIG_LONNSTILSKUDD, VARIG_LONNSTILSKUDD
+
+no.nav.gcp.kafka.aiven:
+  bootstrap-servers: localhost:9092
+  truststore-path: null
+  truststore-password: null
+  keystore-path: null
+  keystore-password: null
+  schema-registry-url: http://localhost:1337
+  schema-registry-credentials-source: null
+  schema-registry-user-info: null
+  security-protocol: PLAINTEXT
+
+no.nav.security.jwt:
+  issuer:
+    aad:
+      discoveryurl: https://tiltak-fakelogin.ekstern.dev.nav.no/metadata?issuer=aad
+      accepted_audience: fake-aad
+    tokenx:
+      discoveryurl: https://tiltak-fakelogin.ekstern.dev.nav.no/metadata?issuer=tokenx
+      accepted_audience: fake-tokenx
+  client: null
+
+ELECTOR_PATH: null

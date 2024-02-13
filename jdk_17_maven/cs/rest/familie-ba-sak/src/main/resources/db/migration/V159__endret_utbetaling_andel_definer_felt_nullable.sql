@@ -1,0 +1,7 @@
+ALTER TABLE endret_utbetaling_andel
+    ALTER COLUMN fom DROP NOT NULL,
+    ALTER COLUMN tom DROP NOT NULL,
+    ALTER COLUMN prosent DROP NOT NULL,
+    ALTER COLUMN aarsak DROP NOT NULL,
+    ALTER COLUMN begrunnelse DROP NOT NULL,
+    ALTER COLUMN fk_po_person_id DROP NOT NULL;

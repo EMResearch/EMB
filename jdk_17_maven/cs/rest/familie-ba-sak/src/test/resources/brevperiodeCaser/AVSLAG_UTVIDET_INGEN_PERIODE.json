@@ -1,0 +1,92 @@
+{
+  "beskrivelse": "Avslag uten periode på utvidet barnetrygd med endret utbetaling",
+  "fom": null,
+  "tom": null,
+  "vedtaksperiodetype": "AVSLAG",
+  "begrunnelser": [
+    "Standardbegrunnelse$AVSLAG_IKKE_MEKLINGSATTEST"
+  ],
+  "fritekster": [],
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2017-09-26",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2021-09",
+            "tom": "2022-01"
+          },
+          "årsak": "DELT_BOSTED"
+        }
+      ],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "2013-06-02",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2021-09",
+            "tom": "2022-01"
+          },
+          "årsak": "DELT_BOSTED"
+        }
+      ],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "1993-02-18",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "UTVIDET_BARNETRYGD",
+          "periodeFom": null,
+          "periodeTom": null,
+          "resultat": "IKKE_OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": true,
+          "standardbegrunnelser": [
+            "Standardbegrunnelse$AVSLAG_IKKE_MEKLINGSATTEST"
+          ]
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "forventetOutput": {
+    "fom": "",
+    "tom": "",
+    "belop": 0,
+    "antallBarn": 0,
+    "barnasFodselsdager": "",
+    "begrunnelser": [
+      {
+        "gjelderSoker": true,
+        "barnasFodselsdatoer": "02.06.13 og 26.09.17",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 0,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": null,
+        "maalform": "bokmaal",
+        "apiNavn": "avslagIkkeMeklingsattest",
+        "belop": 0
+      }
+    ],
+    "type": "avslagUtenPeriode"
+  }
+}

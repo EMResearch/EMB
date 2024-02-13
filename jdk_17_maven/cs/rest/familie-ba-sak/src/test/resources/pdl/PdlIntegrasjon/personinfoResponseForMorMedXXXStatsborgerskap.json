@@ -1,0 +1,100 @@
+{
+  "data": {
+    "pdlIdenter": {
+      "identer": [
+        {
+          "ident": "22345678901",
+          "historisk": false,
+          "gruppe": "FOLKEREGISTERIDENT"
+        },
+        {
+          "ident": "2872543507203",
+          "historisk": false,
+          "gruppe": "AKTORID"
+        },
+        {
+          "ident": "2872543000000",
+          "historisk": true,
+          "gruppe": "AKTORID"
+        }
+      ]
+    },
+    "person": {
+      "folkeregisteridentifikator": [
+        {
+          "identifikasjonsnummer": "44556612345",
+          "status": "I_BRUK",
+          "type": "FNR"
+        }
+      ],
+      "navn": [
+        {
+          "fornavn": "ENGASJERT",
+          "etternavn": "FYR"
+        }
+      ],
+      "foedsel": [
+        {
+          "foedselsdato": "1955-09-13"
+        }
+      ],
+      "kjoenn": [
+        {
+          "kjoenn": "KVINNE"
+        }
+      ],
+      "bostedsadresse": [
+        {
+          "vegadresse": {
+            "matrikkelId": "1234",
+            "husnummer": "3",
+            "husbokstav": null,
+            "bruksenhetsnummer": null,
+            "adressenavn": "OTTO SVERDRUPS VEG",
+            "kommunenummer": "1566",
+            "tilleggsnavn": null,
+            "postnummer": "6650"
+          },
+          "matrikkeladresse": null,
+          "ukjentBosted": null
+        }
+      ],
+      "sivilstand": [
+        {
+          "type": "UGIFT"
+        }
+      ],
+      "forelderBarnRelasjon": [
+        {
+          "relatertPersonsIdent": "32345678901",
+          "relatertPersonsRolle": "BARN"
+        },
+        {
+          "relatertPersonsIdent": "32345678902",
+          "relatertPersonsRolle": "BARN"
+        }
+      ],
+      "adressebeskyttelse": [
+        {
+          "gradering": "UGRADERT"
+        }
+      ],
+      "statsborgerskap": [
+        {
+          "land": "XXX",
+          "gyldigFraOgMed": null,
+          "gyldigTilOgMed": null
+        }
+      ],
+      "opphold": [
+        {
+          "type": "MIDLERTIDIG",
+          "oppholdFra": "2010-01-20",
+          "oppholdTil": "2022-01-20"
+        }
+      ],
+      "doedsfall": [],
+      "kontaktinformasjonForDoedsbo": []
+    }
+  }
+}

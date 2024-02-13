@@ -1,0 +1,1 @@
+alter table avtale add column journalpost_id varchar(9);

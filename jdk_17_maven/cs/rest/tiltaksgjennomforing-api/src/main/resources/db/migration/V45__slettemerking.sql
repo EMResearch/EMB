@@ -1,0 +1,1 @@
+alter table avtale add column slettemerket boolean default false;

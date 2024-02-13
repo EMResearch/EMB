@@ -1,0 +1,2 @@
+alter table avtale_innhold add column ikrafttredelsestidspunkt timestamp without time zone;
+update avtale_innhold set ikrafttredelsestidspunkt=godkjent_av_veileder;

@@ -1,0 +1,34 @@
+{
+  "data": {
+    "person": {
+      "navn": [
+        {
+          "fornavn": "ENGASJERT",
+          "etternavn": "FYR"
+        }
+      ],
+      "foedsel": [
+        {
+          "foedselsdato": "1955-09-13"
+        }
+      ],
+      "kjoenn": [
+        {
+          "kjoenn": "MANN"
+        }
+      ],
+      "doedsfall": [
+        {
+          "doedsdato": "2022-04-01"
+        }
+      ],
+      "folkeregisteridentifikator": [
+        {
+          "identifikasjonsnummer": "12345678910",
+          "status": "OPPHOERT",
+          "type": "FNR"
+        }
+      ]
+    }
+  }
+}

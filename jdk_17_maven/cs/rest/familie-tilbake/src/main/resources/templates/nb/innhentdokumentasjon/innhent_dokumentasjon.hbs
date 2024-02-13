@@ -1,0 +1,25 @@
+Vi har fått nye opplysninger i saken om tilbakebetaling av {{{ytelsesnavnUbestemt}}}, men trenger mer dokumentasjon for å behandle saken.
+_{{#or gjelderDødsfall institusjon}}Dere{{else}}Du{{/or}} må sende oss
+{{{fritekstFraSaksbehandler}}}
+_Saken blir behandlet etter frist har gått ut
+Hvis vi ikke får opplysningene innen {{{dato fristdato}}}, behandler vi saken med de opplysningene vi har.
+
+Dette går fram av {{#if isBarnetrygd}}barnetrygdloven §§ 17 og 18{{else if isKontantstøtte}}kontantstøtteloven §§ 12 og 13{{else}}folketrygdloven § 21-3{{/if}}.
+{{#or gjelderDødsfall institusjon}}
+_Rett til uttalelse
+Dere kan sende uttalelsen til oss i posten. Adressen finner dere på nav.no/ettersendelser.
+Dere kan også ta kontakt med oss på nav.no/kontakt.
+{{else}}
+_Slik uttaler du deg
+Du kan sende uttalelsen din ved å logge deg inn på nav.no/beskjedtilnav og velge «Send beskjed til NAV». Du kan også sende uttalelsen din til oss i posten. Adressen finner du på
+nav.no/ettersendelser.
+{{/or}}
+{{> nb/felles/spørsmål_kontaktinformasjon}}
+
+
+Med vennlig hilsen
+{{{avsenderenhet}}}
+
+{{{ansvarligSaksbehandler}}}{{#if brevmetadata.finnesAnnenMottaker}}
+
+Brev med likt innhold er sendt til {{{annenMottagersNavn}}}{{/if}}

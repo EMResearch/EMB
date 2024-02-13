@@ -257,6 +257,9 @@ dotnet_3/em/embedded/rest/ScsDriver/generated-tests/
 /jdk_11_gradle/em/external/rest/reservations-api/build/
 /jdk_17_gradle/.gradle/
 /jdk_8_maven/em/embedded/graphql/spring-petclinic-graphql/target/
+/jdk_17_gradle/cs/rest/bibliothek/build/
+/jdk_17_gradle/em/external/rest/bibliothek/build
+/jdk_17_maven/cs/grpc/signal-registration/target/
 /jdk_8_maven/em/embedded/grpc/ncs/target/
 /jdk_8_maven/em/embedded/grpc/scs/target/
 /jdk_8_maven/em/external/grpc/ncs/target/
@@ -269,3 +272,4 @@ dotnet_3/em/embedded/rest/ScsDriver/generated-tests/
 /jdk_17_maven/em/embedded/grpc/signal-registration/target/
 /jdk_17_maven/em/external/grpc/signal-registration/target/
 /jdk_17_maven/em/external/web/spring-petclinic/target/
+

@@ -1,0 +1,27 @@
+{{#switch brevmetadata.ytelsestype}}
+{{#case "BARNETRYGD"}}
+{{> nn/vedtak/periode-fakta/periode_fakta_ba}}
+{{/case}}
+{{#case "OVERGANGSSTØNAD"}}
+{{> nn/vedtak/periode-fakta/periode_fakta_ef}}
+{{/case}}
+{{#case "KONTANTSTØTTE"}}
+{{> nn/vedtak/periode-fakta/periode_fakta_ks}}
+{{/case}}
+{{#case "SKOLEPENGER"}}
+{{> nn/vedtak/periode-fakta/periode_fakta_ef}}
+{{/case}}
+{{#case "BARNETILSYN"}}
+{{> nn/vedtak/periode-fakta/periode_fakta_ef}}
+{{/case}}
+{{/switch}}
+{{#if fakta.fritekstFakta}}
+    {{#if (eq fakta.hendelsesundertype "ANNET_FRITEKST")}}
+{{{fakta.fritekstFakta}}}
+
+{{#if gjelderDødsfall}}Det er utbetalt {{{kroner kravgrunnlag.feilutbetaltBeløp}}} for mykje.{{else}}Du har fått {{{kroner kravgrunnlag.feilutbetaltBeløp}}} for mykje utbetalt.{{/if}}
+    {{else}}
+
+{{{fakta.fritekstFakta}}}
+    {{/if}}
+{{/if}}

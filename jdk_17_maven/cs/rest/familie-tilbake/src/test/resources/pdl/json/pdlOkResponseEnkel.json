@@ -1,0 +1,55 @@
+{
+  "data": {
+    "person": {
+      "navn": [
+        {
+          "fornavn": "ENGASJERT",
+          "etternavn": "FYR"
+        }
+      ],
+      "foedsel": [
+        {
+          "foedselsdato": "1955-09-13"
+        }
+      ],
+      "kjoenn": [
+        {
+          "kjoenn": "MANN"
+        }
+      ],
+      "bostedsadresse": [
+        {
+          "vegadresse": {
+            "matrikkelId": "1234",
+            "husnummer": "3",
+            "husbokstav": null,
+            "bruksenhetsnummer": null,
+            "adressenavn": "OTTO SVERDRUPS VEG",
+            "kommunenummer": "1566",
+            "tilleggsnavn": null,
+            "postnummer": "6650"
+          },
+          "matrikkeladresse": null,
+          "ukjentBosted": null
+        }
+      ],
+      "sivilstand": [
+        {
+          "type": "UGIFT"
+        }
+      ],
+      "adressebeskyttelse": [
+        {
+          "gradering": "UGRADERT"
+        }
+      ],
+      "folkeregisteridentifikator": [
+        {
+          "identifikasjonsnummer": "12345678910",
+          "status": "I_BRUK",
+          "type": "DNR"
+        }
+      ]
+    }
+  }
+}

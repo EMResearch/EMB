@@ -1,0 +1,1 @@
+alter table avtale add column godkjent_for_etterregistrering boolean;

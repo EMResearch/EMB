@@ -1,0 +1,103 @@
+{
+  "beskrivelse": "Innvilget med reduksjon 2 barn fra august 2021. Begrunnelsene skal bli sortert.",
+  "fom": "2021-09-01",
+  "tom": null,
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$INNVILGET_BOR_HOS_SØKER",
+    "Standardbegrunnelse$REDUKSJON_FLYTTET_BARN"
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2019-03-14",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2021-08-01",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2020-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2020-01-20",
+          "periodeTom": "2021-08-01",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": "",
+    "belop": 1054,
+    "antallBarn": 1,
+    "barnasFodselsdager": "14.03.19",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "20.01.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "reduksjonFlyttetBarn",
+        "belop": 0
+      },
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "14.03.19",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "14.03.19",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 1,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "innvilgetBorHosSoker",
+        "belop": 1054
+      }
+    ],
+    "type": "innvilgelse"
+  }
+}

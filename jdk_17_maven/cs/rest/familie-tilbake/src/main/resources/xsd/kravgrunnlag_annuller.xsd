@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:no:nav:tilbakekreving:kravgrunnlag:annuller:v1"
+            xmlns="urn:no:nav:tilbakekreving:kravgrunnlag:annuller:v1"
+            xmlns:typer="urn:no:nav:tilbakekreving:typer:v1"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="urn:no:nav:tilbakekreving:typer:v1" schemaLocation="typer/typer.xsd"/>
+
+    <xsd:complexType name="AnnullerKravgrunnlagDto">
+        <xsd:annotation>
+            <xsd:documentation>446 - Annuller kravgrunnlag</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kodeAksjon" type="typer:KodeAksjonDto"/>
+            <xsd:element name="vedtakId" type="xsd:integer"/>
+            <xsd:element name="saksbehId" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

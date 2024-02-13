@@ -1,0 +1,1 @@
+alter table avtale_forkortet add column utført_av varchar;

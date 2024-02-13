@@ -1,0 +1,14 @@
+{{~#* inline "dereEllerdu"~}}{{#if institusjon}}dere{{else}}du{{/if}}{{~/inline~}}
+{{~#* inline "dereEllerDeg"~}}{{#if institusjon}}dere{{else}}deg{{/if}}{{~/inline~}}
+
+Vi sendte {{#if (not gjelderDødsfall)}}{{> dereEllerDeg}} {{/if}}et varsel {{{dato varsletDato}}} om at {{#if gjelderDødsfall}}det var utbetalt for mye{{else}}{{> dereEllerdu}} hadde fått for mye utbetalt{{/if}} i {{{ytelsesnavnUbestemt}}}. Vi har i ettertid avsluttet saken om tilbakebetaling fordi det ikke lenger er et feilutbetalt beløp å betale tilbake.
+
+{{> nb/felles/spørsmål_kontaktinformasjon}}
+
+
+Med vennlig hilsen
+{{{avsenderenhet}}}
+
+{{{ansvarligSaksbehandler}}}{{#if brevmetadata.finnesAnnenMottaker}}
+
+Brev med likt innhold er sendt til {{{annenMottagersNavn}}}{{/if}}

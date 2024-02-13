@@ -1,0 +1,41 @@
+{{~#* inline "evt-renter-utsagn" ~}}{{#if totalresultat.totaltRentebeløp}} Dette beløpet er med renter.{{/if}}{{~/inline~}}
+{{~#* inline "tilbakebetaling" ~}}
+{{#if totalresultat.harSkattetrekk}}
+{{#if gjelderDødsfall}}Utestående beløp{{else}}Beløpet du skylder{{/if}} før skatt er {{{kroner totalresultat.totaltTilbakekrevesBeløpMedRenter}}}. Dette er {{#if (eq totalresultat.hovedresultat "FULL_TILBAKEBETALING")}}hele{{else}}deler av{{/if}} det feilutbetalte beløpet.{{>evt-renter-utsagn}}
+
+Det {{#if gjelderDødsfall}}som skal betales{{else}}du skal betale{{/if}} tilbake etter at skatten er trukket fra, er {{{kroner totalresultat.totaltTilbakekrevesBeløpMedRenterUtenSkatt}}}.
+    {{else}}
+{{#if (not gjelderDødsfall)}}Du må betale tilbake {{/if}}{{{kroner totalresultat.totaltTilbakekrevesBeløpMedRenter}}}{{#if gjelderDødsfall}} må betales tilbake{{/if}}, som er {{#if (eq totalresultat.hovedresultat "FULL_TILBAKEBETALING")}}hele{{else}}deler av{{/if}} det feilutbetalte beløpet.{{>evt-renter-utsagn}}
+    {{/if}}
+{{/inline}}
+{{#if behandling.erRevurdering}}
+Vi har vurdert saken {{#if (not gjelderDødsfall)}}din {{/if}}om tilbakebetaling på nytt{{#if behandling.erRevurderingEtterKlageNfp}}, fordi {{#if gjelderDødsfall}}dere{{else}}du{{/if}} har klaget{{/if}}. Derfor gjelder ikke det tidligere vedtaket av {{{dato behandling.originalBehandlingsdatoFagsakvedtak}}} om tilbakebetaling av {{{ytelsesnavnUbestemt}}}.
+
+{{/if}}
+{{#if varsel.varsletDato}}
+    {{#switch totalresultat.hovedresultat}}
+    {{#case "FULL_TILBAKEBETALING"}}
+{{#if gjelderDødsfall}}Vi varslet {{{dato varsel.varsletDato}}} om at det er utbetalt{{else}}Du fikk varsel fra oss {{{dato varsel.varsletDato}}} om at du har fått utbetalt{{/if}} for mye. {{>korrigert-total-beløp}}{{>tilbakebetaling}}
+    {{/case}}
+    {{#case "DELVIS_TILBAKEBETALING"}}
+{{#if gjelderDødsfall}}Vi varslet {{{dato varsel.varsletDato}}} om at det er utbetalt{{else}}Du fikk varsel fra oss {{{dato varsel.varsletDato}}} om at du har fått utbetalt{{/if}} {{{kroner varsel.varsletBeløp}}} for mye. {{>korrigert-total-beløp}}{{>tilbakebetaling}}
+    {{/case}}
+    {{#case "INGEN_TILBAKEBETALING"}}
+{{#if gjelderDødsfall}}Vi varslet {{{dato varsel.varsletDato}}} om at det er utbetalt{{else}}Du fikk varsel fra oss {{{dato varsel.varsletDato}}} om at du har fått utbetalt{{/if}} {{{kroner varsel.varsletBeløp}}} for mye. {{>korrigert-total-beløp}}{{#if (not gjelderDødsfall)}}Vi har behandlet saken og du må ikke betale tilbake det feilutbetalte beløpet.{{else}}Det feilutbetalte beløpet må ikke betales tilbake.{{/if}}
+    {{/case}}
+    {{/switch}}
+{{else}}
+{{~#* inline "brev-ytelse-endret" ~}}
+    {{#if behandling.erRevurderingEtterKlageNfp}}
+{{#if gjelderDødsfall}}Det er utbetalt{{else}}Du har fått{{/if}} {{{kroner totaltFeilutbetaltBeløp}}} for mye. {{else}}
+I brev {{{dato fagsaksvedtaksdato}}} {{#if gjelderDødsfall}}sendte vi{{else}}fikk du{{/if}} melding om at {{#if gjelderDødsfall}}{{{ytelsesnavnBestemt}}}{{else}}{{{ytelsesnavnEiendomsform}}}{{/if}} er endret. Endringen førte til at {{#if gjelderDødsfall}}det ble{{else}}du har fått{{/if}} utbetalt for mye. {{/if}}
+{{~/inline~}}
+{{#if (neq totalresultat.hovedresultat "INGEN_TILBAKEBETALING")}}
+{{>brev-ytelse-endret}} {{>tilbakebetaling}}
+{{else}}
+{{>brev-ytelse-endret}}{{#if gjelderDødsfall}}Det feilutbetalte beløpet må ikke betales tilbake.{{else}}Du må ikke betale tilbake det du har fått for mye.{{/if}}
+{{/if}}
+{{/if}}
+{{#if fritekstoppsummering}}
+{{{fritekstoppsummering}}}
+{{/if}}

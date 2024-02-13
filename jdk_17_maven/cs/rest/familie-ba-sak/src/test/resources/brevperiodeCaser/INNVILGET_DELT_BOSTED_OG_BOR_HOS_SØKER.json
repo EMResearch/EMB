@@ -1,0 +1,112 @@
+{
+  "beskrivelse": "Innvilget 2 barn bor med søker. Ett barn delt bosted.",
+  "fom": "2021-09-01",
+  "tom": "2021-12-31",
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$INNVILGET_BOR_HOS_SØKER",
+    "Standardbegrunnelse$INNVILGET_AVTALE_DELT_BOSTED_FÅR_FRA_FLYTTETIDSPUNKT"
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2020-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2021-08-01",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2021-02-13",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2021-08-01",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [
+            "DELT_BOSTED"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 527,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": "til 31. desember 2021 ",
+    "belop": 1581,
+    "antallBarn": 2,
+    "barnasFodselsdager": "20.01.20 og 13.02.21",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "20.01.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "20.01.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 1,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "innvilgetBorHosSoker",
+        "belop": 1054
+      },
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "13.02.21",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "13.02.21",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 1,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "innvilgetAvtaleDeltBostedFaarFraFlyttetidspunkt",
+        "belop": 527
+      }
+    ],
+    "type": "innvilgelse"
+  }
+}

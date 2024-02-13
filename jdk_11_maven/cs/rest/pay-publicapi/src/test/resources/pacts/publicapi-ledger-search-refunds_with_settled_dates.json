@@ -1,0 +1,153 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "Return a refund, filtering by from_settled_date and to date_settled_date",
+      "providerStates": [
+        {
+          "name": "three payments with payout dates exists",
+          "params": {
+            "gateway_account_id": "123456"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction",
+        "query": {
+          "account_id": [
+            "123456"
+          ],
+          "status_version": ["1"],
+          "transaction_type": ["REFUND"],
+          "from_settled_date": [
+            "2020-09-19"
+          ],
+          "to_settled_date": [
+            "2020-09-20"
+          ],
+          "page": [
+            "1"
+          ],
+          "display_size": [
+            "500"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "total": 1,
+          "count": 1,
+          "page": 1,
+          "results": [
+            {
+              "transaction_id": "111111",
+              "created_date": "2018-09-22T10:14:16.067Z",
+              "parent_transaction_id": "someExternalId1",
+              "state": {
+                "status": "submitted",
+                "finished": false
+              },
+              "amount": 150,
+              "settlement_summary": {
+                "settled_date": "2020-09-19"
+              }
+            }
+          ],
+          "_links": {
+            "self": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=123456transaction_type=REFUND&&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+            }
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.total": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.count": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.page": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].transaction_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].created_date": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].state.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].parent_transaction_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].amount": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.settlement_summary.settled_date": {
+              "matchers": [{ "date": "yyyy-MM-dd" }]
+            },
+            "$._links.self.href": {
+              "matchers": [
+                {
+                  "regex":  "http:\/\/.*\/v1\/transaction\\?account_id=123456&transaction_type=REFUND&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

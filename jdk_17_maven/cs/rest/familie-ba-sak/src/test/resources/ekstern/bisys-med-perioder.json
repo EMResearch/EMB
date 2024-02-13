@@ -1,0 +1,18 @@
+{
+  "perioder": [
+    {
+      "stønadstype": "UTVIDET",
+      "fomMåned": "2019-12",
+      "tomMåned": null,
+      "beløp": 1054,
+      "manueltBeregnet": false
+    },
+    {
+      "stønadstype": "SMÅBARNSTILLEGG",
+      "fomMåned": "2019-12",
+      "tomMåned": null,
+      "beløp": 660,
+      "manueltBeregnet": false
+    }
+  ]
+}

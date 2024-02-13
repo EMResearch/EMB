@@ -1,0 +1,43 @@
+{
+  "data": {
+    "person": {
+      "folkeregisteridentifikator": [
+        {
+          "identifikasjonsnummer": "1234",
+          "status": "I_BRUK",
+          "type": "FNR"
+        }
+      ],
+      "navn": [
+        {
+          "fornavn": "ENGASJERT",
+          "etternavn": "FYR"
+        }
+      ],
+      "foedsel": [
+        {
+          "foedselsdato": null
+        }
+      ],
+      "kjoenn": [
+        {
+          "kjoenn": "MANN"
+        }
+      ],
+      "bostedsadresse": [],
+      "sivilstand": [
+        {
+          "type": "UGIFT"
+        }
+      ],
+      "forelderBarnRelasjon": [],
+      "adressebeskyttelse": [
+        {
+          "gradering": "UGRADERT"
+        }
+      ],
+      "doedsfall": [],
+      "kontaktinformasjonForDoedsbo": []
+    }
+  }
+}

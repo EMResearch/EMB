@@ -1,0 +1,100 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "search payments",
+      "providerStates": [
+        {
+          "name": "a dispute lost transaction exists",
+          "params": {
+            "transaction_external_id": "dispute97837509646393e3C",
+            "gateway_account_id": "123456",
+            "parent_external_id": "parent-abcde-12345"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction",
+        "query": {
+          "page": ["1"],
+          "display_size": ["500"],
+          "from_date": ["2021-05-20T19:04:00Z"],
+          "to_date": ["2021-05-20T19:06:00Z"],
+          "account_id": ["123456"],
+          "transaction_type": ["DISPUTE"],
+          "status_version": ["1"]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "page": 1,
+          "total": 0,
+          "count": 0,
+          "results": [
+          ],
+          "_links": {
+            "self": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=123456&from_date=2021-05-20T19%3A04%3A00Z&to_date=2021-05-20T19%3A06%3A00Z&transaction_type=DISPUTE&page=1&display_size=500"
+            },
+            "last_page": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=123456&from_date=2021-05-20T19%3A04%3A00Z&to_date=2021-05-20T19%3A06%3A00Z&transaction_type=DISPUTE&page=1&display_size=500"
+            },
+            "first_page": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=123456&from_date=2021-05-20T19%3A04%3A00Z&to_date=2021-05-20T19%3A06%3A00Z&transaction_type=DISPUTE&page=1&display_size=500"
+            }
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "results": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$._links.self.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/transaction\\?account_id=123456&from_date=2021-05-20T19%3A04%3A00Z&to_date=2021-05-20T19%3A06%3A00Z&transaction_type=DISPUTE&page=1&display_size=500"
+                }
+              ]
+            },
+            "$._links.last_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/transaction\\?account_id=123456&from_date=2021-05-20T19%3A04%3A00Z&to_date=2021-05-20T19%3A06%3A00Z&transaction_type=DISPUTE&page=1&display_size=500"
+                }
+              ]
+            },
+            "$._links.first_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/transaction\\?account_id=123456&from_date=2021-05-20T19%3A04%3A00Z&to_date=2021-05-20T19%3A06%3A00Z&transaction_type=DISPUTE&page=1&display_size=500"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "beskrivelse": "Ingen begrunnelser 2 barn fra august 2021",
+  "fom": "2021-09-01",
+  "tom": "2021-12-31",
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2020-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": null
+}

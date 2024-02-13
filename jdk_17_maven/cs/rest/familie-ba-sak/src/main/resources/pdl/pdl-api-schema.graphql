@@ -1,0 +1,899 @@
+# This file was generated. Do not edit manually.
+
+schema {
+    query: Query
+}
+
+type AdresseCompletionResult {
+    addressFound: CompletionAdresse
+    suggestions: [String!]!
+}
+
+type AdresseSearchHit {
+    matrikkeladresse: MatrikkeladresseResult
+    score: Float
+    vegadresse: VegadresseResult
+}
+
+type AdresseSearchResult {
+    hits: [AdresseSearchHit!]!
+    pageNumber: Int
+    totalHits: Int
+    totalPages: Int
+}
+
+type Adressebeskyttelse {
+    folkeregistermetadata: Folkeregistermetadata
+    gradering: AdressebeskyttelseGradering!
+    metadata: Metadata!
+}
+
+type Bostedsadresse {
+    angittFlyttedato: Date
+    coAdressenavn: String
+    folkeregistermetadata: Folkeregistermetadata
+    gyldigFraOgMed: DateTime
+    gyldigTilOgMed: DateTime
+    matrikkeladresse: Matrikkeladresse
+    metadata: Metadata!
+    ukjentBosted: UkjentBosted
+    utenlandskAdresse: UtenlandskAdresse
+    vegadresse: Vegadresse
+}
+
+type CompletionAdresse {
+    matrikkeladresse: MatrikkeladresseResult
+    vegadresse: VegadresseResult
+}
+
+type DeltBosted {
+    coAdressenavn: String
+    folkeregistermetadata: Folkeregistermetadata!
+    matrikkeladresse: Matrikkeladresse
+    metadata: Metadata!
+    sluttdatoForKontrakt: Date
+    startdatoForKontrakt: Date!
+    ukjentBosted: UkjentBosted
+    utenlandskAdresse: UtenlandskAdresse
+    vegadresse: Vegadresse
+}
+
+type DoedfoedtBarn {
+    dato: Date
+    folkeregistermetadata: Folkeregistermetadata!
+    metadata: Metadata!
+}
+
+type Doedsfall {
+    doedsdato: Date
+    folkeregistermetadata: Folkeregistermetadata
+    metadata: Metadata!
+}
+
+" Endring som har blitt utført på opplysningen. F.eks: Opprett -> Korriger -> Korriger"
+type Endring {
+    hendelseId: String!
+    """
+
+    Opphavet til informasjonen. I NAV blir dette satt i forbindelse med registrering (f.eks: Sykehuskassan).
+    Fra Folkeregisteret får vi opphaven til dems opplysning, altså NAV, UDI, Politiet, Skatteetaten o.l.. Fra Folkeregisteret kan det også være tekniske navn som: DSF_MIGRERING, m.m..
+    """
+    kilde: String!
+    " Tidspunktet for registrering."
+    registrert: DateTime!
+    " Hvem endringen har blitt utført av, ofte saksbehandler (f.eks Z990200), men kan også være system (f.eks srvXXXX). Denne blir satt til \"Folkeregisteret\" for det vi får fra dem."
+    registrertAv: String!
+    " Hvilke system endringen har kommet fra (f.eks srvXXX). Denne blir satt til \"FREG\" for det vi får fra Folkeregisteret."
+    systemkilde: String!
+    " Hvilke type endring som har blitt utført."
+    type: Endringstype!
+}
+
+type FalskIdentitet {
+    erFalsk: Boolean!
+    folkeregistermetadata: Folkeregistermetadata
+    metadata: Metadata!
+    rettIdentitetErUkjent: Boolean
+    rettIdentitetVedIdentifikasjonsnummer: String
+    rettIdentitetVedOpplysninger: FalskIdentitetIdentifiserendeInformasjon
+}
+
+type FalskIdentitetIdentifiserendeInformasjon {
+    foedselsdato: Date
+    kjoenn: KjoennType
+    personnavn: Personnavn!
+    statsborgerskap: [String!]!
+}
+
+type Foedsel {
+    foedekommune: String
+    foedeland: String
+    foedested: String
+    foedselsaar: Int
+    foedselsdato: Date
+    folkeregistermetadata: Folkeregistermetadata
+    metadata: Metadata!
+}
+
+type Folkeregisteridentifikator {
+    folkeregistermetadata: Folkeregistermetadata!
+    identifikasjonsnummer: String!
+    metadata: Metadata!
+    status: String!
+    type: String!
+}
+
+type Folkeregistermetadata {
+    aarsak: String
+    ajourholdstidspunkt: DateTime
+    gyldighetstidspunkt: DateTime
+    kilde: String
+    opphoerstidspunkt: DateTime
+    sekvens: Int
+}
+
+type Folkeregisterpersonstatus {
+    folkeregistermetadata: Folkeregistermetadata!
+    forenkletStatus: String!
+    metadata: Metadata!
+    status: String!
+}
+
+type ForelderBarnRelasjon {
+    folkeregistermetadata: Folkeregistermetadata
+    metadata: Metadata!
+    minRolleForPerson: ForelderBarnRelasjonRolle
+    relatertPersonUtenFolkeregisteridentifikator: RelatertBiPerson
+    relatertPersonsIdent: String
+    relatertPersonsRolle: ForelderBarnRelasjonRolle!
+}
+
+type Foreldreansvar {
+    ansvar: String
+    ansvarlig: String
+    ansvarligUtenIdentifikator: RelatertBiPerson
+    ansvarssubjekt: String
+    folkeregistermetadata: Folkeregistermetadata
+    metadata: Metadata!
+}
+
+type Fullmakt {
+    gyldigFraOgMed: Date!
+    gyldigTilOgMed: Date!
+    metadata: Metadata!
+    motpartsPersonident: String!
+    motpartsRolle: FullmaktsRolle!
+    omraader: [String!]!
+}
+
+type GeografiskTilknytning {
+    gtBydel: String
+    gtKommune: String
+    gtLand: String
+    gtType: GtType!
+    regel: String!
+}
+
+type HentIdenterBolkResult {
+    code: String!
+    ident: String!
+    identer: [IdentInformasjon!]
+}
+
+type HentPersonBolkResult {
+    code: String!
+    ident: String!
+    person: Person
+}
+
+type IdentInformasjon {
+    gruppe: IdentGruppe!
+    historisk: Boolean!
+    ident: String!
+}
+
+type Identitetsgrunnlag {
+    folkeregistermetadata: Folkeregistermetadata!
+    metadata: Metadata!
+    status: Identitetsgrunnlagsstatus!
+}
+
+type Identliste {
+    identer: [IdentInformasjon!]!
+}
+
+type InnflyttingTilNorge {
+    folkeregistermetadata: Folkeregistermetadata
+    fraflyttingsland: String
+    fraflyttingsstedIUtlandet: String
+    metadata: Metadata!
+}
+
+type KartverketAdresse {
+    id: Long!
+    matrikkeladresse: KartverketMatrikkeladresse
+    vegadresse: KartverketVegadresse
+}
+
+type KartverketBydel {
+    bydelsnavn: String
+    bydelsnummer: String
+}
+
+type KartverketFylke {
+    navn: String
+    nummer: String
+}
+
+type KartverketGrunnkrets {
+    grunnkretsnavn: String
+    grunnkretsnummer: String
+}
+
+type KartverketKommune {
+    fylke: KartverketFylke
+    navn: String
+    nummer: String
+}
+
+type KartverketMatrikkeladresse {
+    adressetilleggsnavn: String
+    bydel: KartverketBydel
+    grunnkrets: KartverketGrunnkrets
+    kortnavn: String
+    matrikkelnummer: KartverketMatrikkelnummer
+    postnummeromraade: KartverketPostnummeromraade
+    representasjonspunkt: KartverketRepresentasjonspunkt
+    undernummer: Int
+}
+
+type KartverketMatrikkelnummer {
+    bruksnummer: Int
+    festenummer: Int
+    gaardsnummer: Int
+    kommunenummer: String
+    seksjonsnummer: Int
+}
+
+type KartverketPostnummeromraade {
+    postnummer: String
+    poststed: String
+}
+
+type KartverketRepresentasjonspunkt {
+    posisjonskvalitet: Int
+    x: Float
+    y: Float
+    z: Float
+}
+
+type KartverketVeg {
+    adressekode: Int
+    adressenavn: String
+    kommune: KartverketKommune
+    kortnavn: String
+    stedsnummer: String
+}
+
+type KartverketVegadresse {
+    adressetilleggsnavn: String
+    bokstav: String
+    bydel: KartverketBydel
+    grunnkrets: KartverketGrunnkrets
+    kortnavn: String
+    nummer: Int
+    postnummeromraade: KartverketPostnummeromraade
+    representasjonspunkt: KartverketRepresentasjonspunkt
+    veg: KartverketVeg
+}
+
+type Kjoenn {
+    folkeregistermetadata: Folkeregistermetadata
+    kjoenn: KjoennType
+    metadata: Metadata!
+}
+
+type Kontaktadresse {
+    coAdressenavn: String
+    folkeregistermetadata: Folkeregistermetadata
+    gyldigFraOgMed: DateTime
+    gyldigTilOgMed: DateTime
+    metadata: Metadata!
+    postadresseIFrittFormat: PostadresseIFrittFormat
+    postboksadresse: Postboksadresse
+    type: KontaktadresseType!
+    utenlandskAdresse: UtenlandskAdresse
+    utenlandskAdresseIFrittFormat: UtenlandskAdresseIFrittFormat
+    vegadresse: Vegadresse
+}
+
+type KontaktinformasjonForDoedsbo {
+    adresse: KontaktinformasjonForDoedsboAdresse!
+    advokatSomKontakt: KontaktinformasjonForDoedsboAdvokatSomKontakt
+    attestutstedelsesdato: Date!
+    folkeregistermetadata: Folkeregistermetadata!
+    metadata: Metadata!
+    organisasjonSomKontakt: KontaktinformasjonForDoedsboOrganisasjonSomKontakt
+    personSomKontakt: KontaktinformasjonForDoedsboPersonSomKontakt
+    skifteform: KontaktinformasjonForDoedsboSkifteform!
+}
+
+type KontaktinformasjonForDoedsboAdresse {
+    adresselinje1: String!
+    adresselinje2: String
+    landkode: String
+    postnummer: String!
+    poststedsnavn: String!
+}
+
+type KontaktinformasjonForDoedsboAdvokatSomKontakt {
+    organisasjonsnavn: String
+    organisasjonsnummer: String
+    personnavn: Personnavn!
+}
+
+type KontaktinformasjonForDoedsboOrganisasjonSomKontakt {
+    kontaktperson: Personnavn
+    organisasjonsnavn: String!
+    organisasjonsnummer: String
+}
+
+type KontaktinformasjonForDoedsboPersonSomKontakt {
+    foedselsdato: Date
+    identifikasjonsnummer: String
+    personnavn: Personnavn
+}
+
+type Koordinater {
+    kvalitet: Int
+    x: Float
+    y: Float
+    z: Float
+}
+
+type Matrikkeladresse {
+    bruksenhetsnummer: String
+    kommunenummer: String
+    koordinater: Koordinater
+    matrikkelId: Long
+    postnummer: String
+    tilleggsnavn: String
+}
+
+type MatrikkeladresseResult {
+    bruksnummer: String
+    gaardsnummer: String
+    kommunenummer: String
+    matrikkelId: String
+    postnummer: String
+    poststed: String
+    tilleggsnavn: String
+}
+
+type Metadata {
+    """
+
+    En liste over alle endringer som har blitt utført over tid.
+    Vær obs på at denne kan endre seg og man burde takle at det finnes flere korrigeringer i listen, så dersom man ønsker å kun vise den siste, så må man selv filtrere ut dette.
+    Det kan også ved svært få tilfeller skje at opprett blir fjernet. F.eks ved splitt tilfeller av identer. Dette skal skje i svært få tilfeller. Dersom man ønsker å presentere opprettet tidspunktet, så blir det tidspunktet på den første endringen.
+    """
+    endringer: [Endring!]!
+    """
+
+    Feltet betegner hvorvidt dette er en funksjonelt historisk opplysning, for eksempel en tidligere fraflyttet adresse eller et foreldreansvar som er utløpt fordi barnet har fylt 18 år.
+    I de fleste tilfeller kan dette utledes ved å se på de andre feltene i opplysningen. Dette er imidlertid ikke alltid tilfellet, blant annet for foreldreansvar.
+    Feltet bør brukes av konsumenter som henter informasjon fra GraphQL med historikk, men som også trenger å utlede gjeldende informasjon.
+    """
+    historisk: Boolean!
+    " Master refererer til hvem som eier opplysningen, f.eks så har PDL en kopi av Folkeregisteret, da vil master være FREG og eventuelle endringer på dette må gå via Folkeregisteret (API mot dem eller andre rutiner)."
+    master: String!
+    """
+
+    I PDL så får alle forekomster av en opplysning en ID som representerer dens unike forekomst.
+    F.eks, så vil en Opprett ha ID X, korriger ID Y (der hvor den spesifiserer at den korrigerer X).
+    Dersom en opplysning ikke er lagret i PDL, så vil denne verdien ikke være utfylt.
+    """
+    opplysningsId: String
+}
+
+type Navn {
+    etternavn: String!
+    folkeregistermetadata: Folkeregistermetadata
+    forkortetNavn: String
+    fornavn: String!
+    gyldigFraOgMed: Date
+    mellomnavn: String
+    metadata: Metadata!
+    originaltNavn: OriginaltNavn
+}
+
+type Opphold {
+    folkeregistermetadata: Folkeregistermetadata!
+    metadata: Metadata!
+    oppholdFra: Date
+    oppholdTil: Date
+    type: Oppholdstillatelse!
+}
+
+type Oppholdsadresse {
+    coAdressenavn: String
+    folkeregistermetadata: Folkeregistermetadata
+    gyldigFraOgMed: DateTime
+    gyldigTilOgMed: DateTime
+    matrikkeladresse: Matrikkeladresse
+    metadata: Metadata!
+    oppholdAnnetSted: String
+    utenlandskAdresse: UtenlandskAdresse
+    vegadresse: Vegadresse
+}
+
+type OriginaltNavn {
+    etternavn: String
+    fornavn: String
+    mellomnavn: String
+}
+
+type Person {
+    adressebeskyttelse(historikk: Boolean = false): [Adressebeskyttelse!]!
+    bostedsadresse(historikk: Boolean = false): [Bostedsadresse!]!
+    deltBosted(historikk: Boolean = false): [DeltBosted!]!
+    doedfoedtBarn: [DoedfoedtBarn!]!
+    doedsfall: [Doedsfall!]!
+    falskIdentitet: FalskIdentitet
+    foedsel: [Foedsel!]!
+    folkeregisteridentifikator(historikk: Boolean = false): [Folkeregisteridentifikator!]!
+    folkeregisterpersonstatus(historikk: Boolean = false): [Folkeregisterpersonstatus!]!
+    forelderBarnRelasjon: [ForelderBarnRelasjon!]!
+    foreldreansvar(historikk: Boolean = false): [Foreldreansvar!]!
+    fullmakt(historikk: Boolean = false): [Fullmakt!]!
+    identitetsgrunnlag(historikk: Boolean = false): [Identitetsgrunnlag!]!
+    innflyttingTilNorge: [InnflyttingTilNorge!]!
+    kjoenn(historikk: Boolean = false): [Kjoenn!]!
+    kontaktadresse(historikk: Boolean = false): [Kontaktadresse!]!
+    kontaktinformasjonForDoedsbo(historikk: Boolean = false): [KontaktinformasjonForDoedsbo!]!
+    navn(historikk: Boolean = false): [Navn!]!
+    opphold(historikk: Boolean = false): [Opphold!]!
+    oppholdsadresse(historikk: Boolean = false): [Oppholdsadresse!]!
+    sikkerhetstiltak: [Sikkerhetstiltak!]!
+    sivilstand(historikk: Boolean = false): [Sivilstand!]!
+    statsborgerskap(historikk: Boolean = false): [Statsborgerskap!]!
+    telefonnummer: [Telefonnummer!]!
+    tilrettelagtKommunikasjon: [TilrettelagtKommunikasjon!]!
+    utenlandskIdentifikasjonsnummer(historikk: Boolean = false): [UtenlandskIdentifikasjonsnummer!]!
+    utflyttingFraNorge: [UtflyttingFraNorge!]!
+    vergemaalEllerFremtidsfullmakt(historikk: Boolean = false): [VergemaalEllerFremtidsfullmakt!]!
+}
+
+type PersonSearchHighlight {
+    " Forteller hvorvidt opplysningen som ga treff er markert som historisk."
+    historisk: Boolean
+    """
+
+    liste med feltene og verdiene som ga treff.
+    Merk at for fritekst søk så vil disse kunne referere til hjelpe felter som ikke er synelig i resultatene.
+    """
+    matches: [SearchMatch]
+    """
+
+    Navn/Sti til opplysningen som ga treff. Merk at dette ikke er feltet som ga treff men opplysningen.
+    F.eks. hvis du søker på person.navn.fornavn så vil opplysingen være person.navn.
+    """
+    opplysning: String
+    """
+
+    Gitt att opplysningen som ga treff har en opplysningsId så vil den returneres her.
+    alle søk under person skal ha opplysningsId, men søk i identer vil kunne returnere treff uten opplysningsId.
+    """
+    opplysningsId: String
+}
+
+type PersonSearchHit {
+    " Infromasjon om hva som ga treff i søke resultatet."
+    highlights: [PersonSearchHighlight]
+    " forespurte data"
+    identer(historikk: Boolean = false): [IdentInformasjon!]!
+    " forespurte data"
+    person: Person
+    " Poengsummen elasticsearch  har gitt dette resultatet (brukt til feilsøking, og tuning av søk)"
+    score: Float
+}
+
+type PersonSearchResult {
+    " treff liste"
+    hits: [PersonSearchHit!]!
+    " Side nummer for siden som vises"
+    pageNumber: Int
+    " Totalt antall treff (øvre grense er satt til 10 000)"
+    totalHits: Int
+    " Totalt antall sider"
+    totalPages: Int
+}
+
+type Personnavn {
+    etternavn: String!
+    fornavn: String!
+    mellomnavn: String
+}
+
+type PostadresseIFrittFormat {
+    adresselinje1: String
+    adresselinje2: String
+    adresselinje3: String
+    postnummer: String
+}
+
+type Postboksadresse {
+    postboks: String!
+    postbokseier: String
+    postnummer: String
+}
+
+type Query {
+    forslagAdresse(parameters: CompletionParameters): AdresseCompletionResult
+    hentAdresse(matrikkelId: ID!): KartverketAdresse
+    hentGeografiskTilknytning(ident: ID!): GeografiskTilknytning
+    hentGeografiskTilknytningBolk(identer: [ID!]!): [hentGeografiskTilknytningBolkResult!]!
+    hentIdenter(grupper: [IdentGruppe!], historikk: Boolean = false, ident: ID!): Identliste
+    hentIdenterBolk(grupper: [IdentGruppe!], historikk: Boolean = false, identer: [ID!]!): [HentIdenterBolkResult!]!
+    hentPerson(ident: ID!): Person
+    hentPersonBolk(identer: [ID!]!): [HentPersonBolkResult!]!
+    sokAdresse(criteria: [Criterion], paging: Paging): AdresseSearchResult
+    sokPerson(criteria: [Criterion], paging: Paging): PersonSearchResult
+}
+
+type RelatertBiPerson {
+    foedselsdato: Date
+    kjoenn: KjoennType
+    navn: Personnavn
+    statsborgerskap: String
+}
+
+type SearchMatch {
+    " feltnavn med sti til feltet so ga treff."
+    field: String!
+    " Verdien som ga treff"
+    fragments: [String]
+    type: String
+}
+
+type Sikkerhetstiltak {
+    beskrivelse: String!
+    gyldigFraOgMed: Date!
+    gyldigTilOgMed: Date!
+    kontaktperson: SikkerhetstiltakKontaktperson
+    metadata: Metadata!
+    tiltakstype: String!
+}
+
+type SikkerhetstiltakKontaktperson {
+    enhet: String!
+    personident: String!
+}
+
+type Sivilstand {
+    bekreftelsesdato: Date
+    folkeregistermetadata: Folkeregistermetadata
+    gyldigFraOgMed: Date
+    metadata: Metadata!
+    relatertVedSivilstand: String
+    type: Sivilstandstype!
+}
+
+type Statsborgerskap {
+    bekreftelsesdato: Date
+    folkeregistermetadata: Folkeregistermetadata
+    gyldigFraOgMed: Date
+    gyldigTilOgMed: Date
+    land: String!
+    metadata: Metadata!
+}
+
+type Telefonnummer {
+    landskode: String!
+    metadata: Metadata!
+    nummer: String!
+    prioritet: Int!
+}
+
+type TilrettelagtKommunikasjon {
+    metadata: Metadata!
+    talespraaktolk: Tolk
+    tegnspraaktolk: Tolk
+}
+
+type Tolk {
+    spraak: String
+}
+
+type UkjentBosted {
+    bostedskommune: String
+}
+
+type UtenlandskAdresse {
+    adressenavnNummer: String
+    bySted: String
+    bygningEtasjeLeilighet: String
+    landkode: String!
+    postboksNummerNavn: String
+    postkode: String
+    regionDistriktOmraade: String
+}
+
+type UtenlandskAdresseIFrittFormat {
+    adresselinje1: String
+    adresselinje2: String
+    adresselinje3: String
+    byEllerStedsnavn: String
+    landkode: String!
+    postkode: String
+}
+
+type UtenlandskIdentifikasjonsnummer {
+    folkeregistermetadata: Folkeregistermetadata
+    identifikasjonsnummer: String!
+    metadata: Metadata!
+    opphoert: Boolean!
+    utstederland: String!
+}
+
+type UtflyttingFraNorge {
+    folkeregistermetadata: Folkeregistermetadata
+    metadata: Metadata!
+    tilflyttingsland: String
+    tilflyttingsstedIUtlandet: String
+    utflyttingsdato: Date
+}
+
+type Vegadresse {
+    adressenavn: String
+    bruksenhetsnummer: String
+    bydelsnummer: String
+    husbokstav: String
+    husnummer: String
+    kommunenummer: String
+    koordinater: Koordinater
+    matrikkelId: Long
+    postnummer: String
+    tilleggsnavn: String
+}
+
+type VegadresseResult {
+    adressekode: String
+    adressenavn: String
+    bydelsnavn: String
+    bydelsnummer: String
+    fylkesnavn: String
+    fylkesnummer: String
+    husbokstav: String
+    husnummer: Int
+    kommunenavn: String
+    kommunenummer: String
+    matrikkelId: String
+    postnummer: String
+    poststed: String
+    tilleggsnavn: String
+}
+
+type VergeEllerFullmektig {
+    motpartsPersonident: String
+    navn: Personnavn
+    omfang: String
+    omfangetErInnenPersonligOmraade: Boolean!
+}
+
+type VergemaalEllerFremtidsfullmakt {
+    embete: String
+    folkeregistermetadata: Folkeregistermetadata
+    metadata: Metadata!
+    type: String
+    vergeEllerFullmektig: VergeEllerFullmektig!
+}
+
+type hentGeografiskTilknytningBolkResult {
+    code: String!
+    geografiskTilknytning: GeografiskTilknytning
+    ident: String!
+}
+
+enum AdressebeskyttelseGradering {
+    FORTROLIG
+    STRENGT_FORTROLIG
+    STRENGT_FORTROLIG_UTLAND
+    UGRADERT
+}
+
+enum Direction {
+    ASC
+    DESC
+}
+
+enum Endringstype {
+    KORRIGER
+    OPPHOER
+    OPPRETT
+}
+
+enum Familierelasjonsrolle {
+    BARN
+    FAR
+    MEDMOR
+    MOR
+}
+
+enum ForelderBarnRelasjonRolle {
+    BARN
+    FAR
+    MEDMOR
+    MOR
+}
+
+enum FullmaktsRolle {
+    FULLMAKTSGIVER
+    FULLMEKTIG
+}
+
+enum GtType {
+    BYDEL
+    KOMMUNE
+    UDEFINERT
+    UTLAND
+}
+
+enum IdentGruppe {
+    AKTORID
+    FOLKEREGISTERIDENT
+    NPID
+}
+
+enum Identitetsgrunnlagsstatus {
+    IKKE_KONTROLLERT
+    INGEN_STATUS
+    KONTROLLERT
+}
+
+enum KjoennType {
+    KVINNE
+    MANN
+    UKJENT
+}
+
+enum KontaktadresseType {
+    Innland
+    Utland
+}
+
+enum KontaktinformasjonForDoedsboSkifteform {
+    ANNET
+    OFFENTLIG
+}
+
+enum Oppholdstillatelse {
+    MIDLERTIDIG
+    OPPLYSNING_MANGLER
+    PERMANENT
+}
+
+enum Sivilstandstype {
+    ENKE_ELLER_ENKEMANN
+    GIFT
+    GJENLEVENDE_PARTNER
+    REGISTRERT_PARTNER
+    SEPARERT
+    SEPARERT_PARTNER
+    SKILT
+    SKILT_PARTNER
+    UGIFT
+    UOPPGITT
+}
+
+"Format: YYYY-MM-DD (ISO-8601), example: 2017-11-24"
+scalar Date
+
+"Format: YYYY-MM-DDTHH:mm:SS (ISO-8601), example: 2011-12-03T10:15:30"
+scalar DateTime
+
+"Long type"
+scalar Long
+
+input CompletionFieldValue {
+    fieldName: String!
+    fieldValue: String
+}
+
+input CompletionParameters {
+    completionField: String!
+    fieldValues: [CompletionFieldValue]!
+    maxSuggestions: Int
+}
+
+input Criterion {
+    " Feltnavn ikludert sti til ønsket felt (Eksempel: person.navn.fornavn)"
+    fieldName: String!
+    """
+
+    Søk i historiske data
+    true = søker kun i historiske data.
+    false = søker kun i gjeldende data.
+    null = søke i både historiske og gjeldende data.
+    """
+    searchHistorical: Boolean
+    searchRule: SearchRule!
+}
+
+input Paging {
+    " Hvilken side i resultatsettet man ønsker vist."
+    pageNumber: Int = 1
+    " antall treff per side (maks 100)"
+    resultsPerPage: Int = 10
+    """
+
+    Liste over felter man ønsker resultatene sortert etter
+    Standard er "score". Score er poengsummen Elasticsearch tildeler hvert resultat.
+    """
+    sortBy: [SearchSorting]
+}
+
+input SearchRule {
+    " Brukes til søke etter datoer som kommer etter opgitt dato."
+    after: String
+    " Brukes til søke etter datoer som kommer før opgitt dato."
+    before: String
+    " Boost brukes til å gi ett søkekriterie høyere eller lavere vektlegging en de andre søke kriteriene."
+    boost: Float
+    " [Flag] Kan brukes til å overstyre standard oppførsellen for søk i felter (standard er case insensitive)"
+    caseSensitive: Boolean
+    " Gir treff når opgitt felt inneholder en eller flere ord fra input verdien."
+    contains: String
+    " [Flag] Brukes til å deaktivere fonetisk søk feltene som har dette som standard (Navn)"
+    disablePhonetic: Boolean
+    " Begrenser treff til kun de hvor felt har input verdi"
+    equals: String
+    " Sjekker om feltet finnes / at det ikke har en null verdi."
+    exists: String
+    """
+
+    Søk fra og med (se fromExcluding for bare fra men ikke med)
+    kan benyttes på tall og dato
+    """
+    from: String
+    """
+
+    Søk fra men ikke med oppgitt verdi
+    kan benyttes på tall og dato
+    """
+    fromExcluding: String
+    " Søk som gir treff også for små variasjoner i skrivemåte"
+    fuzzy: String
+    " Brukes til å søke i tall og finner verdier som er størren en input verdi."
+    greaterThan: String
+    " Brukes til å søke i tall og finner verdier som er mindre en input verdi."
+    lessThan: String
+    " Filtrerer bort treff hvor felt inneholder input verdi"
+    notEquals: String
+    " Søk som gir tilfeldig poengsum til hvert treff (kun ment til generering av testdata)"
+    random: String
+    " Regex søk for spesielle situasjoner (Dette er en treg opprasjon og bør ikke brukes)"
+    regex: String
+    " Gir treff når opgitt feltstarter med opgitt verdi."
+    startsWith: String
+    """
+
+    Søk til og med (se toExcluding for bare til men ikke med)
+    kan benyttes på tall og dato
+    """
+    to: String
+    """
+
+    Søk til men ikke med oppgitt verdi
+    kan benyttes på tall og dato
+    """
+    toExcluding: String
+    " Bruk \"?\" som wildcard for enkelt tegn, og \"*\" som wildcard for 0 eller flere tegn."
+    wildcard: String
+}
+
+input SearchSorting {
+    direction: Direction!
+    " Feltnavn ikludert sti til ønsket felt (eksepmel: person.navn.fornavn)"
+    fieldName: String!
+}

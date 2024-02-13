@@ -1,0 +1,95 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "search agreement not found",
+      "providerStates": [
+        {
+          "name": "an agreement with payment instrument exists",
+          "params": {
+            "account_id": "3456",
+            "agreement_external_id": "abcdefghijklmnopqrstuvwxyz",
+            "reference": "a-valid-reference"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/agreement",
+        "query": {
+          "page": [
+            "1"
+          ],
+          "display_size": [
+            "20"
+          ],
+          "reference" : ["invalid-reference"],
+          "account_id": ["3456"],
+          "exact_reference_match": ["true"]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "page": 1,
+          "total": 0,
+          "count": 0,
+          "results": [
+          ],
+          "_links": {
+            "self": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=3456&reference=invalid-reference&page=1&display_size=20"
+            },
+            "first_page": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=3456&reference=invalid-reference&page=1&display_size=20"
+            },
+            "last_page": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=3456&reference=invalid-reference&page=1&display_size=20"
+            }
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$._links.self.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=3456&reference=invalid-reference&page=1&display_size=20"
+                }
+              ]
+            },
+            "$._links.first_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=3456&reference=invalid-reference&page=1&display_size=20"
+                }
+              ]
+            },
+            "$._links.last_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=3456&reference=invalid-reference&page=1&display_size=20"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

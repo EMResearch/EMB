@@ -1,0 +1,95 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "get a refund transaction for a transaction",
+      "providerStates": [
+        {
+          "name": "a refund transaction for a transaction exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "transaction_external_id": "r_123abc456def",
+            "parent_external_id": "123456789"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction/r_123abc456def",
+        "query": {
+          "account_id": ["123456"],
+          "parent_external_id" :["123456789"],
+          "transaction_type":["REFUND"],
+          "status_version": ["1"]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "transaction_id": "r_123abc456def",
+          "amount": 100,
+          "state": {
+            "status": "success",
+            "finished": true
+          },
+          "created_date": "2018-09-22T10:14:16.067Z"
+        },
+        "matchingRules": {
+          "body": {
+            "$.amount": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.state.status": {
+              "matchers": [
+                {
+                  "match": "value"
+                }
+              ]
+            },
+            "$.state.finished": {
+              "matchers": [
+                {
+                  "match": "value"
+                }
+              ]
+            },
+            "$.created_date": {
+              "matchers": [
+                {
+                  "match": "value"
+                }
+              ]
+            },
+            "$.transaction_id": {
+              "matchers": [
+                {
+                  "match": "value"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

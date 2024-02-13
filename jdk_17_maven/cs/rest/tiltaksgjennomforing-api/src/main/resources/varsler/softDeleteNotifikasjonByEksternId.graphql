@@ -1,0 +1,11 @@
+mutation SlettingAvNotifikasjonerByEksternId($eksternId: ID! $merkelapp: String!) {
+  softDeleteNotifikasjonByEksternId(eksternId: $eksternId merkelapp: $merkelapp) {
+    __typename
+    ... on SoftDeleteNotifikasjonVellykket {
+      id
+    }
+    ... on NotifikasjonFinnesIkke {
+      feilmelding
+    }
+  }
+}

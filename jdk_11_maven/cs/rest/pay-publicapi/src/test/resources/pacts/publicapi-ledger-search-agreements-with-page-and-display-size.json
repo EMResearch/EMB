@@ -1,0 +1,162 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "search agreements with page and display size params",
+      "providerStates": [
+        {
+          "name": "3 agreements exist for account",
+          "params": {
+            "account_id": "777"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/agreement",
+        "query": {
+          "page": [
+            "2"
+          ],
+          "display_size": [
+            "1"
+          ],
+          "account_id": ["777"],
+          "exact_reference_match": ["true"]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "page": 2,
+          "total": 3,
+          "count": 1,
+          "results": [
+            {
+              "external_id": "5f8cgoad1k3q216rul5v2m3v0c",
+              "service_id": "bbd0591e01dc4410839978a6ef5a8a81",
+              "reference": "ref",
+              "description": "descr",
+              "status": "CREATED",
+              "created_date": "2023-01-10T11:09:17.443Z"
+            }
+          ],
+          "_links": {
+            "self": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=777&display_size=1&page=2"
+            },
+            "first_page": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=777&display_size=1&page=1"
+            },
+            "last_page": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=777&display_size=1&page=3"
+            },
+            "prev_page": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=777&display_size=1&page=1"
+            },
+            "next_page": {
+              "href": "http://ledger.service.backend/v1/agreement?account_id=777&display_size=1&page=3"
+            }
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.results[*].external_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].service_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].reference": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].description": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].created_date": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                }
+              ]
+            },
+            "$._links.self.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=777&page=2&display_size=1"
+                }
+              ]
+            },
+            "$._links.first_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=777&page=1&display_size=1"
+                }
+              ]
+            },
+            "$._links.last_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=777&page=3&display_size=1"
+                }
+              ]
+            },
+            "$._links.prev_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=777&page=1&display_size=1"
+                }
+              ]
+            },
+            "$._links.next_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/agreement\\?account_id=777&page=3&display_size=1"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

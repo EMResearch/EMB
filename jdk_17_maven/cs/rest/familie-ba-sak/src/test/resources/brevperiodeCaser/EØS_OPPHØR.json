@@ -1,0 +1,66 @@
+{
+  "beskrivelse": "Opphør EØS primærland",
+  "fom": "2021-09-01",
+  "tom": "2021-12-31",
+  "vedtaksperiodetype": "OPPHØR",
+  "begrunnelser": [],
+  "eøsBegrunnelser": [
+    "EØSStandardbegrunnelse$OPPHØR_EØS_STANDARD"
+  ],
+  "kompetanserSomStopperRettFørPeriode": [
+    {
+      "id": "1",
+      "søkersAktivitet": "ARBEIDER",
+      "annenForeldersAktivitet": "IKKE_AKTUELT",
+      "annenForeldersAktivitetsland": "Sverige",
+      "barnetsBostedsland": "Sverige",
+      "resultat": "NORGE_ER_PRIMÆRLAND"
+    }
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2020-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [],
+      "kompetanseIder": [
+        "1"
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": "til 31. desember 2021 ",
+    "belop": 0,
+    "antallBarn": 0,
+    "barnasFodselsdager": "",
+    "begrunnelser": [
+      {
+        "apiNavn": "opphorEosStandard",
+        "annenForeldersAktivitet": "IKKE_AKTUELT",
+        "annenForeldersAktivitetsland": "Sverige",
+        "barnetsBostedsland": "Sverige",
+        "barnasFodselsdatoer": "20.01.20",
+        "antallBarn": 1,
+        "maalform": "bokmaal",
+        "sokersAktivitet": "ARBEIDER",
+        "type": "eøsbegrunnelse"
+      }
+    ],
+    "type": "opphor"
+  }
+}

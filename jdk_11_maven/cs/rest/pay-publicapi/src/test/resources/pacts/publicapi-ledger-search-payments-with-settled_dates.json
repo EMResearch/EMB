@@ -1,0 +1,200 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "Return a payment, filtering by from_settled_date and to date_settled_date",
+      "providerStates": [
+        {
+          "name": "three payments with payout dates exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "from_settled_date": [
+              "2020-09-19"
+            ],
+            "to_settled_date": [
+              "2020-09-20"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction",
+        "query": {
+          "account_id": [
+            "123456"
+          ],
+          "status_version": [
+            "1"
+          ],
+          "transaction_type": [
+            "PAYMENT"
+          ],
+          "from_settled_date": [
+            "2020-09-19"
+          ],
+          "to_settled_date": [
+            "2020-09-20"
+          ],
+          "page": [
+            "1"
+          ],
+          "display_size": [
+            "500"
+          ],
+          "exact_reference_match": [
+            "true"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "page": 1,
+          "total": 1,
+          "count": 1,
+          "results": [
+            {
+              "amount": 1000,
+              "state": {
+                "finished": false,
+                "status": "submitted"
+              },
+              "description": "Test description",
+              "reference": "aReference",
+              "transaction_id": "charge97837509646393e3C",
+              "email": "someone@example.org",
+              "created_date": "2018-09-22T10:13:16.067Z",
+              "delayed_capture": false,
+              "settlement_summary": {
+                "settled_date": "2020-09-19"
+              }
+            }
+          ],
+          "_links": {
+            "self": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=123456&transaction_type=PAYMENT&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+            },
+            "last_page": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=123456&transaction_type=PAYMENT&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+            },
+            "first_page": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=123456&transaction_type=PAYMENT&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+            }
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$._links.self.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/transaction\\?account_id=123456&transaction_type=PAYMENT&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+                }
+              ]
+            },
+            "$._links.last_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/transaction\\?account_id=123456&transaction_type=PAYMENT&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+                }
+              ]
+            },
+            "$._links.first_page.href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/transaction\\?account_id=123456&transaction_type=PAYMENT&from_settled_date=2020-09-19&to_settled_date=2020-09-20&page=1&display_size=500"
+                }
+              ]
+            },
+            "$.results[*].reference": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].description": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].return_url": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].transaction_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].amount": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].email": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].created_date": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                }
+              ]
+            },
+            "$.results[*].settlement_summary.settled_date": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd"
+                }
+              ]
+            },
+            "$.results[*].settlement_summary.capture_submit_time": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                }
+              ]
+            },
+            "$.results[*].settlement_summary.captured_date": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

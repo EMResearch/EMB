@@ -1,0 +1,29 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^31\\d{9}$"
+          },
+          "serviceCode": {
+            "matches": "5332|^$"
+          },
+          "serviceEdition": {
+            "matches": "1|^$"
+          }
+        }
+      },
+      "response": {
+        "status": 500,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "statusMessage": "Internal Server Error: 500 UserID"
+      }
+    }
+  ]
+}

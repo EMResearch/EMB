@@ -1,0 +1,12 @@
+{
+  "data": {
+    "person": {
+      "forelderBarnRelasjon": [
+        {
+          "relatertPersonsIdent": "32345678901",
+          "relatertPersonsRolle": "BARN"
+        }
+      ]
+    }
+  }
+}

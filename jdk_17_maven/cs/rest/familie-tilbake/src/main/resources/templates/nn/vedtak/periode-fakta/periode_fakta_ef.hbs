@@ -1,0 +1,265 @@
+{{> nn/vedtak/periode-fakta/periode_fakta_felles}}
+{{#switch fakta.hendelsestype}}
+    {{#case "ANNET"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "ANNET_FRITEKST"}}
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "DØDSFALL"}}
+        {{> fakta-død}}
+    {{/case}}
+    {{#case "MEDLEMSKAP"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "MEDLEM_SISTE_5_ÅR" }}
+Du har ikkje vore medlem i folketrygda i dei siste 5 åra før du søkte om {{{ytelsesnavnUbestemt}}}. Derfor har du ikkje rett til stønaden.
+
+Du har fått {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt.
+            {{/case}}
+            {{#case "LOVLIG_OPPHOLD" }}
+Du er ikkje medlem av folketrygda fordi du ikkje har opphaldsløyve i Noreg. Derfor har du ikkje rett til {{{ytelsesnavnUbestemt}}}.
+
+Du har fått {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "OPPHOLD_I_NORGE"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BRUKER_IKKE_OPPHOLD_I_NORGE" }}
+Du har fått {{{ytelsesnavnUbestemt}}} utan at du har opphalde deg i Noreg. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_IKKE_OPPHOLD_I_NORGE" }}
+Du har fått {{{ytelsesnavnUbestemt}}} for barn som ikkje har opphalde seg i Noreg. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BRUKER_FLYTTET_FRA_NORGE" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du flytta frå Noreg. Du har derfor fått {{kroner
+        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_FLYTTET_FRA_NORGE" }}
+Du har fått {{{ytelsesnavnUbestemt}}} for barn som har flytta frå Noreg. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "OPPHOLD_UTLAND_6_UKER_ELLER_MER" }}
+Du har opphalde deg i utlandet i meir enn 6 veker i løpet av dei siste 12 månadane. Derfor har du ikkje rett til {{{ytelsesnavnUbestemt}}}.
+
+Du har fått {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "ENSLIG_FORSØRGER"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "UGIFT" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du gifta deg. Du har ikkje rett på {{{ytelsesnavnUbestemt}}} når du er gift. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SEPARERT_SKILT" }}
+Du har fått {{{ytelsesnavnUbestemt}}} utan å ha ein formell separasjon eller skilsmisse. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SAMBOER" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du vart sambuar. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "NYTT_BARN_SAMME_PARTNER" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du fekk nytt barn med same partnar. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ENDRET_SAMVÆRSORDNING" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at samværsordninga er endra slik at du ikkje lenger har klart meir av den daglege omsorga. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_FLYTTET" }}
+Du har fått {{{ytelsesnavnUbestemt}}} for barn som ikkje bur fast hos deg. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "NÆRE_BOFORHOLD" }}
+Du og den andre av foreldra til barnet bur nære kvarandre og du har ikkje klart meir av den daglege omsorga. Derfor har du ikkje rett til {{{ytelsesnavnBestemt}}}.
+
+Du har fått {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt.
+            {{/case}}
+            {{#case "FORELDRE_LEVER_SAMMEN" }}
+Du har fått {{{ytelsesnavnUbestemt}}} samtidig som du lever saman med den andre av foreldra til barnet. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "OVERGANGSSTØNAD"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BARN_8_ÅR" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at det yngste barnet ditt fylte åtte år. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "YRKESRETTET_AKTIVITET"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "ARBEID" }}
+Du har fått {{{ytelsesnavnUbestemt}}} utan at du har vore i arbeid som utgjer minst halvparten av full tid.
+
+Derfor har du fått {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "REELL_ARBEIDSSØKER" }}
+Du har fått {{{ytelsesnavnUbestemt}}} som reell arbeidssøkar. Du har ikkje stått tilmeldt NAV eller sendt meldekort til rett tid. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "UTDANNING" }}
+Du har fått {{{ytelsesnavnUbestemt}}} utan å ha vore i utdanning som utgjer minst halvparten av full tid. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ETABLERER_EGEN_VIRKSOMHET" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du avslutta etableringa av eiga verksemd. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_FYLT_1_ÅR" }}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at barnet ditt fylte 1 år uten at du har fylt aktivitetsplikta. Derfor har du fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "STØNADSPERIODE"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "HOVEDPERIODE_3_ÅR" }}
+Du har fått {{{ytelsesnavnUbestemt}}} i meir enn tre år og fyller ikkje vilkåra for utviding av stønadsperioden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "UTVIDELSE_UTDANNING" }}
+Du har fått {{{ytelsesnavnUbestemt}}} utan å ha vore i utdanning som utgjer minst halvparten av full tid. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "UTVIDELSE_SÆRLIG_TILSYNSKREVENDE_BARN" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} fordi du har eit barn som krev særleg tilsyn, og som hindra deg frå å vera i arbeid. Du er ikkje lenger hindra frå å arbeide. Derfor har du ikkje rett til {{{ytelsesnavnUbestemt}}}.
+
+Du har fått {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt.
+            {{/case}}
+            {{#case "UTVIDELSE_FORBIGÅENDE_SYKDOM" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} utan at du eller barnet hadde ein forbigåande sjukdom som hindra deg i å arbeida. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "PÅVENTE_AV_SKOLESTART_STARTET_IKKE" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} fordi du skulle byrje på skule. Fordi du ikkje byrja på skulen, har du ikkje rett på stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "PÅVENTE_SKOLESTART_STARTET_TIDLIGERE" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} fordi du skulle byrje på skule. Du har byrja på skule og har ikkje lenger rett til stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "PÅVENTE_ARBEIDSTILBUD_STARTET_IKKE" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} fordi du venta på å byrje i ein konkret  jobb. Du skal ikkje lenger byrja i denne jobben. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "PÅVENTE_ARBEIDSTILBUD_STARTET_TIDLIGERE" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} fordi du venta på å byrje i ein konkret jobb. Du har byrja å arbeida. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "PÅVENTE_BARNETILSYN_IKKE_HA_TILSYN" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} fordi du venta på barnetilsyn. Fordi barnet ikkje lenger skal ha ei tilsynsordning, har du ikkje rett til stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "PÅVENTE_BARNETILSYN_STARTET_TIDLIGERE" }}
+Du har fått forlenga {{{ytelsesnavnUbestemt}}} fordi du venta på barnetilsyn. Fordi barnet har byrja i ei tilsynsordning, har du ikkje lenger rett på stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ARBEIDSSØKER" }}
+Du har fått {{{ytelsesnavnUbestemt}}} fordi du melde deg som arbeidssøkar. Fordi du ikkje er reell arbeidssøkar lenger, har du ikkje rett på stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "INNTEKT"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "ARBEIDSINNTEKT_FÅTT_INNTEKT" }}
+Du har hatt arbeidsinntekt utan at {{{ytelsesnavnBestemt}}} har blitt redusert. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ARBEIDSINNTEKT_ENDRET_INNTEKT" }}
+Du har fått {{{ytelsesnavnBestemt}}} redusert etter arbeidsinntekt. Arbeidsinntekta di er auka med 10 prosent eller meir. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ANDRE_FOLKETRYGDYTELSER" }}
+Du har mottatt andre ytingar frå folketrygda som blir rekna som arbeidsinntekt, utan at {{{ytelsesnavnBestemt}}} har blitt redusert. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SELVSTENDIG_NÆRINGSDRIVENDE_FÅTT_INNTEKT" }}
+Du har hatt næringsinntekt utan at {{{ytelsesnavnBestemt}}} har blitt redusert. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SELVSTENDIG_NÆRINGSDRIVENDE_ENDRET_INNTEKT" }}
+Du har fått {{{ytelsesnavnUbestemt}}} redusert etter næringsinntekt. Næringsinntekta di er auka med 10 prosent eller meir. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "PENSJONSYTELSER"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "UFØRETRYGD" }}
+Du har fått uføretrygd som skulle ha redusert {{{ytelsesnavnBestemt}}}. Fordi stønaden ikkje har blitt redusert, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "GJENLEVENDE_EKTEFELLE" }}
+Du har fått pensjon som attlevande ektefelle som skulle ha redusert {{{ytelsesnavnBestemt}}}. Fordi stønaden ikkje har blitt redusert, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "STØNAD_TIL_BARNETILSYN"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "IKKE_ARBEID" }}
+Du har fått stønad til barnetilsyn. Fordi du ikkje lenger er i arbeid, har du ikkje rett til stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "EGEN_VIRKSOMHET" }}
+Du har fått stønad til barnetilsyn. Fordi du har avslutta etableringa av eiga verksemd, har du ikkje rett på stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "TILSYNSUTGIFTER_OPPHØRT" }}
+Du har fått stønad til barnetilsyn etter at tilsynsordninga er avslutta. Fordi du ikkje lenger har utgifter til barnetilsyn, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "TILSYNSUTGIFTER_ENDRET" }}
+Du har fått stønad til barnetilsyn. Fordi utgiftene til barnetilsyn er reduserte, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "FORBIGÅENDE_SYKDOM" }}
+Du har fått stønad til barnetilsyn fordi du hadde ein forbigåande sjukdom som hindra deg fra å arbeide. Fordi du ikkje lenger er hindra frå å arbeida, har du ikkje rett til stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ETTER_4_SKOLEÅR_UTGIFTENE_OPPHØRT" }}
+Du har fått stønad til barnetilsyn for barn som har fullført fjerde skuleår.  Fordi du ikkje lenger har utgifter til tilsyn av barn, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ETTER_4_SKOLEÅR_ENDRET_ARBEIDSTID" }}
+Du har fått stønad til barnetilsyn for barn som har fullført fjerde skuleår.  Fordi du ikkje lenger har tilsynsbehov for barnet ut over ein vanleg arbeidsdag, har du ikkje rett til stønad til barnetilsyn. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "INNTEKT_OVER_6G" }}
+Du har fått stønad til barnetilsyn. Fordi inntekta di er over {{#if grunnbeløp.grunnbeløpGanger6}}{{kroner grunnbeløp.grunnbeløpGanger6}}{{else}}seks gonger grunnbeløpet{{/if}}, har du ikkje lengre rett til stønaden. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+{{#if grunnbeløp.tekst6GangerGrunnbeløp}}
+
+Seks gonger grunnbeløpet er {{grunnbeløp.tekst6GangerGrunnbeløp}}.
+{{/if}}
+            {{/case}}
+            {{#case "KONTANTSTØTTE" }}
+Du har fått stønad til barnetilsyn og kontantstøtte. Kontantstøtte skal trekkast frå tilsynsutgiftene før stønad til barnetilsyn blir berekna. Fordi stønaden ikkje har blitt redusert med kontantstøtta, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ØKT_KONTANTSTØTTE" }}
+Du har fått stønad til barnetilsyn og kontantstøtte. Kontantstøtte skal trekkast frå tilsynsutgiftene før stønad til barnetilsyn blir berekna. Fordi stønaden ikkje har blitt redusert etter at kontantstøtta auka, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "SKOLEPENGER"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "IKKE_RETT_TIL_OVERGANGSSTØNAD" }}
+Du har fått skulepengar. Du kan berre få skulepengar dersom du har rett til overgangsstønad. Då du ikkje lenger har rett til overgangsstønad, har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SLUTTET_I_UTDANNING" }}
+Du har fått stønad til dekning av skulepengar etter at du slutta på utdanninga. Derfor har du fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+{{/switch}}

@@ -1,0 +1,404 @@
+# Example, relatively minimal, configuration that passes validation (see `io.dropwizard.cli.CheckCommand`)
+#
+# `unset` values will need to be set to work properly.
+# Most other values are technically valid for a local/demonstration environment, but are probably not production-ready.
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+      target: stdout
+    - type: logstashtcpsocket
+      destination: example.com:10516
+      apiKey: secret://datadog.apiKey
+      environment: staging
+
+metrics:
+  reporters:
+    - type: signal-datadog
+      frequency: 10 seconds
+      tags:
+        - "env:staging"
+        - "service:chat"
+      udpTransport:
+        statsdHost: localhost
+        port: 8125
+      excludesAttributes:
+        - m1_rate
+        - m5_rate
+        - m15_rate
+        - mean_rate
+        - stddev
+      useRegexFilters: true
+      excludes:
+        - ^.+\.total$
+        - ^.+\.request\.filtering$
+        - ^.+\.response\.filtering$
+        - ^executor\..+$
+        - ^lettuce\..+$
+  reportOnStop: true
+
+adminEventLoggingConfiguration:
+  credentials: |
+    {
+      "key": "value"
+    }
+  projectId: some-project-id
+  logName: some-log-name
+
+grpcPort: 8080
+
+stripe:
+  apiKey: secret://stripe.apiKey
+  idempotencyKeyGenerator: secret://stripe.idempotencyKeyGenerator
+  boostDescription: >
+    Example
+  supportedCurrenciesByPaymentMethod:
+    CARD:
+      - usd
+      - eur
+    SEPA_DEBIT:
+      - eur
+
+
+braintree:
+  merchantId: unset
+  publicKey: unset
+  privateKey: secret://braintree.privateKey
+  environment: unset
+  graphqlUrl: unset
+  merchantAccounts:
+    # ISO 4217 currency code and its corresponding sub-merchant account
+    'xts': unset
+  supportedCurrenciesByPaymentMethod:
+    PAYPAL:
+      - usd
+
+dynamoDbClientConfiguration:
+  region: us-west-2 # AWS Region
+
+dynamoDbTables:
+  accounts:
+    tableName: Example_Accounts
+    phoneNumberTableName: Example_Accounts_PhoneNumbers
+    phoneNumberIdentifierTableName: Example_Accounts_PhoneNumberIdentifiers
+    usernamesTableName: Example_Accounts_Usernames
+    scanPageSize: 100
+  clientReleases:
+    tableName: Example_ClientReleases
+  deletedAccounts:
+    tableName: Example_DeletedAccounts
+  deletedAccountsLock:
+    tableName: Example_DeletedAccountsLock
+  issuedReceipts:
+    tableName: Example_IssuedReceipts
+    expiration: P30D # Duration of time until rows expire
+    generator: abcdefg12345678= # random base64-encoded binary sequence
+  ecKeys:
+    tableName: Example_Keys
+  ecSignedPreKeys:
+    tableName: Example_EC_Signed_Pre_Keys
+  pqKeys:
+    tableName: Example_PQ_Keys
+  pqLastResortKeys:
+    tableName: Example_PQ_Last_Resort_Keys
+  messages:
+    tableName: Example_Messages
+    expiration: P30D # Duration of time until rows expire
+  phoneNumberIdentifiers:
+    tableName: Example_PhoneNumberIdentifiers
+  profiles:
+    tableName: Example_Profiles
+  pushChallenge:
+    tableName: Example_PushChallenge
+  redeemedReceipts:
+    tableName: Example_RedeemedReceipts
+    expiration: P30D # Duration of time until rows expire
+  registrationRecovery:
+    tableName: Example_RegistrationRecovery
+    expiration: P300D # Duration of time until rows expire
+  remoteConfig:
+    tableName: Example_RemoteConfig
+  reportMessage:
+    tableName: Example_ReportMessage
+  subscriptions:
+    tableName: Example_Subscriptions
+  verificationSessions:
+    tableName: Example_VerificationSessions
+
+cacheCluster: # Redis server configuration for cache cluster
+  configurationUri: redis://redis.example.com:6379/
+
+clientPresenceCluster: # Redis server configuration for client presence cluster
+  configurationUri: redis://redis.example.com:6379/
+
+pubsub: # Redis server configuration for pubsub cluster
+  uri: redis://redis.example.com:6379/
+
+pushSchedulerCluster: # Redis server configuration for push scheduler cluster
+  configurationUri: redis://redis.example.com:6379/
+
+rateLimitersCluster: # Redis server configuration for rate limiters cluster
+  configurationUri: redis://redis.example.com:6379/
+
+directoryV2:
+  client: # Configuration for interfacing with Contact Discovery Service v2 cluster
+    userAuthenticationTokenSharedSecret: secret://directoryV2.client.userAuthenticationTokenSharedSecret
+    userIdTokenSharedSecret: secret://directoryV2.client.userIdTokenSharedSecret
+
+svr2:
+  uri: svr2.example.com
+  userAuthenticationTokenSharedSecret: secret://svr2.userAuthenticationTokenSharedSecret
+  userIdTokenSharedSecret: secret://svr2.userIdTokenSharedSecret
+  svrCaCertificates:
+    - |
+      -----BEGIN CERTIFICATE-----
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      AAAAAAAAAAAAAAAAAAAA
+      -----END CERTIFICATE-----
+
+
+messageCache: # Redis server configuration for message store cache
+  persistDelayMinutes: 1
+  cluster:
+    configurationUri: redis://redis.example.com:6379/
+
+metricsCluster:
+  configurationUri: redis://redis.example.com:6379/
+
+awsAttachments: # AWS S3 configuration
+  accessKey: secret://awsAttachments.accessKey
+  accessSecret: secret://awsAttachments.accessSecret
+  bucket: aws-attachments
+  region: us-west-2
+
+gcpAttachments: # GCP Storage configuration
+  domain: example.com
+  email: user@example.cocm
+  maxSizeInBytes: 1024
+  pathPrefix:
+  rsaSigningKey: secret://gcpAttachments.rsaSigningKey
+
+tus:
+  uploadUri: https://example.org/upload
+  userAuthenticationTokenSharedSecret: secret://tus.userAuthenticationTokenSharedSecret
+
+accountDatabaseCrawler:
+  chunkSize: 10           # accounts per run
+
+apn: # Apple Push Notifications configuration
+  sandbox: true
+  bundleId: com.example.textsecuregcm
+  keyId: secret://apn.keyId
+  teamId: secret://apn.teamId
+  signingKey: secret://apn.signingKey
+
+fcm: # FCM configuration
+  credentials: secret://fcm.credentials
+
+cdn:
+  accessKey: secret://cdn.accessKey
+  accessSecret: secret://cdn.accessSecret
+  bucket: cdn        # S3 Bucket name
+  region: us-west-2  # AWS region
+
+dogstatsd:
+  environment: dev
+
+unidentifiedDelivery:
+  certificate: secret://unidentifiedDelivery.certificate
+  privateKey: secret://unidentifiedDelivery.privateKey
+  expiresDays: 7
+
+recaptcha:
+  projectPath: projects/example
+  credentialConfigurationJson: "{ }" # service account configuration for backend authentication
+
+hCaptcha:
+  apiKey: secret://hCaptcha.apiKey
+
+shortCode:
+  baseUrl: https://example.com/shortcodes/
+
+storageService:
+  uri: storage.example.com
+  userAuthenticationTokenSharedSecret: secret://storageService.userAuthenticationTokenSharedSecret
+  storageCaCertificates:
+    - |
+      -----BEGIN CERTIFICATE-----
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+      AAAAAAAAAAAAAAAAAAAA
+      -----END CERTIFICATE-----
+
+zkConfig:
+  serverPublic: ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+  serverSecret: secret://zkConfig.serverSecret
+
+genericZkConfig:
+  serverSecret: secret://genericZkConfig.serverSecret
+
+appConfig:
+  application: example
+  environment: example
+  configuration: example
+
+remoteConfig:
+  authorizedUsers:
+    - # 1st authorized user
+    - # 2nd authorized user
+    - # ...
+    - # Nth authorized user
+  requiredHostedDomain: example.com
+  audiences:
+    - # 1st audience
+    - # 2nd audience
+    - # ...
+    - # Nth audience
+  globalConfig: # keys and values that are given to clients on GET /v1/config
+    EXAMPLE_KEY: VALUE
+
+paymentsService:
+  userAuthenticationTokenSharedSecret: secret://paymentsService.userAuthenticationTokenSharedSecret
+  fixerApiKey: secret://paymentsService.fixerApiKey
+  coinMarketCapApiKey: secret://paymentsService.coinMarketCapApiKey
+  coinMarketCapCurrencyIds:
+    MOB: 7878
+  paymentCurrencies:
+    # list of symbols for supported currencies
+    - MOB
+
+artService:
+  userAuthenticationTokenSharedSecret: secret://artService.userAuthenticationTokenSharedSecret
+  userAuthenticationTokenUserIdSecret: secret://artService.userAuthenticationTokenUserIdSecret
+
+badges:
+  badges:
+    - id: TEST
+      category: other
+      sprites: # exactly 6
+        - sprite-1.png
+        - sprite-2.png
+        - sprite-3.png
+        - sprite-4.png
+        - sprite-5.png
+        - sprite-6.png
+      svg: example.svg
+      svgs:
+        - light: example-light.svg
+          dark: example-dark.svg
+  badgeIdsEnabledForAll:
+    - TEST
+  receiptLevels:
+    '1': TEST
+
+subscription: # configuration for Stripe subscriptions
+  badgeGracePeriod: P15D
+  levels:
+    500:
+      badge: EXAMPLE
+      prices:
+        # list of ISO 4217 currency codes and amounts for the given badge level
+        xts:
+          amount: '10'
+          processorIds:
+            STRIPE: price_example   # stripe Price ID
+            BRAINTREE: plan_example # braintree Plan ID
+
+oneTimeDonations:
+  sepaMaxTransactionSizeEuros: '10000'
+  boost:
+    level: 1
+    expiration: P90D
+    badge: EXAMPLE
+  gift:
+    level: 10
+    expiration: P90D
+    badge: EXAMPLE
+  currencies:
+    # ISO 4217 currency codes and amounts in those currencies
+    xts:
+      minimum: '0.5'
+      gift: '2'
+      boosts:
+        - '1'
+        - '2'
+        - '4'
+        - '8'
+        - '20'
+        - '40'
+
+registrationService:
+  host: registration.example.com
+  port: 443
+  credentialConfigurationJson: |
+    {
+      "example": "example"
+    }
+  identityTokenAudience: https://registration.example.com
+  registrationCaCertificate: | # Registration service TLS certificate trust root
+    -----BEGIN CERTIFICATE-----
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ/0123456789+abcdefghijklmnopqrstuvwxyz
+    AAAAAAAAAAAAAAAAAAAA
+    -----END CERTIFICATE-----
+
+turn:
+  secret: secret://turn.secret
+
+commandStopListener:
+  path: /example/path
+
+linkDevice:
+  secret: secret://linkDevice.secret

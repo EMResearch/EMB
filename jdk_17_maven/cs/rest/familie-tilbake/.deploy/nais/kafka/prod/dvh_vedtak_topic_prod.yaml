@@ -1,0 +1,26 @@
+apiVersion: kafka.nais.io/v1
+kind: Topic
+metadata:
+  name: aapen-tbk-datavarehus-vedtak-topic
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+spec:
+  pool: nav-prod
+  config: # optional; all fields are optional too; defaults shown
+    cleanupPolicy: delete  # delete, compact
+    minimumInSyncReplicas: 2
+    partitions: 1
+    replication: 3  # see min/max requirements
+    retentionBytes: -1  # -1 means unlimited
+    retentionHours: -1  # -1 means unlimited
+  acl:
+    - team: teamfamilie
+      application: familie-tilbake #owner
+      access: readwrite   # readwrite
+    - team: ptsak
+      application: pt-sak-famtilbake
+      access: read
+    - team: teamfamilie
+      application: familie-tilbake-kafka-manager #forvalter
+      access: read   # read

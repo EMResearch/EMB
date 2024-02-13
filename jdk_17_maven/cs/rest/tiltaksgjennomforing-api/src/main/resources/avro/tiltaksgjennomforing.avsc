@@ -1,0 +1,353 @@
+{
+  "namespace": "no.nav.tag.tiltaksgjennomforing.datavarehus",
+  "type": "record",
+  "name": "AvroTiltakHendelse",
+  "fields": [
+    {
+      "name": "meldingId",
+      "type": "string"
+    },
+    {
+      "name": "tidspunkt",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "hendelseType",
+      "type": "string"
+    },
+    {
+      "name": "utfortAv",
+      "type": "string"
+    },
+    {
+      "name": "avtaleId",
+      "type": "string"
+    },
+    {
+      "name": "avtaleInnholdId",
+      "type": "string"
+    },
+    {
+      "name": "journalpostId",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "tiltakstype",
+      "type": {
+        "type": "enum",
+        "name": "TiltakType",
+        "symbols": [
+          "ARBEIDSTRENING",
+          "MIDLERTIDIG_LONNSTILSKUDD",
+          "VARIG_LONNSTILSKUDD",
+          "SOMMERJOBB",
+          "MENTOR",
+          "INKLUDERINGSTILSKUDD"
+        ]
+      }
+    },
+    {
+      "name": "tiltakskodeArena",
+      "type": [
+        "null",
+        {
+          "type": "enum",
+          "name": "TiltakKodeArena",
+          "symbols": [
+            "ARBTREN",
+            "MIDLONTIL",
+            "VARLONTIL",
+            "MENTOR",
+            "INKLUTILS"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tiltakStatus",
+      "type": "string",
+      "doc": "Gyldige verdier: KLAR_FOR_OPPSTART, GJENNOMFØRES, AVSLUTTET, ANNULLERT"
+    },
+    {
+      "name": "deltakerFnr",
+      "type": "string"
+    },
+    {
+      "name": "bedriftNr",
+      "type": "string"
+    },
+    {
+      "name": "harFamilietilknytning",
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    {
+      "name": "veilederNavIdent",
+      "type": "string"
+    },
+    {
+      "name": "startDato",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "sluttDato",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    },
+    {
+      "name": "stillingprosent",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "antallDagerPerUke",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "maal",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "stillingstype",
+      "type": [
+        "null",
+        {
+          "type": "enum",
+          "name": "StillingType",
+          "symbols": [
+            "FAST",
+            "MIDLERTIDIG"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stillingstittel",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "stillingStyrk08",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "stillingKonseptId",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "lonnstilskuddProsent",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "manedslonn",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "feriepengesats",
+      "type": [
+        "null",
+        "float"
+      ]
+    },
+    {
+      "name": "feriepengerBelop",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "arbeidsgiveravgift",
+      "type": [
+        "null",
+        "float"
+      ]
+    },
+    {
+      "name": "arbeidsgiveravgiftBelop",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "otpSats",
+      "type": [
+        "null",
+        "float"
+      ]
+    },
+    {
+      "name": "otpBelop",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "sumLonnsutgifter",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "sumLonnstilskudd",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "sumLonnstilskuddRedusert",
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "datoForRedusertProsent",
+      "type": [
+        "null",
+        {
+          "type": "int",
+          "logicalType": "date"
+        }
+      ]
+    },
+    {
+      "name": "godkjentPaVegneAv",
+      "type": "boolean"
+    },
+    {
+      "name": "ikkeBankId",
+      "type": "boolean"
+    },
+    {
+      "name": "reservert",
+      "type": "boolean"
+    },
+    {
+      "name": "digitalKompetanse",
+      "type": "boolean"
+    },
+    {
+      "name": "arenaMigreringDeltaker",
+      "type": "boolean",
+      "default" : false
+    },
+    {
+      "name": "godkjentAvDeltaker",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "godkjentAvArbeidsgiver",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "godkjentAvVeileder",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "godkjentAvBeslutter",
+      "type": [
+        "null",
+        {
+          "type": "long",
+          "logicalType": "timestamp-millis"
+        }
+      ]
+    },
+    {
+      "name": "avtaleInngaatt",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "enhetOppfolging",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "enhetGeografisk",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "opprettetAvArbeidsgiver",
+      "type": "boolean"
+    },
+    {
+      "name": "annullertTidspunkt",
+      "type": [
+        "null",
+        {
+          "type": "long",
+          "logicalType": "timestamp-millis"
+        }
+      ]
+    },
+    {
+      "name": "annullertGrunn",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "master",
+      "type": "boolean",
+      "default" : false
+    }
+  ]
+}

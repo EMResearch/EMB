@@ -1,0 +1,184 @@
+{{> nb/vedtak/periode-fakta/periode_fakta_felles}}
+{{#switch fakta.hendelsestype}}
+    {{#case "ANNET"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "ANNET_FRITEKST"}}
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "SATSER"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "SATSENDRING"}}
+Barnetrygden er endret fordi det har vært en satsendring. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "SMÅBARNSTILLEGG"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "SMÅBARNSTILLEGG_3_ÅR"}}
+Du har fått småbarnstillegg etter at barnet fylte 3 år. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SMÅBARNSTILLEGG_OVERGANGSSTØNAD"}}
+Du har fått småbarnstillegg etter at du ikke lenger hadde full overgangsstønad. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "BOR_MED_SØKER"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BOR_IKKE_MED_BARN"}}
+Du har fått {{{ytelsesnavnUbestemt}}} for barn som ikke bor fast hos deg. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "BOSATT_I_RIKET"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BARN_FLYTTET_FRA_NORGE"}}
+Du har fått {{{ytelsesnavnUbestemt}}} for barn som har flyttet fra Norge. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BRUKER_FLYTTET_FRA_NORGE"}}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du flyttet fra Norge. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden
+            {{/case}}
+            {{#case "BARN_BOR_IKKE_I_NORGE"}}
+Du har fått {{{ytelsesnavnUbestemt}}} for barn som ikke bodde i Norge. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BRUKER_BOR_IKKE_I_NORGE"}}
+Du har fått {{{ytelsesnavnUbestemt}}} uten at du bodde i Norge. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BRUKER_OG_BARN_FLYTTET_FRA_NORGE"}}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du og barn flyttet fra Norge. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BRUKER_OG_BARN_BOR_IKKE_I_NORGE"}}
+Du har fått {{{ytelsesnavnUbestemt}}} uten at du og barn bodde i Norge. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "LOVLIG_OPPHOLD"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "UTEN_OPPHOLDSTILLATELSE"}}
+                Du har fått {{{ytelsesnavnUbestemt}}} uten at du hadde oppholdstillatelse i Norge. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "DØDSFALL"}}
+        {{> fakta-død}}
+    {{/case}}
+    {{#case "DELT_BOSTED"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "ENIGHET_OM_OPPHØR_DELT_BOSTED"}}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at avtalen om delt bosted er opphørt. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "UENIGHET_OM_OPPHØR_DELT_BOSTED"}}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at avtalen om delt bosted ikke lenger praktiseres. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "FLYTTET_SAMMEN"}}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at du flyttet sammen med den andre forelderen. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "BARNS_ALDER"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BARN_OVER_18_ÅR"}}
+Du har fått {{{ytelsesnavnUbestemt}}} etter at barn fylte 18 år. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_OVER_6_ÅR"}}
+Du har fått {{{ytelsesnavnUbestemt}}} med feil beløp etter at barn har fylt 6 år. Du har derfor fått {{kroner
+                        kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "MEDLEMSKAP_BA"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "UTENLANDS_IKKE_MEDLEM"}}
+    Du har fått {{{ytelsesnavnUbestemt}}} etter at du og barn flyttet til utlandet. Dere er ikke lenger medlem i folketrygden under oppholdet i utlandet. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "MEDLEMSKAP_OPPHØRT"}}
+    Du har fått {{{ytelsesnavnUbestemt}}} etter at du og barn ikke lenger er medlem i folketrygden under oppholdet i utlandet. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ANNEN_FORELDER_IKKE_MEDLEM"}}
+    Du har fått {{{ytelsesnavnUbestemt}}} etter at du og barn flyttet til utlandet. Begge foreldrene må være medlem i folketrygden for å få barnetrygd. Den andre forelderen er ikke medlem i folketrygden. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ANNEN_FORELDER_OPPHØRT_MEDLEMSKAP"}}
+    Du har fått {{{ytelsesnavnUbestemt}}} etter at du og barn flyttet til utlandet. Begge foreldrene må være medlem i folketrygden for å få barnetrygd. Den andre forelderen er ikke lenger medlem i folketrygden. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "FLERE_UTENLANDSOPPHOLD"}}
+    Du er ikke medlem i folketrygden fordi du har oppholdt deg så mye i utlandet at du ikke regnes som bosatt i Norge. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BOSATT_IKKE_MEDLEM"}}
+    Du har fått {{{ytelsesnavnUbestemt}}} uten at du er medlem i folketrygden. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "UTVIDET"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "GIFT"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at du giftet deg. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "NYTT_BARN"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at du har fått nytt barn. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SAMBOER_12_MÅNEDER"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at du har vært samboer i mer enn 12 måneder. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "FLYTTET_SAMMEN_ANNEN_FORELDER"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at du flyttet sammen med den andre forelderen. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "FLYTTET_SAMMEN_EKTEFELLE"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at du flyttet sammen med ektefellen din. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "FLYTTET_SAMMEN_SAMBOER"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at du flyttet sammen med samboeren din. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "GIFT_IKKE_EGEN_HUSHOLDNING"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} selv om du regnes som gift fordi du ikke har egen husholdning. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SAMBOER_IKKE_EGEN_HUSHOLDNING"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} selv om du regnes som samboer fordi du ikke har egen husholdning. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "EKTEFELLE_AVSLUTTET_SONING"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at ektefellen din avsluttet soningen. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SAMBOER_AVSLUTTET_SONING"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at samboeren din avsluttet soningen. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "EKTEFELLE_INSTITUSJON"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at ektefellen din avsluttet oppholdet i institusjon. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SAMBOER_INSTITUSJON"}}
+    Du har fått utvidet {{{ytelsesnavnUbestemt}}} etter at samboeren din avsluttet oppholdet i institusjon. Du har derfor fått {{kroner
+                            kravgrunnlag.feilutbetaltBeløp}} for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+{{/switch}}

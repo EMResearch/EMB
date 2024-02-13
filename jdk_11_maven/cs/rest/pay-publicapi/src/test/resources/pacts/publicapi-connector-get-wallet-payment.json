@@ -1,0 +1,61 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "get a charge request for a wallet payment - connector",
+      "providerStates": [
+        {
+          "name": "a charge with wallet type APPLE_PAY exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "charge_id": "ch_123abc456def"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/api/accounts/123456/charges/ch_123abc456def"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 100,
+          "state": {
+            "finished": true,
+            "status": "success"
+          },
+          "charge_id": "ch_123abc456def",
+          "payment_provider": "sandbox",
+          "card_details": {
+            "cardholder_name": "aName"
+          },
+          "authorisation_mode": "web",
+          "wallet_type": "APPLE_PAY"
+        },
+        "matchingRules": {
+          "body": {
+            "$.wallet_type": {
+              "matchers": [{"match": "type"}]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

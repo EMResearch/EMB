@@ -1,0 +1,7 @@
+{{~#* inline "duEllerInstitusjonen"~}}{{#if institusjon}}institusjonen{{else}}du{{/if}}{{~/inline~}}
+
+{{#if gjelderDødsfall}}
+NAV vurderer om feilutbetalt {{{ytelsesnavnUbestemt}}} skal betalast tilbake
+{{ else }}
+NAV vurderer om {{> duEllerInstitusjonen}} må betale tilbake {{{ytelsesnavnUbestemt}}}
+{{/if}}

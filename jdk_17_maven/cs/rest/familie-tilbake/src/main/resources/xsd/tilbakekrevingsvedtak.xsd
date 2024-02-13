@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:no:nav:tilbakekreving:tilbakekrevingsvedtak:vedtak:v1"
+            xmlns="urn:no:nav:tilbakekreving:tilbakekrevingsvedtak:vedtak:v1"
+            xmlns:typer="urn:no:nav:tilbakekreving:typer:v1"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="urn:no:nav:tilbakekreving:typer:v1" schemaLocation="typer/typer.xsd"/>
+
+    <xsd:complexType name="TilbakekrevingsvedtakDto">
+        <xsd:annotation>
+            <xsd:documentation>441 - Tilbakekrevingsvedtak</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kodeAksjon" type="typer:KodeAksjonDto"/>
+            <xsd:element name="vedtakId" type="xsd:integer"/>
+            <xsd:element name="datoVedtakFagsystem" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="kodeHjemmel" type="xsd:string"/>
+            <xsd:element name="renterBeregnes" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="enhetAnsvarlig" type="xsd:string"/>
+            <xsd:element name="kontrollfelt" type="xsd:string"/>
+            <xsd:element name="saksbehId" type="xsd:string"/>
+            <xsd:element name="tilbakekrevingsperiode" type="TilbakekrevingsperiodeDto" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TilbakekrevingsperiodeDto">
+        <xsd:annotation>
+            <xsd:documentation>442 - Tilbakekrevingsperiode</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="periode" type="typer:PeriodeDto"/>
+            <xsd:element name="renterBeregnes" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="belopRenter" type="typer:belop" minOccurs="0"/>
+            <xsd:element name="tilbakekrevingsbelop" type="TilbakekrevingsbelopDto" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TilbakekrevingsbelopDto">
+        <xsd:annotation>
+            <xsd:documentation>443 - Tilbakekrevingsbelop</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kodeKlasse" type="typer:KodeKlasseDto"/>
+            <xsd:element name="belopOpprUtbet" type="typer:belop"/>
+            <xsd:element name="belopNy" type="typer:belop"/>
+            <xsd:element name="belopTilbakekreves" type="typer:belop"/>
+            <xsd:element name="belopUinnkrevd" type="typer:belop" minOccurs="0"/>
+            <xsd:element name="belopSkatt" type="typer:belop" minOccurs="0"/>
+            <xsd:element name="kodeResultat" type="xsd:string"/>
+            <xsd:element name="kodeAarsak" type="xsd:string"/>
+            <xsd:element name="kodeSkyld" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

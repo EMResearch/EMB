@@ -1,0 +1,1 @@
+alter table tilskudd_periode add column lonnstilskudd_prosent integer default 0;

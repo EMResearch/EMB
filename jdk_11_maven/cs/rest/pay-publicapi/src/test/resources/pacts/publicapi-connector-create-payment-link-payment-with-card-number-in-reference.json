@@ -1,0 +1,52 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "a create payment link payment request with card number in reference",
+      "providerStates": [
+        {
+          "name": "a gateway account with external id exists",
+          "params": {
+            "gateway_account_id": "444"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/444/charges",
+        "body": {
+          "amount": 100,
+          "reference": "4242 4242 4242 4242",
+          "description": "a description",
+          "return_url": "https://gov.uk",
+          "source": "CARD_PAYMENT_LINK"
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "error_identifier": "CARD_NUMBER_IN_PAYMENT_LINK_REFERENCE_REJECTED",
+          "message": [
+            "Card number entered in a payment link reference"
+          ]
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

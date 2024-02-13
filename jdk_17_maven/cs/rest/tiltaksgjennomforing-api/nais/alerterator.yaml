@@ -1,0 +1,41 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: tiltaksgjennomforing-api
+  namespace: arbeidsgiver
+  labels:
+    team: team-tiltak
+spec:
+  groups:
+    - name: tiltaksgjennomforing-api-alert
+      rules:
+        - alert: applikasjon nede
+          expr: sum(up{app="tiltaksgjennomforing-api", job="nais-system/monitoring-apps-tenant"}) == 0
+          for: 1s
+          annotations:
+            summary: Appen er nede
+            action: "`kubectl describe pod {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace }}` for events, og `kubectl logs {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace }}` for logger"
+          labels:
+            namespace: team-tiltak
+            severity: critical
+
+        - alert: last ned pdf feiler
+          expr: sum(increase(tiltaksgjennomforing_pdf_feil_total[15m])) > 0
+          for: 1s
+          annotations:
+            summary: tiltaksgjennomforing-api feiler med pdf-generering
+            action: "`kubectl describe pod {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace }}` for events, og `kubectl logs {{ $labels.kubernetes_pod_name }} -n {{ $labels.kubernetes_namespace }}` for logger"
+          labels:
+            namespace: team-tiltak
+            severity: critical
+
+        - alert: TILTAKSGJENNOMFORING-API ERROR!
+          expr: sum(increase(logback_events_total{app="tiltaksgjennomforing-api",level="error"}[10m])) > 0
+          for: 10s
+          annotations:
+            summary: |-
+              tiltaksgjennomforing-api har logget en feil :this-is-fine-fire: Sjekk loggene om noe bør gjøres!
+            action: "Sjekk logs.adeo.no for logger: https://logs.adeo.no/app/r/s/HT3Nd"
+          labels:
+            namespace: team-tiltak
+            severity: critical

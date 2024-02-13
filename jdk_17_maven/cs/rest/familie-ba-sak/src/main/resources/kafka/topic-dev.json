@@ -1,0 +1,37 @@
+{
+  "topics": [
+    {
+      "configEntries": {
+        "retention.ms": -1
+      },
+      "members": [
+        {
+          "member": "srvfamilie-ba-sak",
+          "role": "PRODUCER"
+        },
+        {
+          "member": "srvfamilie-ba-mottak",
+          "role": "CONSUMER"
+        },
+        {
+          "member": "S138604",
+          "role": "MANAGER"
+        },
+        {
+          "member": "G131744",
+          "role": "MANAGER"
+        },
+        {
+          "member": "S154134",
+          "role": "MANAGER"
+        },
+        {
+          "member": "N153212",
+          "role": "MANAGER"
+        }
+      ],
+      "numPartitions": 1,
+      "topicName": "aapen-barnetrygd-vedtak-v1"
+    }
+  ]
+}

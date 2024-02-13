@@ -1,0 +1,37 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "a capture charge request with delayed capture true",
+      "providerStates": [
+        {
+          "name": "a charge with delayed capture true and awaiting capture request status exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "charge_id": "ch_e36c168c41a0"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/123456/charges/ch_e36c168c41a0/capture"
+      },
+      "response": {
+        "status": 204
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

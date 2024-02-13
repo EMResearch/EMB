@@ -1,0 +1,272 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^1\\d{10}$"
+          },
+          "serviceCode": {
+            "absent": true
+          },
+          "serviceEdition": {
+            "absent": true
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [
+          {
+            "Name": "Bedriften Med Sommerjobb",
+            "Type": "Business",
+            "OrganizationNumber": "910712307",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          },
+          {
+            "Name": "Saltrød og Høneby",
+            "Type": "Business",
+            "OrganizationNumber": "999999999",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825550"
+          },
+          {
+            "Name": "SALTRØD FORELDER",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825550",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          },
+          {
+            "Name": "BIRTAVARRE OG VÆRLANDET",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825555",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          },
+          {
+            "Name": "Bedriften Med Midlertidi Lts",
+            "Type": "Business",
+            "OrganizationNumber": "910712314",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          },
+          {
+            "Name": "Bedriften Med Varig Lts",
+            "Type": "Business",
+            "OrganizationNumber": "910712306",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          },
+          {
+            "Name": "IngenTiltak Hjørnet",
+            "Type": "Business",
+            "OrganizationNumber": "980712306",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^1\\d{10}$"
+          },
+          "serviceCode": {
+            "equalTo": "5332"
+          },
+          "serviceEdition": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [
+          {
+            "Name": "Saltrød og Høneby",
+            "Type": "Business",
+            "OrganizationNumber": "999999999",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          },
+          {
+            "Name": "BIRTAVARRE OG VÆRLANDET FORELDER",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825550",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^1\\d{10}$"
+          },
+          "serviceCode": {
+            "equalTo": "5516"
+          },
+          "serviceEdition": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [
+          {
+            "Name": "Saltrød og Høneby",
+            "Type": "Business",
+            "OrganizationNumber": "999999999",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          },
+          {
+            "Name": "Bedriften Med Midlertidi Lts",
+            "Type": "Business",
+            "OrganizationNumber": "910712314",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825550"
+          },
+          {
+            "Name": "BIRTAVARRE OG VÆRLANDET FORELDER",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825550",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^1\\d{10}$"
+          },
+          "serviceCode": {
+            "equalTo": "5516"
+          },
+          "serviceEdition": {
+            "equalTo": "2"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [
+          {
+            "Name": "Bedriften Med Varig Lts",
+            "Type": "Business",
+            "OrganizationNumber": "910712306",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825550"
+          },
+          {
+            "Name": "BIRTAVARRE OG VÆRLANDET FORELDER",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825550",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          },
+          {
+            "Name": "Saltrød og Høneby",
+            "Type": "Business",
+            "OrganizationNumber": "999999999",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^1\\d{10}$"
+          },
+          "serviceCode": {
+            "equalTo": "5516"
+          },
+          "serviceEdition": {
+            "matches": "3|4|5"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [
+          {
+            "Name": "Bedriften Med Sommerjobb",
+            "Type": "Business",
+            "OrganizationNumber": "910712307",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825550"
+          },
+          {
+            "Name": "BIRTAVARRE OG VÆRLANDET FORELDER",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825550",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          },
+          {
+            "Name": "Saltrød og Høneby",
+            "Type": "Business",
+            "OrganizationNumber": "999999999",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

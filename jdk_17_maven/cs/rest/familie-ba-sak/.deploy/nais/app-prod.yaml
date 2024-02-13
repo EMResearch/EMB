@@ -1,0 +1,139 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: familie-ba-sak
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-next-upstream-tries: '1'
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "180"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "180"
+
+spec:
+  envFrom:
+    - secret: familie-ba-sak
+    - secret: familie-ba-sak-unleash-api-token
+  image: {{image}}
+  port: 8089
+  leaderElection: true
+  liveness:
+    path: /internal/health/liveness
+    initialDelay: 30
+    failureThreshold: 10
+  readiness:
+    path: /internal/health/readyness
+    initialDelay: 30
+    failureThreshold: 10
+  prometheus:
+    enabled: true
+    path: /internal/prometheus
+  gcp: # Database
+    sqlInstances:
+      - type: POSTGRES_15 # Read nais doc and https://github.com/navikt/familie/blob/master/doc/Google%20cloud/oppgrader-database.md on how to upgrade
+        tier: db-custom-4-3840
+        name: familie-ba-sak
+        autoBackupTime: "02:00"
+        diskAutoresize: true
+        highAvailability: true
+        databases:
+          - name: familie-ba-sak
+            envVarPrefix: DB
+  azure:
+    application:
+      enabled: true
+      allowAllUsers: false
+      claims:
+        extra:
+          - "NAVident"
+        groups:
+          - id: "87190cf3-b278-457d-8ab7-1a5c55a9edd7"  # Group_87190cf3-b278-457d-8ab7-1a5c55a9edd7 tilgang til prosessering
+          - id: "199c2b39-e535-4ae8-ac59-8ccbee7991ae"  # VEILEDER_ROLLE
+          - id: "847e3d72-9dc1-41c3-80ff-f5d4acdd5d46"  # SAKSBEHANDLER_ROLLE
+          - id: "7a271f87-39fb-468b-a9ee-6cf3c070f548"  # BESLUTTER_ROLLE
+          - id: "3d718ae5-f25e-47a4-b4b3-084a97604c1d"  # Forvalterrolle
+          - id: "ad7b87a6-9180-467c-affc-20a566b0fec0"  # 0000-GA-Strengt_Fortrolig_Adresse
+          - id: "9ec6487d-f37a-4aad-a027-cd221c1ac32b"  # 0000-GA-Fortrolig_Adresse
+      replyURLs:
+        - "https://familie-ba-sak.intern.nav.no/swagger-ui/oauth2-redirect.html"
+      singlePageApplication: true
+  accessPolicy:
+    inbound:
+      rules:
+        - application: familie-ba-sak-frontend
+          cluster: prod-gcp
+        - application: familie-baks-mottak
+          cluster: prod-gcp
+        - application: familie-prosessering
+          cluster: prod-gcp
+        - application: familie-ba-skatteetaten-api
+          cluster: prod-gcp
+        - application: familie-klage
+          cluster: prod-gcp
+        - application: familie-ba-statistikk
+          cluster: prod-fss
+        - application: bidrag-grunnlag-feature
+          namespace: bidrag
+          cluster: prod-gcp
+        - application: bidrag-grunnlag
+          namespace: bidrag
+          cluster: prod-gcp
+        - application: omsorgsopptjening-start-innlesning
+          namespace: pensjonopptjening
+          cluster: prod-gcp
+    outbound:
+      rules:
+        - application: familie-brev
+          cluster: prod-gcp
+        - application: familie-integrasjoner
+          cluster: prod-fss
+        - application: familie-ba-infotrygd-feed
+          cluster: prod-fss
+        - application: familie-ba-infotrygd
+          cluster: prod-fss
+        - application: familie-ef-sak
+          cluster: prod-gcp
+        - application: familie-tilbake
+          cluster: prod-gcp
+        - application: familie-oppdrag
+          cluster: prod-fss
+        - application: familie-klage
+          cluster: prod-gcp
+      external:
+        - host: xsrv1mh6.api.sanity.io
+        - host: unleash.nais.io
+        - host: pdl-api.prod-fss-pub.nais.io
+        - host: familie-integrasjoner.prod-fss-pub.nais.io
+        - host: familie-oppdrag.prod-fss-pub.nais.io
+        - host: familie-ba-statistikk.prod-fss-pub.nais.io
+        - host: familie-ba-infotrygd.prod-fss-pub.nais.io
+        - host: familie-ba-infotrygd-feed.prod-fss-pub.nais.io
+        - host: sdw-wsrest.ecb.europa.eu
+        - host: sentry.gc.nav.no
+        - host: data-api.ecb.europa.eu
+        - host: teamfamilie-unleash-api.nav.cloud.nais.io
+  replicas:
+    min: 3
+    max: 5
+  resources:
+    limits:
+      memory: 4096Mi
+    requests:
+      memory: 4096Mi
+      cpu: 500m
+  ingresses:
+    - https://familie-ba-sak.intern.nav.no
+  secureLogs:
+    enabled: true
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: prod
+
+    - name: JAVA_OPTS
+      value: "-XX:MinRAMPercentage=25.0 -XX:MaxRAMPercentage=75.0 -XX:+HeapDumpOnOutOfMemoryError"
+  kafka:
+    pool: nav-prod
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 99%

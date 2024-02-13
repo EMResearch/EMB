@@ -1,0 +1,66 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: ${PORT:-8080}
+  adminConnectors:
+    - type: http
+      port: ${ADMIN_PORT:-8081}
+  requestLog:
+    appenders:
+      - type: console
+        layout:
+          type: govuk-pay-access-json
+          additionalFields:
+            container: "publicapi"
+            environment: ${ENVIRONMENT}
+
+logging:
+  level: INFO
+  appenders:
+    - type: logstash-console
+      threshold: ALL
+      target: stdout
+      customFields:
+        container: "publicapi"
+        environment: ${ENVIRONMENT}
+    - type: sentry
+      threshold: ERROR
+      dsn: ${SENTRY_DSN:-https://example.com@dummy/1}
+      environment: ${ENVIRONMENT}
+
+baseUrl: ${PUBLICAPI_BASE}
+connectorUrl: ${CONNECTOR_URL}
+publicAuthUrl: ${PUBLIC_AUTH_URL}
+ledgerUrl: ${LEDGER_URL}
+
+jerseyClientConfig:
+  disabledSecureConnection: ${DISABLE_INTERNAL_HTTPS:-false}
+
+rateLimiter:  # rate = noOfReq per perMillis
+  noOfReq: ${RATE_LIMITER_VALUE:-75}  # for requests except POST and across all publicapi instances.
+  noOfReqForPost: ${RATE_LIMITER_VALUE_POST:-15} # for POST requests across all publicapi instances.
+  elevatedAccounts: ${RATE_LIMITER_ELEVATED_ACCOUNTS}
+  noOfReqForElevatedAccounts: ${RATE_LIMITER_ELEVATED_VALUE_GET:-100}
+  noOfPostReqForElevatedAccounts: ${RATE_LIMITER_ELEVATED_VALUE_POST:-40}
+  noOfReqPerNode: ${RATE_LIMITER_VALUE_PER_NODE:-25}  # per public api instance, if Redis is unavailable
+  noOfReqForPostPerNode: ${RATE_LIMITER_VALUE_PER_NODE_POST:-5}  # per public api instance, if Redis is unavailable
+  perMillis: ${RATE_LIMITER_PER_MILLIS:-1000}
+  lowTrafficAccounts: ${RATE_LIMITER_LOW_TRAFFIC_ACCOUNTS}
+  noOfReqForLowTrafficAccounts: ${RATE_LIMITER_LOW_TRAFFIC_VALUE_GET:-4500}
+  noOfPostReqForLowTrafficAccounts: ${RATE_LIMITER_LOW_TRAFFIC_VALUE_POST:-1}
+  intervalInMillisForLowTrafficAccounts: ${RATE_LIMITER_LOW_TRAFFIC_PER_MILLIS:-60000}
+
+redis:
+  endpoint: ${REDIS_URL:-localhost:6379}
+  ssl: false
+  commandTimeout: ${REDIS_COMMAND_TIMEOUT:-250ms}
+  connectTimeout: ${REDIS_CONNECT_TIMEOUT:-500ms}
+
+allowHttpForReturnUrl: ${ALLOW_HTTP_FOR_RETURN_URL:-false}
+
+apiKeyHmacSecret: ${TOKEN_API_HMAC_SECRET}
+
+# Caching authenticator.
+authenticationCachePolicy: expireAfterWrite=1m
+
+ecsContainerMetadataUriV4: ${ECS_CONTAINER_METADATA_URI_V4:-}

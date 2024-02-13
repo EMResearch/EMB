@@ -1,0 +1,86 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^2\\d{10}$"
+          },
+          "serviceCode": {
+            "absent": true
+          },
+          "serviceEdition": {
+            "absent": true
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [
+          {
+            "Name": "Saltrød og Høneby",
+            "Type": "Business",
+            "OrganizationNumber": "999999999",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          },
+          {
+            "Name": "BIRTAVARRE OG VÆRLANDET FORELDER",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825555",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters": {
+          "subject": {
+            "matches": "^2\\d{10}$"
+          },
+          "serviceCode": {
+            "matches": "5332|5516"
+          },
+          "serviceEdition": {
+            "matches": "1|2|3|4|5"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [
+          {
+            "Name": "Saltrød og Høneby",
+            "Type": "Business",
+            "OrganizationNumber": "999999999",
+            "OrganizationForm": "BEDR",
+            "Status": "Active",
+            "ParentOrganizationNumber": "910825555"
+          },
+          {
+            "Name": "BIRTAVARRE OG VÆRLANDET FORELDER",
+            "Type": "Enterprise",
+            "OrganizationNumber": "910825550",
+            "OrganizationForm": "AS",
+            "Status": "Active"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

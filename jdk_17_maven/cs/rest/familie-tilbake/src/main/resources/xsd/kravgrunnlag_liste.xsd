@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:no:nav:tilbakekreving:kravgrunnlag:hentliste:v1"
+            xmlns="urn:no:nav:tilbakekreving:kravgrunnlag:hentliste:v1"
+            xmlns:typer="urn:no:nav:tilbakekreving:typer:v1"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="urn:no:nav:tilbakekreving:typer:v1" schemaLocation="typer/typer.xsd"/>
+
+    <xsd:complexType name="HentKravgrunnlagListeDto">
+        <xsd:annotation>
+            <xsd:documentation>420 - Hent kravgrunnlag</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kodeAksjon" type="typer:KodeAksjonDto"/>
+            <xsd:element name="gjelderId" type="typer:FnrOrgnrDto" minOccurs="0"/>
+            <xsd:element name="typeGjelder" type="typer:TypeGjelderDto" minOccurs="0"/>
+            <xsd:element name="utbetalesTilId" type="typer:FnrOrgnrDto" minOccurs="0"/>
+            <xsd:element name="typeUtbet" type="typer:TypeGjelderDto" minOccurs="0"/>
+            <xsd:element name="enhetAnsvarlig" type="xsd:string"/>
+            <xsd:element name="kodeFaggruppe" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="kodeFagomraade" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="fagsystemId" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="kravgrunnlagId" type="xsd:integer" minOccurs="0"/>
+            <xsd:element name="saksbehId" type="typer:SaksbehandlerDto"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReturnertKravgrunnlagDto">
+        <xsd:annotation>
+            <xsd:documentation>421 - Returnert kravgrunnlag</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kravgrunnlagId" type="xsd:integer"/>
+            <xsd:element name="kodeStatusKrav" type="xsd:string"/>
+            <xsd:element name="gjelderId" type="typer:FnrOrgnrDto"/>
+            <xsd:element name="typeGjelderId" type="typer:TypeGjelderDto"/>
+            <xsd:element name="utbetalesTilId" type="typer:FnrOrgnrDto"/>
+            <xsd:element name="typeUtbetId" type="typer:TypeGjelderDto"/>
+            <xsd:element name="kodeFagomraade" type="xsd:string"/>
+            <xsd:element name="fagsystemId" type="xsd:string"/>
+            <xsd:element name="datoVedtakFagsystem" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="enhetBosted" type="xsd:string"/>
+            <xsd:element name="enhetAnsvarlig" type="xsd:string"/>
+            <xsd:element name="datoKravDannet" type="xsd:date"/>
+            <xsd:element name="periode" type="typer:PeriodeDto"/>
+            <xsd:element name="belopSumFeilutbetalt" type="typer:belop"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="ROOT_LOG_LEVEL" value="INFO"/>
+
+    <!-- Logger for sensitive data -->
+    <appender name="secureLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/secure-logs/secure.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>/secure-logs/secure.log.%i</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>1</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+
+    <logger name="secureLogger" level="INFO" additivity="false">
+        <appender-ref ref="secureLog"/>
+    </logger>
+
+    <appender name="auditLogger" class="com.papertrailapp.logback.Syslog4jAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%m%n%xEx</pattern>
+        </layout>
+
+        <syslogConfig class="org.productivity.java.syslog4j.impl.net.tcp.TCPNetSyslogConfig">
+            <!-- remote system to log to -->
+            <host>audit.nais</host>
+            <!-- remote port to log to -->
+            <port>6514</port>
+            <ident>FAMILIE-BA-SAK</ident>
+            <!-- max log message length in bytes -->
+            <maxMessageLength>128000</maxMessageLength>
+        </syslogConfig>
+    </appender>
+
+    <logger name="auditLogger" level="INFO" additivity="false">
+        <appender-ref ref="auditLogger"/>
+    </logger>
+
+    <!-- Spesiell håndtering av loggeren no.nav.log.LogFilter for å forhindre logging av isAlive-sjekker o.l. -->
+    <appender name="stdout_json" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+
+    <appender name="SENTRY" class="io.sentry.logback.SentryAppender">
+        <options>
+            <!-- NOTE: Trenger dsn her også for å kunne logge feil som oppstår før spring er satt opp -->
+            <dsn>https://dd9a6107bdda4edeb51ece7283f37af4@sentry.gc.nav.no/112</dsn>
+        </options>
+    </appender>
+
+    <root level="${ROOT_LOG_LEVEL:-INFO}">
+        <!-- nais+local -->
+        <appender-ref ref="stdout_json"/>
+        <Appender-ref ref="SENTRY"/>
+    </root>
+
+    <logger name="no.nav" level="WARN"/>
+    <logger name="no.nav.familie" level="INFO"/>
+    <logger name="org.apache" level="INFO"/>
+    <logger name="org.apache.cxf" level="ERROR"/>
+    <logger name="org.apache.http.client.protocol.ResponseProcessCookies" level="ERROR"/>
+    <logger name="org.apache.wss4j.common.crypto.CryptoBase" level="ERROR"/>
+
+</configuration>

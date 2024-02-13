@@ -1,0 +1,61 @@
+{
+  "beskrivelse": "Reduksjon autobrev 6 år",
+  "fom": "2021-09-01",
+  "tom": null,
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$INNVILGET_FØDSELSHENDELSE_NYFØDT_BARN_FØRSTE"
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2021-08-01",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1354,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": "",
+    "belop": 1354,
+    "antallBarn": 1,
+    "barnasFodselsdager": "01.08.21",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "01.08.21",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "01.08.21",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 1,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "innvilgetFodselshendelseNyfodtBarnForste",
+        "belop": 1354
+      }
+    ],
+    "type": "innvilgelse"
+  }
+}

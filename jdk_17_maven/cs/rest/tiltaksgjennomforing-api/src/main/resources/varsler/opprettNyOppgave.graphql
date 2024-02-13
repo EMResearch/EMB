@@ -1,0 +1,39 @@
+mutation OpprettNyOppgave(
+  $eksternId: String!
+  $virksomhetsnummer: String!
+  $serviceCode: String!
+  $serviceEdition: String!
+  $merkelapp: String!
+  $lenke: String!
+  $tekst: String!
+  $grupperingsId: String!
+) {
+  nyOppgave(nyOppgave: {
+    metadata: {
+      eksternId: $eksternId
+      grupperingsid: $grupperingsId
+      virksomhetsnummer: $virksomhetsnummer
+    }
+    mottakere: [
+      {
+        altinn: {
+          serviceCode: $serviceCode
+          serviceEdition: $serviceEdition
+        }
+      }
+    ]
+    notifikasjon: {
+      merkelapp: $merkelapp
+      tekst: $tekst
+      lenke: $lenke
+    }
+  }) {
+    __typename
+    ... on NyOppgaveVellykket {
+      id
+    }
+    ... on Error {
+      feilmelding
+    }
+  }
+}

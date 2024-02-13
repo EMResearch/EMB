@@ -1,0 +1,145 @@
+spring:
+  datasource:
+    platform: postgres
+    driverClassName: org.postgresql.Driver
+  kafka:
+    bootstrap-servers: a01apvl00145.adeo.no:8443, a01apvl00146.adeo.no:8443, a01apvl00147.adeo.no:8443, a01apvl00148.adeo.no:8443, a01apvl00149.adeo.no:8443, a01apvl00150.adeo.no:8443
+    properties:
+      security.protocol: SASL_SSL
+      sasl:
+        mechanism: PLAIN
+        jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${tiltaksgjennomforing.serviceuser.username}" password="${tiltaksgjennomforing.serviceuser.password}";
+      ssl.truststore:
+        location: ${javax.net.ssl.trustStore}
+        password: ${javax.net.ssl.trustStorePassword}
+
+no.nav.security.jwt:
+  issuer:
+    tokenx:
+      discoveryurl: ${TOKEN_X_WELL_KNOWN_URL}
+      accepted_audience: ${TOKEN_X_CLIENT_ID}
+    aad:
+      discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
+      accepted_audience: ${AZURE_APP_CLIENT_ID}
+    system:
+      discoveryurl: http://security-token-service.default.svc.nais.local/rest/v1/sts/.well-known/openid-configuration
+      accepted_audience: ${tiltaksgjennomforing.audience.system}
+  client:
+    registration:
+      notifikasjoner:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://prod-gcp.fager.notifikasjon-produsent-api/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      kontoregister:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://prod-fss.okonomi.sokos-kontoregister/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      veilarbarena:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://prod-fss.pto.veilarbarena/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      poao-tilgang:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://prod-fss.poao.poao-tilgang/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      tokenx-altinn:
+        token-endpoint-url: ${TOKEN_X_TOKEN_ENDPOINT}
+        grant-type: urn:ietf:params:oauth:grant-type:token-exchange
+        authentication:
+          client-id: ${TOKEN_X_CLIENT_ID}
+          client-jwk: /var/run/secrets/nais.io/jwker/TOKEN_X_PRIVATE_JWK
+          client-auth-method: private_key_jwt
+        token-exchange:
+          audience: prod-gcp:arbeidsgiver:altinn-rettigheter-proxy
+
+
+tiltaksgjennomforing:
+  kontoregister:
+    uri: https://sokos-kontoregister.nais.adeo.no/kontoregister/api/v1/hent-kontonummer-for-organisasjon/
+    consumerId: ${tiltaksgjennomforing.serviceuser.username}
+    azureConfig: true
+    realClient: true
+  database:
+    database-navn: tiltaksgjennomforing-prod
+    database-url: ${spring.datasource.url}
+    vault-sti: postgresql/prod-fss
+    minimum-idle: 1
+    maximum-pool-size: 8
+    max-lifetime: 300000
+  altinn-tilgangsstyring:
+    uri: https://api-gw.adeo.no/
+    proxyUri: https://altinn-rettigheter-proxy.intern.nav.no/altinn-rettigheter-proxy/
+    beOmRettighetBaseUrl: https://arbeidsgiver.nav.no/min-side-arbeidsgiver/?fragment=be-om-tilgang
+    sommerjobbServiceCode: 5516
+    sommerjobbServiceEdition: 3
+    ltsMidlertidigServiceCode: 5516
+    ltsMidlertidigServiceEdition: 1
+    ltsVarigServiceCode: 5516
+    ltsVarigServiceEdition: 2
+    arbtreningServiceCode: 5332
+    arbtreningServiceEdition: 2
+    mentorServiceCode: 5516
+    mentorServiceEdition: 4
+    inkluderingstilskuddServiceCode: 5516
+    inkluderingstilskuddServiceEdition: 5
+  altinn-varsel:
+    uri: https://pep-gw.oera.no:9443/ekstern/altinn/notificationagencyexternalbasic/v1
+  ereg:
+    uri: https://ereg-services.intern.nav.no/api/v2/organisasjon
+  sts:
+    username: ${tiltaksgjennomforing.serviceuser.username}
+    password: ${tiltaksgjennomforing.serviceuser.password}
+    ws-uri: https://sts.adeo.no/SecurityTokenServiceProvider/
+    rest-uri: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
+  axsys:
+    uri: https://axsys.nais.adeo.no/api/v1/tilgang
+    nav-consumer-id: ${tiltaksgjennomforing.serviceuser.username}
+  abac:
+    uri: https://abac-veilarb.intern.nav.no/application/asm-pdp/authorize
+    nav-consumer-id: ${tiltaksgjennomforing.serviceuser.username}
+  oppgave:
+    oppgave-uri: https://oppgave.nais.adeo.no/api/v1/oppgaver
+  unleash:
+    enabled: true
+    api-uri: ${UNLEASH_SERVER_API_URL}/api
+    api-token: ${UNLEASH_SERVER_API_TOKEN}
+  consumer:
+    system:
+      id: ${tiltaksgjennomforing.consumer.system}
+  veilarbarena:
+    url: https://veilarbarena.intern.nav.no/veilarbarena/api/arena/status
+    nav-consumer-id: ${tiltaksgjennomforing.serviceuser.username}
+  poao-tilgang:
+    url: http://poao-tilgang.poao.svc.nais.local
+  norg2:
+    geografisk:
+      url: https://norg2.nais.adeo.no/norg2/api/v1/enhet/navkontor/
+    enhet:
+      url: https://norg2.nais.adeo.no/norg2/api/v1/enhet/
+  notifikasjoner:
+    uri: https://ag-notifikasjon-produsent-api.intern.nav.no/api/graphql
+    lenke: https://arbeidsgiver.nav.no/tiltaksgjennomforing/avtale/
+    enabled: true
+  dvh-melding:
+    gruppe-tilgang: fb516b74-0f2e-4b62-bad8-d70b82c3ae0b
+  utvikler-tilgang:
+    gruppe-tilgang: fb516b74-0f2e-4b62-bad8-d70b82c3ae0b
+http:
+  proxy:
+    parametername: nothing

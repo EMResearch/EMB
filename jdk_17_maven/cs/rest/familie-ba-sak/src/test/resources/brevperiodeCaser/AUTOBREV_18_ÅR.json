@@ -1,0 +1,79 @@
+{
+  "beskrivelse": "Reduksjon autobrev 18 år",
+  "fom": "2021-12-01",
+  "tom": null,
+  "vedtaksperiodetype": "FORTSATT_INNVILGET",
+  "begrunnelser": [
+    "Standardbegrunnelse$REDUKSJON_UNDER_18_ÅR_AUTOVEDTAK"
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2003-12-10",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "UNDER_18_ÅR",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2003-12-10",
+          "periodeTom": "2021-12-10",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "2011-09-14",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1973-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "Fra 1. desember 2021 får du:",
+    "tom": "",
+    "belop": 1054,
+    "antallBarn": 1,
+    "barnasFodselsdager": "14.09.11",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "10.12.03",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "november 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "reduksjonAutovedtakBarn18Aar",
+        "belop": 0
+      }
+    ],
+    "type": "fortsattInnvilget"
+  }
+}

@@ -1,0 +1,27 @@
+{{#switch brevmetadata.ytelsestype}}
+{{#case "BARNETRYGD"}}
+{{> nb/vedtak/periode-fakta/periode_fakta_ba}}
+{{/case}}
+{{#case "OVERGANGSSTØNAD"}}
+{{> nb/vedtak/periode-fakta/periode_fakta_ef}}
+{{/case}}
+{{#case "KONTANTSTØTTE"}}
+{{> nb/vedtak/periode-fakta/periode_fakta_ks}}
+{{/case}}
+{{#case "SKOLEPENGER"}}
+{{> nb/vedtak/periode-fakta/periode_fakta_ef}}
+{{/case}}
+{{#case "BARNETILSYN"}}
+{{> nb/vedtak/periode-fakta/periode_fakta_ef}}
+{{/case}}
+{{/switch}}
+{{#if fakta.fritekstFakta}}
+    {{#if (eq fakta.hendelsesundertype "ANNET_FRITEKST")}}
+{{{fakta.fritekstFakta}}}
+
+{{#if gjelderDødsfall}}Det er utbetalt {{{kroner kravgrunnlag.feilutbetaltBeløp}}} for mye.{{else}}Du har fått {{{kroner kravgrunnlag.feilutbetaltBeløp}}} for mye utbetalt.{{/if}}
+    {{else}}
+
+{{{fakta.fritekstFakta}}}
+    {{/if}}
+{{/if}}

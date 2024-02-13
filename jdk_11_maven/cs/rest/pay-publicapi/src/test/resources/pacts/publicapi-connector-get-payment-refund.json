@@ -1,0 +1,81 @@
+
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "get payment refund",
+      "providerStates": [
+        {
+          "name": "a payment refund exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "charge_id": "123456789",
+            "refund_id": "r_123abc456def",
+            "created_date": "2018-09-22T10:14:16.067Z"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/api/accounts/123456/charges/123456789/refunds/r_123abc456def"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+            "refund_id": "r_123abc456def",
+            "amount": 100,
+            "status": "success",
+            "created_date": "2018-09-22T10:14:16.067Z"
+        },
+        "matchingRules": {
+          "body": {
+            "$.amount": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.status": {
+              "matchers": [
+                {
+                  "match": "value"
+                }
+              ]
+            },
+            "$.created_date": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                }
+              ]
+            },
+            "$.refund_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

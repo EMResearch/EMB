@@ -1,0 +1,33 @@
+{{#* inline "fritekstForeldelse"}}
+    {{#if vurderinger.fritekstForeldelse}}
+
+{{{vurderinger.fritekstForeldelse}}}
+    {{/if}}
+{{/inline}}
+{{#if vurderinger.harForeldelsesavsnitt }}
+__Korleis har vi kome fram til at du {{#if resultat.tilbakekrevesBeløp}}{{else}}ikkje {{/if}}må betale tilbake?
+{{/if}}
+{{#switch vurderinger.foreldelsevurdering}}
+    {{#case "FORELDET"}}
+Fristen for å krevje tilbake {{{ytelsesnavnBestemt}}} er tre år og startar frå det tidspunktet feilutbetalinga skjedde.
+
+Foreldelsesfristen er {{{dato vurderinger.foreldelsesfrist}}}. Vi kan ikkje krevje tilbake pengar som er blitt utbetalt meir enn tre år før denne datoen.
+
+Du skal derfor ikkje betale tilbake {{{kroner resultat.foreldetBeløp}}}{{> før-skatt}}, som er feilutbetalt frå og med {{{dato periode.fom}}} til og med {{{dato periode.tom}}}.
+{{> fritekstForeldelse}}
+
+    {{/case}}
+    {{#case "TILLEGGSFRIST"}}
+Fristen for å krevje tilbake {{{ytelsesnavnBestemt}}} er tre år frå det tidspunktet feilutbetalinga skjedde. Vi kan utvide fristen med ytterlegare 10 år dersom det ikkje var mogleg for NAV å oppdage feilen tidlegare. Frå tidspunktet vi oppdaga feilen, har vi eitt år på å krevje pengane tilbake.
+{{> fritekstForeldelse}}
+
+Vi har oppdaga feilutbetalinga {{{dato vurderinger.oppdagelsesdato}}}, og har behandla saka di innan eitt år. Derfor må du betale tilbake {{{ytelsesnavnBestemt}}} du har fått frå og med {{{dato periode.fom}}} til og med {{{dato periode.tom}}}.
+
+    {{/case}}
+    {{#case "IKKE_FORELDET"}}
+    {{! ikke noe tekst her}}
+    {{/case}}
+    {{#case "IKKE_VURDERT"}}
+    {{! ikke noe tekst her}}
+    {{/case}}
+{{/switch}}

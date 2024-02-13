@@ -1,0 +1,32 @@
+{{~#* inline "pronomen"~}}{{#if gjelderDødsfall}}de{{else}}du{{/if}}{{~/inline~}}
+{{#if resultat.rentebeløp}}
+__Renter
+    {{#switch vurderinger.aktsomhetsresultat}}
+    {{#case "GROV_UAKTSOMHET"}}
+        {{#switch vurderinger.vilkårsvurderingsresultat}}
+        {{#case "FORSTO_BURDE_FORSTÅTT"}}
+Etter vår vurdering må {{> pronomen}} ha forstått at det {{> pronomen}} fekk utbetalt var feil. Derfor må {{> pronomen}} betale eit rentetillegg på 10 prosent. Det vil seie {{{kroner resultat.rentebeløp}}}{{> før-skatt}}. Dette er i tillegg til det feilutbetalte beløpet.
+        {{/case}}
+        {{#case "FEIL_OPPLYSNINGER_FRA_BRUKER"}}
+Etter vår vurdering må {{> pronomen}} ha forstått at {{> pronomen}} gav oss uriktige opplysningar. Derfor må {{> pronomen}} betale eit rentetillegg på 10 prosent. Det vil seie {{{kroner resultat.rentebeløp}}}{{> før-skatt}}. Dette er i tillegg til det feilutbetalte beløpet.
+        {{/case}}
+        {{#case "MANGELFULLE_OPPLYSNINGER_FRA_BRUKER"}}
+Etter vår vurdering må {{> pronomen}} ha forstått at {{> pronomen}} ikkje gav NAV alle nødvendige opplysningar. Derfor må {{> pronomen}} betale eit rentetillegg på 10 prosent. Det vil seie {{{kroner resultat.rentebeløp}}}{{> før-skatt}}. Dette er i tillegg til det feilutbetalte beløpet.
+        {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "FORSETT"}}
+        {{#switch vurderinger.vilkårsvurderingsresultat}}
+        {{#case "FORSTO_BURDE_FORSTÅTT"}}
+Etter vår vurdering forstod {{> pronomen}} at det {{> pronomen}} fekk utbetalt var feil. Derfor må {{> pronomen}} betale eit rentetillegg på 10 prosent. Det vil seie {{{kroner resultat.rentebeløp}}}{{> før-skatt}}. Dette er i tillegg til det feilutbetalte beløpet.
+        {{/case}}
+        {{#case "FEIL_OPPLYSNINGER_FRA_BRUKER"}}
+Fordi vi har vurdert at {{> pronomen}} forstod at {{> pronomen}} gav oss uriktige opplysningar, må {{> pronomen}} betale eit rentetillegg på 10 prosent. Det vil seie {{{kroner resultat.rentebeløp}}}{{> før-skatt}}. Dette er i tillegg til det feilutbetalte beløpet.
+        {{/case}}
+        {{#case "MANGELFULLE_OPPLYSNINGER_FRA_BRUKER"}}
+Fordi vi har vurdert at {{> pronomen}} forstod at {{> pronomen}} ikkje gav oss alle nødvendige opplysningar, må {{> pronomen}} betale eit rentetillegg på 10 prosent. Det vil seie {{{kroner resultat.rentebeløp}}}{{> før-skatt}}. Dette er i tillegg til det feilutbetalte beløpet.
+        {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{/switch}}
+{{/if}}

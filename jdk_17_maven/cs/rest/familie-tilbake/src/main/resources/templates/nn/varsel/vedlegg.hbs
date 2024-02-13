@@ -1,0 +1,27 @@
+<h4>Feilutbetalt beløp per måned</h4>
+<table>
+    <thead>
+    <tr>
+        <th class="periode">Periode</th>
+        {{#if ytelseMedSkatt}}
+            <th>Utbetalt beløp før skatt er trekt frå</th>
+            <th>Nytt beregna beløp før skatt er trekt frå</th>
+            <th>Feilutbetalt beløp før skatt er trekt frå</th>
+        {{else}}
+            <th>Utbetalt beløp</th>
+            <th>Nytt beregna beløp</th>
+            <th>Feilutbetalt beløp</th>
+        {{/if}}
+    </tr>
+    </thead>
+    <tbody>
+    {{#each feilutbetaltePerioder }}
+        <tr>
+            <td class="periode">{{{måned måned}}}</td>
+            <td class="tall">{{{kroner tidligereUtbetaltBeløp}}}</td>
+            <td class="tall">{{{kroner nyttBeløp}}}</td>
+            <td class="tall">{{{kroner feilutbetaltBeløp}}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

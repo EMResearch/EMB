@@ -1,0 +1,162 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPattern": "^.*\\/veilarbarena\\/api\\/arena\\/status\\?fnr=31129118213"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "rettighetsgruppe": "IYT",
+          "formidlingsgruppe": "ARBS",
+          "kvalifiseringsgruppe": "BFORM",
+          "oppfolgingsenhet": "0906",
+          "iservFraDato": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPattern": "^.*\\/veilarbarena\\/api\\/arena\\/status\\?fnr=02104317386"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "rettighetsgruppe": "IYT",
+          "formidlingsgruppe": "ARBS",
+          "kvalifiseringsgruppe": "IVURD",
+          "oppfolgingsenhet": "0906",
+          "iservFraDato": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPattern": "^.*\\/veilarbarena\\/api\\/arena\\/status\\?fnr=09019621658"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "rettighetsgruppe": "IYT",
+          "formidlingsgruppe": "IJOBS",
+          "kvalifiseringsgruppe": "IVURD",
+          "oppfolgingsenhet": "0906",
+          "iservFraDato": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPattern": "^.*\\/veilarbarena\\/api\\/arena\\/status\\?fnr=11111111111"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "rettighetsgruppe": "IYT",
+          "formidlingsgruppe": "IJOBS",
+          "kvalifiseringsgruppe": "BFORM",
+          "oppfolgingsenhet": "0904",
+          "iservFraDato": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPattern": "/veilarbarena/api/arena/status?fnr=22222222222"
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPattern": "/veilarbarena/api/arena/status?fnr=33333333333"
+      },
+      "response": {
+        "status": 404,
+        "jsonBody": {
+          "timestamp": "2021-01-04T13:06:25.211+00:00",
+          "status": 404,
+          "error": "Not Found",
+          "message": "",
+          "path": "/veilarbarena/api/arena/status?fnr=33333333333"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/veilarbarena/api/arena/status",
+        "queryParameters": {
+          "fnr": {
+            "equalTo": "06109845173"
+          }
+        }
+      },
+      "response": {
+        "status": 404,
+        "jsonBody": {
+          "timestamp": "2021-01-04T13:06:25.211+00:00",
+          "status": 404,
+          "error": "Not Found",
+          "message": "",
+          "path": "/veilarbarena/api/arena/status?fnr=06109845173"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPattern": "^.*\\/veilarbarena\\/api\\/arena\\/status\\?fnr=((0[1-9]|[1-2][0-9]|31(?!(?:0[2469]|11))|30(?!02))(0[1-9]|1[0-2])\\d{7}$|[0-0]{11})$"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "rettighetsgruppe": "IYT",
+          "formidlingsgruppe": "ARBS",
+          "kvalifiseringsgruppe": "VARIG",
+          "oppfolgingsenhet": "0906",
+          "iservFraDato": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

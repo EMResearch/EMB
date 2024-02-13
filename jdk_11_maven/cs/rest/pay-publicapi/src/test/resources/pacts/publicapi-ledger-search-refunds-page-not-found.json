@@ -1,0 +1,49 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "Search refunds with a page number that does not exist",
+      "providerStates": [
+        {
+          "name": "refund transactions exists for a gateway account",
+          "params": {
+            "gateway_account_id": "888"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction",
+        "query": {
+          "account_id": [
+            "888"
+          ],
+          "status_version": ["1"],
+          "transaction_type": ["REFUND"],
+          "page": [
+            "999"
+          ],
+          "display_size": [
+            "500"
+          ]
+        }
+      },
+      "response": {
+        "status": 404
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

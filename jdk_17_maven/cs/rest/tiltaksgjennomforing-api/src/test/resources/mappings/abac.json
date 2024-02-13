@@ -1,0 +1,73 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "POST",
+        "urlPattern": "/abac",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.Request.Resource[0].Attribute[2].Value == \"01118023456\")]",
+            "ignoreArrayOrder": true,
+            "ignoreExtraElements": true
+          },
+          {
+            "matchesJsonPath": "$[?(@.Request.AccessSubject.Attribute[0].Value == \"F142226\")]",
+            "ignoreArrayOrder": true,
+            "ignoreExtraElements": true
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "Response": {
+            "Decision": "Deny"
+          }
+        }
+      }
+    },{
+      "priority": 2,
+      "request": {
+        "method": "POST",
+        "urlPattern": "/abac",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$[?(@.Request.Resource[0].Attribute[2].Value == \"11111111111\")]",
+            "ignoreArrayOrder": true,
+            "ignoreExtraElements": true
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+        }
+      }
+    },
+    {
+      "priority": 3,
+      "request": {
+        "method": "POST",
+        "urlPattern": "/abac"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "Response": {
+            "Decision": "Permit"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+alter table avtale add column feilregistrert boolean default false;

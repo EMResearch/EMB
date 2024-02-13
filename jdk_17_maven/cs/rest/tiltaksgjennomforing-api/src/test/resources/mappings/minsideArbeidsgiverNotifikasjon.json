@@ -1,0 +1,108 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/api/graphql",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": {
+              "expression": "$..query",
+              "contains": "mutation OpprettNyBeskjed"
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{  \"data\": {    \"nyBeskjed\": {      \"__typename\": \"NyBeskjedVellykket\",      \"id\": \"af2322fc-2977-4b1f-8dab-616c7e6cb013\"    }  }}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/api/graphql",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": {
+              "expression": "$..query",
+              "contains": "mutation OpprettNyOppgave"
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{  \"data\": {    \"nyOppgave\": {      \"__typename\": \"NyOppgaveVellykket\",      \"id\": \"9d3efc70-a86f-44e1-a038-9f2a3b478697\"    }  }}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/api/graphql",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": {
+              "expression": "$..query",
+              "contains": "mutation SlettingAvNotifikasjonerByEksternId"
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{  \"data\": {  \"softDeleteNotifikasjonByEksternId\": {  \"__typename\": \"SoftDeleteNotifikasjonVellykket\",  \"id\": \"8d5cb4b6-b1ef-4dbd-97df-8c5550c2dc83\" } } }",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/api/graphql",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": {
+              "expression": "$..query",
+              "contains": "mutation OppgaveUtfoertByEksternId"
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{ \"data\": {  \"oppgaveUtfoertByEksternId\": {  \"__typename\": \"OppgaveUtfoertVellykket\",  \"id\": \"7c9761ab-0672-4ac8-b624-edbbee435483\" } } }",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

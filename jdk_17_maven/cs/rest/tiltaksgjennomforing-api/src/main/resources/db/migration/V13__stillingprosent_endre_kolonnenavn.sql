@@ -1,0 +1,1 @@
+alter table avtale rename column arbeidstrening_stillingprosent to stillingprosent;

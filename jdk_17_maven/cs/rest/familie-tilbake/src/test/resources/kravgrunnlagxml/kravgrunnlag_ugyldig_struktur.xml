@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urn:detaljertKravgrunnlagMelding
+        xmlns:urn="urn:no:nav:tilbakekreving:kravgrunnlag:detalj:v1">
+    <urn:detaljertKravgrunnlag>
+        <urn:kravgrunnlagId>0</urn:kravgrunnlagId>
+        <urn:vedtakId>0</urn:vedtakId>
+        <urn:kodeStatusKrav>NY</urn:kodeStatusKrav>
+        <urn:kodeFagomraade>BA</urn:kodeFagomraade>
+        <urn:fagsystemId>testverdi</urn:fagsystemId>
+        <urn:vedtakIdOmgjort>0</urn:vedtakIdOmgjort>
+        <urn:vedtakGjelderId>testverdi</urn:vedtakGjelderId>
+        <urn:typeGjelderId>PERSON</urn:typeGjelderId>
+        <urn:utbetalesTilId>testverdi</urn:utbetalesTilId>
+        <urn:typeUtbetId>PERSON</urn:typeUtbetId>
+        <urn:enhetAnsvarlig>8020</urn:enhetAnsvarlig>
+        <urn:enhetBosted>8020</urn:enhetBosted>
+        <urn:enhetBehandl>8020</urn:enhetBehandl>
+        <urn:kontrollfelt>2021-03-02-18.50.15.236315</urn:kontrollfelt>
+        <urn:saksbehId>K231B433</urn:saksbehId>
+        <urn:referanse>0</urn:referanse>
+    </urn:detaljertKravgrunnlag>
+</urn:detaljertKravgrunnlagMelding>

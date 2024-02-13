@@ -1,0 +1,12 @@
+<div id="dato">Dato: {{{kortdato brev.dato}}}</div>
+<h1 id="hovedoverskrift">{{{brev.overskrift}}}</h1>
+{{#if institusjon }}
+<div id="institusjon">
+Navn: {{{institusjon.navn}}}<br/>
+Organisasjonsnummer: {{{institusjon.organisasjonsnummer}}}
+</div>
+{{/if}}
+<div id="person">
+{{#if institusjon}}Gjelder{{else}}Navn{{/if}}: {{{person.navn}}}<br/>
+Fødselsnummer: {{{person.ident}}}
+</div>

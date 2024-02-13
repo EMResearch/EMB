@@ -1,0 +1,1 @@
+drop table vedtak_begrunnelse;

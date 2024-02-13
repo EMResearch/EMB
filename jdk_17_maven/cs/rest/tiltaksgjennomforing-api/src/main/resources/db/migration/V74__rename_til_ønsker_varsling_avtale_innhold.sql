@@ -1,0 +1,1 @@
+alter table avtale_innhold rename column ønsker_informasjon_om_refusjon to ønsker_varsling_om_refusjon;

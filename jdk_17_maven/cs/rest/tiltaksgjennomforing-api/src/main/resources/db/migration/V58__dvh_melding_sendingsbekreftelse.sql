@@ -1,0 +1,1 @@
+alter table dvh_melding add column sendt boolean not null default false;

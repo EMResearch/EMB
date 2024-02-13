@@ -1,0 +1,23 @@
+{
+  "data": {
+    "pdlIdenter": {
+      "identer": [
+        {
+          "ident": "21127725540",
+          "historisk": false,
+          "gruppe": "FOLKEREGISTERIDENT"
+        },
+        {
+          "ident": "2872543507203",
+          "historisk": false,
+          "gruppe": "AKTORID"
+        },
+        {
+          "ident": "2872543000000",
+          "historisk": true,
+          "gruppe": "AKTORID"
+        }
+      ]
+    }
+  }
+}

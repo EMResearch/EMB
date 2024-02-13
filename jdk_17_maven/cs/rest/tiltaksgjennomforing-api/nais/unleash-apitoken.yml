@@ -1,0 +1,14 @@
+apiVersion: unleash.nais.io/v1
+kind: ApiToken
+metadata:
+  name: tiltaksgjennomforing-api
+  namespace: arbeidsgiver
+  labels:
+    team: arbeidsgiver
+spec:
+  unleashInstance:
+    apiVersion: unleash.nais.io/v1
+    kind: RemoteUnleash
+    name: team-tiltak
+  secretName: tiltaksgjennomforing-api-unleash-api-token
+  environment: {{ unleash-environment }}

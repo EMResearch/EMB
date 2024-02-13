@@ -1,0 +1,248 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"errors\": [{\"message\": \"Fant ikke person\", \"locations\": [{\"line\": 1, \"column\": 8}], \"path\": [\"hentPerson\"], \"extensions\": {\"code\": \"not_found\", \"classification\": \"ExecutionAborted\"}}], \"data\": {\"hentPerson\": null}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json",
+            "caseInsensitive": true
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentPerson(ident: $ident) { adressebeskyttelse { gradering } } }",
+              "variables": {
+                "ident": "16053900422"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\": {\"hentPerson\": {\"adressebeskyttelse\": [{\"gradering\": \"STRENGT_FORTROLIG\"}]}}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json",
+            "caseInsensitive": true
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentPerson(ident: $ident) { adressebeskyttelse { gradering } } }",
+              "variables": {
+                "ident": "28033114267"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\": {\"hentPerson\": {\"adressebeskyttelse\": [{\"gradering\": \"STRENGT_FORTROLIG_UTLAND\"}]}}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json",
+            "caseInsensitive": true
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentPerson(ident: $ident) { adressebeskyttelse { gradering } } }",
+              "variables": {
+                "ident": "00000000000"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\": {\"hentPerson\": {\"adressebeskyttelse\": [{\"gradering\": \"UGRADERT\"}]}}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json",
+            "caseInsensitive": true
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentPerson(ident: $ident) { adressebeskyttelse { gradering } } }",
+              "variables": {
+                "ident": "26067114433"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\": {\"hentPerson\": {\"adressebeskyttelse\": [{\"gradering\": \"FORTROLIG\"}]}}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json",
+            "caseInsensitive": true
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentPerson(ident: $ident) { adressebeskyttelse { gradering } } }",
+              "variables": {
+                "ident": "18076641842"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\": {\"hentPerson\": {\"adressebeskyttelse\": [{\"gradering\": \"\"}]}}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json",
+            "caseInsensitive": true
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentPerson(ident: $ident) { adressebeskyttelse { gradering } } }",
+              "variables": {
+                "ident": "23097010706"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"errors\": [{\"message\": \"Fant ikke person\", \"locations\": [{\"line\": 1, \"column\": 8}], \"path\": [\"hentPerson\"], \"extensions\": {\"code\": \"not_found\", \"classification\": \"ExecutionAborted\"}}]}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentPerson(ident: $ident) { navn { fornavn mellomnavn etternavn } adressebeskyttelse { gradering } } hentGeografiskTilknytning(ident: $ident){ gtType gtKommune gtBydel gtLand regel } }",
+              "variables": {
+                "ident": "00000000000"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"data\":{\"hentPerson\":{\"navn\":[{\"fornavn\":\"Donald\",\"etternavn\":\"Duck\"}]},\"hentGeografiskTilknytning\":{\"gtType\":\"BYDEL\",\"gtKommune\":null,\"gtBydel\":\"030104\",\"gtLand\":null,\"regel\":\"3\"}}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/persondata",
+        "headers": {
+          "Content-Type": {
+            "equalTo": "application/json",
+            "caseInsensitive": true
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": {
+              "query": "query($ident: ID!) { hentIdenter(ident: $ident, grupper: [AKTORID]) { identer { ident gruppe historisk } } }",
+              "variables": {
+                "ident": "00000000000"
+              }
+            }
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{ \"data\": { \"hentIdenter\": { \"identer\": [{ \"ident\": \"2135315926224\", \"gruppe\": \"AKTORID\", \"historisk\": false }]}}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

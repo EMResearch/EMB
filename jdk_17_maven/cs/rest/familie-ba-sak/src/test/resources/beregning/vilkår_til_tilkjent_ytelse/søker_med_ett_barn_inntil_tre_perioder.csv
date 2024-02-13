@@ -1,0 +1,11 @@
+sakType;søkerPeriode1;søkerVilkår1;søkerPeriode2;søkerVilkår2;barn1Periode1;barn1Vilkår1;barn1Andel1Beløp;barn1Andel1Periode;barn1Andel1Type;barn1Andel2Beløp;barn1Andel2Periode;barn1Andel2Type;barn1Andel3Beløp;barn1Andel3Periode;barn1Andel3Type;deltBosted
+NASJONAL;;;;;;;;;;;;;;;;
+NASJONAL;;;;;2021-09 – 2034-05;Under 18;;;;;;;;;;
+NASJONAL;2020-09 – 2022-05;Gift;;;;;;;;;;;;;;
+NASJONAL;2020-09 – 2022-05;Bosatt, opphold;;;2021-09 – 2034-05;Gift, bosatt, opphold, under 18, bor med søker;1654;2021-10-01 - 2021-12-31;ORDINÆR_BARNETRYGD;1676;2022-01-01 - 2022-05-31;ORDINÆR_BARNETRYGD;;;;;;
+NASJONAL;2021-12 – 2022-05;Bosatt, opphold;2022-06 – 2024-11;Bosatt, opphold;2021-09 – 2039-09;Gift, bosatt, opphold, under 18, bor med søker;1676;2022-01-01 – 2024-11-30;ORDINÆR_BARNETRYGD;;;;;;;
+NASJONAL;2020-09 – 2034-05;Bosatt, opphold;;;2021-09 – 2039-09;Gift, bosatt, opphold, under 18, bor med søker;1654;2021-10-01 – 2021-12-31;ORDINÆR_BARNETRYGD;1676;2022-01-01 – 2027-08-31;ORDINÆR_BARNETRYGD;1054;2027-09-01 - 2034-05-31;ORDINÆR_BARNETRYGD;
+NASJONAL;2020-09 – 2022-05;Bosatt, opphold;2022-06 – 2024-11;Bosatt, opphold;2021-09 – 2039-09;Gift, bosatt, opphold, under 18, bor med søker;1654;2021-10-01 – 2021-12-31;ORDINÆR_BARNETRYGD;1676;2022-01-01 – 2024-11-30;ORDINÆR_BARNETRYGD;;;;true
+NASJONAL;2020-09 – 2034-05;Bosatt, opphold;;;2021-09 – 2039-09;Gift, bosatt, opphold, under 18, bor med søker;1654;2021-10-01 – 2021-12-31;ORDINÆR_BARNETRYGD;1676;2022-01-01 – 2027-08-31;ORDINÆR_BARNETRYGD;1054;2027-09-01 - 2034-05-31;ORDINÆR_BARNETRYGD;true
+EØS;2020-09 – 2034-05;Bosatt;;;2020-09 – 2034-05;Gift, bosatt, under 18, bor med søker;;;;;;;;;;
+EØS;2021-09 – 2034-05;Bosatt, opphold;;;2021-09 – 2034-04;Gift, bosatt, opphold, under 18, bor med søker;1654;2021-10-01 - 2021-12-31;ORDINÆR_BARNETRYGD;1676;2022-01-01 - 2027-08-31;ORDINÆR_BARNETRYGD;1054;2027-09-01 - 2034-04-30;ORDINÆR_BARNETRYGD;

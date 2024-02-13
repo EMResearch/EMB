@@ -1,0 +1,14 @@
+{
+  "data": {
+    "person": {
+      "doedsfall": [
+        {
+          "doedsdato": null
+        },
+        {
+          "doedsdato": "2019-07-02"
+        }
+      ]
+    }
+  }
+}

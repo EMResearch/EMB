@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    username: postgres
+    password: test
+    url: jdbc:postgresql://localhost:5432/familie-tilbake
+    driver-class-name: org.postgresql.Driver
+
+rolle:
+  barnetrygd:
+    veileder: "93a26831-9866-4410-927b-74ff51a9107c"
+    saksbehandler: "d21e00a4-969d-4b28-8782-dc818abfae65"
+    beslutter: "9449c153-5a1e-44a7-84c6-7cc7a8867233"
+  enslig:
+    veileder: "19dcbfde-4cdb-4c64-a1ea-ac9802b03339"
+    saksbehandler: "ee5e0b5e-454c-4612-b931-1fe363df7c2c"
+    beslutter: "01166863-22f1-4e16-9785-d7a05a22df74"
+  kontantstøtte:
+    veileder: ""
+    saksbehandler: ""
+    beslutter: ""
+  teamfamilie:
+    forvalter: "c62e908a-cf20-4ad0-b7b3-3ff6ca4bf38b"
+  prosessering: "928636f4-fd0d-4149-978e-a6fb68bb19de" # 0000-GA-STDAPPS
+
+
+prosessering:
+  fixedDelayString:
+    in:
+      milliseconds: 1000
+
+unleash:
+  enabled: true
+
+AZURE_APP_WELL_KNOWN_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/v2.0/.well-known/openid-configuration
+AZURE_OPENID_CONFIG_TOKEN_ENDPOINT: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/token
+FAMILIE_INTEGRASJONER_URL: http://localhost:8085
+FAMILIE_OPPDRAG_URL: #Mockes ut lokalt
+SECURITYTOKENSERVICE_URL: https://localhost:8063/soap/SecurityTokenServiceProvider/
+CREDENTIAL_USERNAME: not-a-real-srvuser
+CREDENTIAL_PASSWORD: not-a-real-pw
+PDL_URL: #Mockes ut lokalt
+OPPRETTELSE_DAGER_BEGRENSNING: 1
+CRON_HÅNDTER_GAMMEL_KRAVGRUNNLAG: 0 0/5 * ? * MON-FRI
+CRON_AUTOMATISK_SAKSBEHANDLING: 0 0/3 * ? * MON-FRI
+CRON_AUTOMATISK_GJENOPPTA: 0 0/7 * ? * MON-FRI
+
+NAIS_APP_NAME: familie-klage
+UNLEASH_SERVER_API_URL: http://localhost:4242/api
+UNLEASH_SERVER_API_TOKEN: token
+NAIS_CLUSTER_NAME: dev-gcp

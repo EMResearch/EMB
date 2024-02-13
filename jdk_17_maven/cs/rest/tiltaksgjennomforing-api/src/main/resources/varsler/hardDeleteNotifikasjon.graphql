@@ -1,0 +1,11 @@
+mutation SletteNotifikasjonHelt($id: ID!) {
+  hardDeleteNotifikasjon(id: $id){
+    __typename
+    ... on HardDeleteNotifikasjonVellykket {
+      id
+    }
+    ... on NotifikasjonFinnesIkke {
+      feilmelding
+    }
+  }
+}

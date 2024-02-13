@@ -1,0 +1,61 @@
+{{~#* inline "DuEllerInstitusjonen"~}}{{#if institusjon}}Institusjonen{{else}}Du{{/if}}{{~/inline~}}
+{{~#* inline "duEllerinstitusjonen"~}}{{#if institusjon}}institusjonen{{else}}du{{/if}}{{~/inline~}}
+{{~#* inline "duEllerDere"~}}{{#if institusjon}}dere{{else}}du{{/if}}{{~/inline~}}
+
+Før vi avgjør om {{#or gjelderDødsfall institusjon}}pengene skal betales{{else}}du skal betale{{/or}} tilbake, kan {{#or gjelderDødsfall institusjon}}dere uttale dere{{else}}du uttale deg{{/or}} innen {{{dato fristdatoForTilbakemelding}}}.
+{{#if ytelseMedSkatt}}
+
+Hvis {{#or gjelderDødsfall institusjon}}det må betales{{else}}du må betale{{/or}} tilbake, reduserer vi beløpet med trukket skatt.
+{{/if}}
+_Dette har skjedd
+{{#or gjelderDødsfall institusjon}}{{{storForbokstav ytelsesnavnBestemt}}}{{else}}{{{storForbokstav ytelsesnavnEiendomsform}}}{{/or}} ble endret {{{dato revurderingsvedtaksdato}}}, og endringen har ført til at {{#if gjelderDødsfall}}det er{{else}}{{> duEllerinstitusjonen}} har fått{{/if}} utbetalt for mye.
+{{#if varseltekstFraSaksbehandler}}
+
+{{{varseltekstFraSaksbehandler}}}
+{{/if}}
+_Dette legger vi vekt på i vurderingen vår
+For å avgjøre om vi kan kreve tilbake, tar vi først stilling til de {{#if gjelderDødsfall}}to{{else}}tre{{/if}} øverste punktene i denne listen. Hvis resultatet blir at vi kan kreve tilbake, vurderer vi om {{#if (not gjelderDødsfall)}}{{> duEllerDere}} skal betale tilbake {{/if}}hele eller deler av beløpet{{#if gjelderDødsfall}} skal betales tilbake{{/if}}.
+
+Vi legger vekt på
+
+*-om {{#or gjelderDødsfall institusjon}}dere{{else}}du{{/or}} forstod eller burde forstått at beløpet {{#if gjelderDødsfall}}som er{{else}}{{> duEllerDere}} fikk{{/if}} utbetalt var feil
+{{#if gjelderDødsfall}}om vi har fått informasjon fra dere{{else}}om {{> duEllerDere}} har gitt riktig informasjon til NAV
+om {{> duEllerDere}} har gitt all informasjon til NAV i rett tid{{/if}}
+hvor lang tid det har gått siden {{{ytelsesnavnBestemt}}} ble feilutbetalt
+hvor stort det feilutbetalte beløpet er
+om feilen kan skyldes NAV-*
+
+Selv om det er NAV som er skyld i feilutbetalingen, kan vi likevel kreve at {{#or gjelderDødsfall institusjon}}feilutbetalt beløp betales tilbake{{else}}du betaler tilbake pengene{{/or}}.
+
+{{#if rentepliktig}}
+Hvis {{#or gjelderDødsfall institusjon}}dere{{else}}du{{/or}} må betale tilbake, og {{#or gjelderDødsfall institusjon}}dere{{else}}du{{/or}} har gitt oss feil eller mangelfull informasjon, kan vi kreve at {{#or gjelderDødsfall institusjon}}dere{{else}}du{{/or}} betaler et rentetillegg på ti prosent av beløpet.
+
+{{/if}}
+Dette går fram av {{#if isBarnetrygd}}barnetrygdloven § 13{{else if isKontantstøtte}}kontantstøtteloven § 11{{else}}folketrygdloven §§ 22-15 og 22-17a{{/if}}.
+{{#or gjelderDødsfall institusjon}}
+_Rett til uttalelse
+Dere kan sende uttalelsen til oss i posten. Adressen finner dere på nav.no/ettersendelser.
+Dere kan også ta kontakt med oss på nav.no/kontakt.
+_Rett til innsyn
+Dere kan be om innsyn ved å ta kontakt med oss.
+{{else}}
+_Slik uttaler du deg
+Du kan sende uttalelsen din ved å logge deg inn på nav.no/beskjedtilnav og velge «Send beskjed til NAV». Du kan også sende uttalelsen din til oss i posten. Adressen finner du på
+nav.no/ettersendelser.
+_Du har rett til innsyn
+På nav.no/dittnav kan du se dokumentene i saken din.
+{{/or}}
+{{> nb/felles/spørsmål_kontaktinformasjon}}
+
+
+Med vennlig hilsen
+{{{avsenderenhet}}}
+
+{{{ansvarligSaksbehandler}}}{{#if brevmetadata.finnesAnnenMottaker}}
+
+Brev med likt innhold er sendt til {{{annenMottagersNavn}}}{{/if}}
+{{#if harVedlegg}}
+
+
+Vedlegg: Oversikt feilutbetalt beløp per måned
+{{/if}}

@@ -1,0 +1,1 @@
+update avtale set sist_endret=opprettet_tidspunkt;

@@ -1,0 +1,47 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "get one agreement no result",
+      "providerStates": [
+        {
+          "name": "an agreement with payment instrument exists",
+          "params": {
+            "account_id": "3456",
+            "agreement_external_id": "abcdefghijklmnopqrstuvwxyz"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/agreement/non-existent-agreement-id",
+        "headers": {
+          "X-Consistent": "true"
+        },
+        "query": {
+          "account_id": ["3456"]
+        }
+      },
+      "response": {
+        "status": 404
+      },
+      "body": {
+        "code": 404,
+        "message": "HTTP 404 Not Found"
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

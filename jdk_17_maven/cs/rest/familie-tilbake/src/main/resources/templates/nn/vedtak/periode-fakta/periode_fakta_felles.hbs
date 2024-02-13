@@ -1,0 +1,18 @@
+{{#* inline "fakta-død"}}
+    {{#if førstePeriode}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BARN_DØD"}}
+Vi har fått melding om at barnet ditt døydde. {{storForbokstav
+                    ytelsesnavnBestemt}} skulle vore stansa frå og med {{{dato opphørsdatoDødtBarn}}}.
+            {{/case}}
+            {{#case "BRUKER_DØD"}}
+Vi har fått melding om at {{{søker.navn}}} døydde. {{storForbokstav
+                    ytelsesnavnBestemt}} skulle vore stansa frå og med {{{dato opphørsdatoDødSøker}}}.
+            {{/case}}
+        {{/switch}}
+
+Fordi {{{ytelsesnavnBestemt}}} er utbetalt etter denne datoen er det utbetalt {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje.
+    {{else}}
+Det er utbetalt {{kroner kravgrunnlag.feilutbetaltBeløp}} for mykje for denne perioden.
+    {{/if}}
+{{/inline}}

@@ -1,0 +1,15 @@
+{{~#* inline "førSkatt"}}{{#if ytelseMedSkatt}} Dette er før skatt.{{/if}}{{~/inline~}}
+{{~#* inline "DuEllerInstitusjonen"~}}{{#if institusjon}}Institusjonen{{else}}Du{{/if}}{{~/inline~}}
+{{~#* inline "duEllerinstitusjonen"~}}{{#if institusjon}}institusjonen{{else}}du{{/if}}{{~/inline~}}
+
+{{#if datoerHvisSammenhengendePeriode.fom}}
+{{#if gjelderDødsfall}}Det er utbetalt {{{kroner beløp}}} for mykje{{else}}{{> DuEllerInstitusjonen}} har fått {{{kroner beløp}}} for mykje utbetalt{{/if}} i {{{ytelsesnavnUbestemt}}} frå og med {{{dato datoerHvisSammenhengendePeriode.fom }}} til og med {{{dato datoerHvisSammenhengendePeriode.tom}}}.{{> førSkatt}}
+
+{{else}}
+{{#if gjelderDødsfall}}Det er utbetalt {{{kroner beløp}}} for mykje{{else}}{{> DuEllerInstitusjonen}} har fått {{{kroner beløp}}} for mykje utbetalt{{/if}} i {{{ytelsesnavnUbestemt}}}.{{#if ytelseMedSkatt}} Dette er før skatt.{{/if}}
+
+{{#eq feilutbetaltePerioder.length 1}}Perioden{{else}}Periodane{{/eq}} {{#if gjelderDødsfall}}det er{{else}}{{> duEllerinstitusjonen}} har fått{{/if}} for mykje utbetalt for, er:
+*-{{#each feilutbetaltePerioder}}
+Frå og med {{{dato fom}}} til og med {{{dato tom}}}.{{/each}}-*
+{{/if}}
+{{> nn/varsel/varsel_slutt}}

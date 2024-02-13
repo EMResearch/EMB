@@ -1,0 +1,3 @@
+# unngår at editor auto-inserter newline i fasiten
+[*.txt]
+insert_final_newline = false

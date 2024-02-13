@@ -1,0 +1,97 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "get a charge request with corporate surcharge",
+      "providerStates": [
+        {
+          "name": "a transaction with corporate surcharge exists",
+          "params": {
+            "account_id": "123456",
+            "charge_id": "ch_123abc456xyz"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction/ch_123abc456xyz",
+        "query": {
+          "account_id": ["123456"],
+          "transaction_type": ["PAYMENT"],
+          "status_version": ["1"]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 2000,
+          "state": {
+            "finished": false,
+            "status": "created"
+          },
+          "description": "Test description",
+          "reference": "aReference",
+          "language": "en",
+          "transaction_id": "ch_123abc456xyz",
+          "return_url": "https://somewhere.gov.uk/rainbow/1",
+          "payment_provider": "sandbox",
+          "created_date": "2018-10-16T10:46:02.121Z",
+          "corporate_card_surcharge": 250,
+          "total_amount": 2250,
+          "refund_summary": {
+            "status": "available",
+            "user_external_id": null,
+            "amount_available": 2250,
+            "amount_submitted": 0
+          },
+          "settlement_summary": {
+            "capture_submit_time": "2018-10-16T10:46:03.121Z",
+            "captured_date": "2018-10-16"
+          },
+          "delayed_capture": false
+        },
+        "matchingRules": {
+          "body": {
+            "$.reference": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.description": {
+              "matchers": [{"match": "type"}]
+            },
+             "$.return_url": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.created_date": {
+              "matchers": [{ "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" }]
+            },
+            "$.settlement_summary.capture_submit_time": {
+              "matchers": [{ "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" }]
+            },
+            "$.settlement_summary.captured_date": {
+              "matchers": [{ "date": "yyyy-MM-dd" }]
+            },
+            "$.refund_summary.amount_available": {
+              "matchers": [{"match": "type"}]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

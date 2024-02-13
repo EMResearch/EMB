@@ -1,0 +1,47 @@
+<h4>Oversikt over resultatet av tilbakebetalingssaken</h4>
+    <table>
+        <thead>
+        <tr>
+            <th class="periode">Periode</th>
+            <th>Feilutbetalt beløp</th>
+            <th>Tilbakebetaling</th>
+            <th>Renter</th>
+            <th>Beløp før skatt</th>
+            <th class="sum">Beløp du skal betale tilbake etter skatt er trukket fra</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="periode">01.01.2019 – 31.01.2019</td>
+            <td class="tall">30 001 kroner</td>
+            <td>Deler av beløpet</td>
+            <td class="tall"></td>
+            <td class="tall">20 002 kroner</td>
+            <td class="tall sum">16 015 kroner</td>
+        </tr>
+        <tr>
+            <td class="periode">01.02.2019 – 28.02.2019</td>
+            <td class="tall">3 000 kroner</td>
+            <td>Ingen tilbakebetaling</td>
+            <td class="tall"></td>
+            <td class="tall">0 kroner</td>
+            <td class="tall sum">0 kroner</td>
+        </tr>
+        <tr>
+            <td class="periode">01.03.2019 – 31.03.2019</td>
+            <td class="tall">3 000 kroner</td>
+            <td>Hele beløpet</td>
+            <td class="tall">300 kroner</td>
+            <td class="tall">3 300 kroner</td>
+            <td class="tall sum">2 222 kroner</td>
+        </tr>
+        <tr>
+            <td class="periode sumrad">Sum</td>
+            <td class="tall sumrad"></td>
+            <td class="sumrad"></td>
+            <td class="tall sumrad"></td>
+            <td class="tall sumrad">23 302 kroner</td>
+            <td class="tall sum sumrad">18 537 kroner</td>
+        </tr>
+        </tbody>
+    </table>

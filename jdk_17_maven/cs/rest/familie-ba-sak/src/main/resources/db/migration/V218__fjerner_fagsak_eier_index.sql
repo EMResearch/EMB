@@ -1,0 +1,1 @@
+DROP INDEX uidx_fagsak_eier_aktoer_ikke_arkivert

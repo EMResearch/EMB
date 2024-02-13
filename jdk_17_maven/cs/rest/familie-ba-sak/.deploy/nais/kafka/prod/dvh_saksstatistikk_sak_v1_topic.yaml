@@ -1,0 +1,29 @@
+apiVersion: kafka.nais.io/v1
+kind: Topic
+metadata:
+  name: aapen-barnetrygd-saksstatistikk-sak-v1
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+spec:
+  pool: nav-prod
+  config: # optional; all fields are optional too; defaults shown
+    cleanupPolicy: delete  # delete, compact
+    minimumInSyncReplicas: 2
+    partitions: 1
+    replication: 3  # see min/max requirements
+    retentionBytes: -1  # -1 means unlimited
+    retentionHours: 2016 # -1 means unlimited
+  acl:
+    - team: teamfamilie
+      application: familie-ba-sak #owner
+      access: write   # readwrite
+    - team: teamfamilie
+      application: familie-ba-statistikk
+      access: read
+    - team: teamfamilie
+      application: familie-ba-kafka-manager
+      access: read
+    - team: ptsak
+      application: pt-sak-barnetrygd
+      access: read

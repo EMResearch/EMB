@@ -1,0 +1,2 @@
+UPDATE behandling SET resultat='ENDRET_OG_FORTSATT_INNVILGET' WHERE resultat='ENDRING_OG_LØPENDE';
+UPDATE behandling SET resultat='ENDRET_OG_OPPHØRT' WHERE resultat='ENDRING_OG_OPPHØRT';

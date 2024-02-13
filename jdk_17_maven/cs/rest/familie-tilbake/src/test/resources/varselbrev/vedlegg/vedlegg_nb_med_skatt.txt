@@ -1,0 +1,19 @@
+<h4>Feilutbetalt beløp per måned</h4>
+<table>
+    <thead>
+    <tr>
+        <th class="periode">Periode</th>
+            <th>Utbetalt beløp før skatt er trukket fra</th>
+            <th>Nytt beregnet beløp før skatt er trukket fra</th>
+            <th>Feilutbetalt beløp før skatt er trukket fra</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="periode">januar 2022</td>
+            <td class="tall">1 573 kroner</td>
+            <td class="tall">1 572 kroner</td>
+            <td class="tall">1 574 kroner</td>
+        </tr>
+    </tbody>
+</table>

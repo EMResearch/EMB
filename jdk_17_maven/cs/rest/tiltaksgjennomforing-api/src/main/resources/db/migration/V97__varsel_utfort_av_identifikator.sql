@@ -1,0 +1,1 @@
+alter table varsel add column utført_av_identifikator varchar(11) default null;

@@ -1,0 +1,42 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/axsys/[X,Z]123456",
+        "queryParameters": {
+          "inkluderAlleEnheter": {
+            "equalTo": "false"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"enheter\":[{\"enhetId\":\"0906\",\"fagomrader\":[\"ABC\",\"DEF\",\"GHI\",\"JKL\",\"MNO\",\"PQR\",\"STU\",\"WXY\"],\"navn\":\"NAV Storebyen\"},{\"enhetId\":\"0904\",\"fagomrader\":[\"ABC\",\"DEF\",\"GHI\",\"JKL\",\"MNO\",\"PQR\",\"STU\",\"WXY\"],\"navn\":\"NAV Lillebyen\"}]}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/axsys/[A-Z]{1}[0-9]{6}",
+        "queryParameters": {
+          "inkluderAlleEnheter": {
+            "equalTo": "false"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"enheter\": []}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

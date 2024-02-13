@@ -1,0 +1,1 @@
+alter table arbeidsgiver_notifikasjon add column operasjon_type varchar;

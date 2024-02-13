@@ -1,0 +1,138 @@
+{
+  "beskrivelse": "Innvilget 2 barn med endringsperioder med ulike avtaledatoer",
+  "fom": "2021-09-01",
+  "tom": "2021-12-31",
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_ENDRET_UTBETALING"
+  ],
+  "fritekster": [],
+  "utvidetScenario": "IKKE_UTVIDET_YTELSE",
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2019-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2021-05-01",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [
+            "DELT_BOSTED"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2021-09",
+            "tom": "2021-12"
+          },
+          "årsak": "DELT_BOSTED",
+          "søknadstidspunkt": "2021-01-31",
+          "avtaletidspunktDeltBosted": "2021-04-02"
+        }
+      ],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 0,
+          "erPåvirketAvEndring": true,
+          "prosent": 0
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2017-06-14",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2021-05-01",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [
+            "DELT_BOSTED"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2021-09",
+            "tom": "2021-12"
+          },
+          "årsak": "DELT_BOSTED",
+          "søknadstidspunkt": "2021-01-31",
+          "avtaletidspunktDeltBosted": "2021-10-07"
+        }
+      ],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 0,
+          "erPåvirketAvEndring": true,
+          "prosent": 0
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": " til 31. desember 2021",
+    "belop": 0,
+    "antallBarn": 2,
+    "barnasFodselsdager": "14.06.17 og 20.01.19",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "20.01.19",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "20.01.19",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 1,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "endretUtbetalingDeltBostedEndretUtbetaling",
+        "belop": 0,
+        "soknadstidspunkt": "31.01.21",
+        "avtaletidspunktDeltBosted": "02.04.21"
+      },
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "14.06.17",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "14.06.17",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 1,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "endretUtbetalingDeltBostedEndretUtbetaling",
+        "belop": 0,
+        "soknadstidspunkt": "31.01.21",
+        "avtaletidspunktDeltBosted": "07.10.21"
+      }
+    ],
+    "type": "innvilgelseIngenUtbetaling"
+  }
+}

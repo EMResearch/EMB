@@ -1,0 +1,51 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/familie-tilbake
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+
+oppdrag.mq:
+  queuemanager: MQLS02
+  kravgrunnlag: QA.Q1_FAMILIE_TILBAKE.KRAVGRUNNLAG
+  channel: Q1_FAMILIE_TILBAKE
+  hostname: b27apvl220.preprod.local
+  port: 1413
+  enabled: true
+
+rolle:
+  barnetrygd:
+    veileder: "93a26831-9866-4410-927b-74ff51a9107c"
+    saksbehandler: "d21e00a4-969d-4b28-8782-dc818abfae65"
+    beslutter: "9449c153-5a1e-44a7-84c6-7cc7a8867233"
+  enslig:
+    veileder: "19dcbfde-4cdb-4c64-a1ea-ac9802b03339"
+    saksbehandler: "ee5e0b5e-454c-4612-b931-1fe363df7c2c"
+    beslutter: "01166863-22f1-4e16-9785-d7a05a22df74"
+  kontantstøtte:
+    veileder: "71f503a2-c28f-4394-a05a-8da263ceca4a"
+    saksbehandler: "c7e0b108-7ae6-432c-9ab4-946174c240c0"
+    beslutter: "52fe1bef-224f-49df-a40a-29f92d4520f8"
+  teamfamilie:
+    forvalter: "c62e908a-cf20-4ad0-b7b3-3ff6ca4bf38b"
+  prosessering: "928636f4-fd0d-4149-978e-a6fb68bb19de" # 0000-GA-STDAPPS
+
+FAMILIE_INTEGRASJONER_URL: https://familie-integrasjoner.dev-fss-pub.nais.io
+FAMILIE_INTEGRASJONER_SCOPE: api://dev-fss.teamfamilie.familie-integrasjoner/.default
+FAMILIE_OPPDRAG_URL: https://familie-oppdrag.dev-fss-pub.nais.io
+SECURITYTOKENSERVICE_URL: https://api-gw-q1.oera.no/security-token-service/SecurityTokenServiceProvider/
+
+PDL_URL: https://pdl-api.dev-fss-pub.nais.io
+PDL_SCOPE: api://dev-fss.pdl.pdl-api/.default
+FORELDELSE_ANTALL_MÅNED: 3
+OPPRETTELSE_DAGER_BEGRENSNING: 1
+CRON_HÅNDTER_GAMMEL_KRAVGRUNNLAG: 0 10 * ? * MON-FRI
+CRON_AUTOMATISK_SAKSBEHANDLING: 0 20 * ? * MON-FRI
+CRON_AUTOMATISK_GJENOPPTA: 0 30 * ? * MON-FRI
+
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_BARNETRYGD: 0
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_BARNETILSYN: 1
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_OVERGANGSSTØNAD: 0
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_SKOLEPENGER: 1
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_KONTANTSTØTTE: 1

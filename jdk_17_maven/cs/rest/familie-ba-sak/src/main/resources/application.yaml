@@ -1,0 +1,152 @@
+application:
+  name: familie-ba-sak
+
+server:
+  servlet:
+    context-path: /
+  port: 8089
+  shutdown: graceful
+
+no.nav.security.jwt:
+  client:
+    registration:
+      familie-klage-onbehalfof:
+        resource-url: ${FAMILIE_KLAGE_URL}
+        token-endpoint-url: ${AZURE_OPENID_CONFIG_TOKEN_ENDPOINT}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${FAMILIE_KLAGE_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+  main:
+    allow-bean-definition-overriding: true
+    banner-mode: "off"
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      connection-test-query: "select 1"
+      max-lifetime: 900000
+      minimum-idle: 1
+      data-source-properties.stringtype: unspecified # Nødvendig for å kunde sende en String til et json-felt i PostgresSql
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+        temp:
+          use_jdbc_metadata_defaults: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration,classpath:db/init
+  kafka:
+    client-id: familie-ba-sak
+
+springdoc:
+  swagger-ui:
+    oauth:
+      use-pkce-with-authorization-code-grant: true
+      client-id: ${AZURE_APP_CLIENT_ID}
+      scope-separator: ","
+    disable-swagger-default-url: true
+
+logging:
+  config: "classpath:logback-spring.xml"
+sentry.dsn: https://dd9a6107bdda4edeb51ece7283f37af4@sentry.gc.nav.no/112
+sentry.logging.enabled: true
+
+retry.backoff.delay: 5000
+
+rolle:
+  veileder: "93a26831-9866-4410-927b-74ff51a9107c"
+  saksbehandler: "d21e00a4-969d-4b28-8782-dc818abfae65"
+  beslutter: "9449c153-5a1e-44a7-84c6-7cc7a8867233"
+  forvalter: "c62e908a-cf20-4ad0-b7b3-3ff6ca4bf38b"
+  kode6: "5ef775f2-61f8-4283-bf3d-8d03f428aa14" # 0000-GA-Strengt_Fortrolig_Adresse
+  kode7: "ea930b6b-9397-44d9-b9e6-f4cf527a632a" # 0000-GA-Fortrolig_Adresse
+
+funksjonsbrytere:
+  enabled: true
+  unleash:
+    uri: https://unleash.nais.io/api/
+    cluster: ${NAIS_CLUSTER_NAME}
+    applicationName: ${NAIS_APP_NAME}
+  kafka:
+    producer:
+      enabled: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      group:
+        readyness:
+          include: db
+        liveness:
+          include: db
+  endpoints.web:
+    exposure.include: info, health, metrics, prometheus
+    base-path: "/internal"
+  metrics.export.prometheus.enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+    db:
+      enabled: true
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
+
+
+prosessering:
+  continuousRunning.enabled: true
+  maxantall: 10
+  fixedDelayString:
+    in:
+      milliseconds: 5000
+  delete:
+    after:
+      weeks: 4
+
+FAMILIE_EF_SAK_API_URL_SCOPE: api://dev-gcp.teamfamilie.familie-ef-sak/.default
+FAMILIE_EF_SAK_API_URL: http://familie-ef-sak/api
+
+FAMILIE_KLAGE_URL: http://familie-klage
+FAMILIE_KLAGE_SCOPE: api://${DEPLOY_ENV}-gcp.teamfamilie.familie-klage/.default
+
+PDL_SCOPE: api://dev-fss.pdl.pdl-api/.default
+SANITY_DATASET: "ba-brev"
+
+BA_SAK_FRONTEND_CLIENT_ID: "dummy"
+BA_MOTTAK_CLIENT_ID: "dummy"
+FAMILIE_PROSESSERING_CLIENT_ID: "dummy"
+BA_SKATTEETATEN_CLIENT_ID: "dummy"
+
+FAMILIE_BREV_API_URL: http://familie-brev
+FAMILIE_BA_INFOTRYGD_FEED_API_URL: http://familie-ba-infotrygd-feed/api
+FAMILIE_BA_INFOTRYGD_API_URL: http://familie-ba-infotrygd
+FAMILIE_TILBAKE_API_URL: http://familie-tilbake/api
+PDL_URL: http://pdl-api.default
+FAMILIE_INTEGRASJONER_API_URL: http://familie-integrasjoner/api
+FAMILIE_OPPDRAG_API_URL: http://familie-oppdrag/api
+SANITY_FAMILIE_API_URL: https://xsrv1mh6.apicdn.sanity.io/v2021-06-07/data/query/ba-brev
+ECB_API_URL: https://data-api.ecb.europa.eu/service/data/EXR/
+CRON_FAGSAKSTATUS_SCHEDULER: "0 0 7 1 * *"
+
+# Swagger
+AUTHORIZATION_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/authorize
+TOKEN_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/token
+API_SCOPE: api://${AZURE_APP_CLIENT_ID}/.default
+
+DEPLOY_ENV: prod

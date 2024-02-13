@@ -1,0 +1,54 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "a create charge request for disabled account",
+      "providerStates": [
+        {
+          "name": "a gateway account with external id exists",
+          "params": {
+            "gateway_account_id": "123456"
+          }
+        },
+        {
+          "name": "the gateway account is disabled",
+          "params": {
+            "gateway_account_id": "123456"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/123456/charges",
+        "body": {
+          "amount": 100,
+          "reference": "a reference",
+          "description": "a description",
+          "return_url": "https://somewhere.gov.uk/rainbow/1"
+        }
+      },
+      "response": {
+        "status": 403,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "error_identifier": "ACCOUNT_DISABLED"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

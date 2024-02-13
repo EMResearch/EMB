@@ -1,0 +1,76 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/kontoregister/api/v1/hent-kontonr-org/990983666"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Accept":"application/json"
+        },
+        "jsonBody":
+        {
+          "mottaker": "889640782",
+          "kontonr": "10000008162"
+        }
+      }
+    },{
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/kontoregister/api/v1/hent-kontonr-org/999999999"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Accept":"application/json"
+        },
+        "jsonBody":
+        {
+          "mottaker": "889640782",
+          "kontonr": "10000008162"
+        }
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/kontoregister/api/v1/hent-kontonr-org/111234567"
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": "application/json",
+          "Accept":"application/json"
+        },
+        "jsonBody":
+        {
+          "feilmelding": "Organisasjonsnummer ikke funnet i kontoregister"
+        }
+      }
+    },{
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/kontoregister/api/v1/hent-kontonr-org/777333333"
+      },
+      "response": {
+        "status": 500,
+        "headers": {
+          "Content-Type": "application/json",
+          "Accept":"application/json"
+        },
+        "jsonBody":
+        {
+          "feilmelding": "Organisasjonsnummer ikke funnet i kontoregister"
+        }
+      }
+    }
+  ]
+}

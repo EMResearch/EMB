@@ -1,0 +1,17 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "urlPath": "/altinn-varsel"
+      },
+      "response": {
+        "status": 200,
+        "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"http://www.altinn.no/services/ServiceEngine/Notification/2010/10\" xmlns:ns1=\"http://schemas.altinn.no/services/ServiceEngine/Notification/2015/06\"><soapenv:Header/><soapenv:Body><ns:SendStandaloneNotificationBasicV3Response><ns:SendStandaloneNotificationBasicV3Result></ns:SendStandaloneNotificationBasicV3Result></ns:SendStandaloneNotificationBasicV3Response></soapenv:Body></soapenv:Envelope>",
+        "headers": {
+          "Content-Type": "application/soap+xml"
+        }
+      }
+    }
+  ]
+}

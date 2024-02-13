@@ -1,0 +1,19 @@
+query($ident: ID!) {
+  hentPerson(ident: $ident) {
+	  navn {
+		  fornavn
+		  mellomnavn
+		  etternavn
+	  }
+	  adressebeskyttelse {
+      	  gradering
+      }
+  }
+  hentGeografiskTilknytning(ident: $ident){
+      gtType
+      gtKommune
+      gtBydel
+      gtLand
+      regel
+    }
+}

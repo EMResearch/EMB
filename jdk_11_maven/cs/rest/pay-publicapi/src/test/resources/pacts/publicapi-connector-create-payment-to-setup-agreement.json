@@ -1,0 +1,174 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "a create payment to setup agreement request",
+      "providerStates": [
+        {
+          "name": "a gateway account and a new agreement exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "agreement_external_id": "i6sjhoa36s1lhtjl07vuuhbm72"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/123456/charges",
+        "body": {
+          "amount": 1968,
+          "reference" : "a-valid-reference",
+          "description": "a-valid-description",
+          "return_url": "https://www.google.com",
+          "agreement_id": "i6sjhoa36s1lhtjl07vuuhbm72",
+          "save_payment_instrument_to_agreement": true
+          }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 1968,
+          "state": {
+            "finished": false,
+            "status": "created"
+          },
+          "description": "a-valid-description",
+          "reference": "a-valid-reference",
+          "language": "en",
+          "links": [
+            {
+              "rel": "self",
+              "method": "GET",
+              "href": "https://localhost:62970/v1/api/accounts/652132679/charges/iinvkbkkrt8kcl0atps9q7p7cm"
+            },
+            {
+              "rel": "refunds",
+              "method": "GET",
+              "href": "https://localhost:62970/v1/api/accounts/652132679/charges/iinvkbkkrt8kcl0atps9q7p7cm/refunds"
+            },
+            {
+              "rel": "next_url",
+              "method": "GET",
+              "href": "http://CardFrontend/secure/efbdf987-3c91-4005-b892-9d056a4bd414"
+            },
+            {
+              "rel": "next_url_post",
+              "method": "POST",
+              "href": "http://CardFrontend/secure",
+              "type": "application/x-www-form-urlencoded",
+              "params": {
+                "chargeTokenId": "efbdf987-3c91-4005-b892-9d056a4bd414"
+              }
+            }
+          ],
+          "charge_id": "iinvkbkkrt8kcl0atps9q7p7cm",
+          "return_url": "http://service.local/success-page/",
+          "payment_provider": "sandbox",
+          "created_date": "2023-06-28T13:15:47.097Z",
+          "refund_summary": {
+            "status": "pending",
+            "user_external_id": null,
+            "amount_available": 1968,
+            "amount_submitted": 0
+          },
+          "settlement_summary": {
+            "capture_submit_time": null,
+            "captured_date": null
+          },
+          "delayed_capture": false,
+          "moto": false,
+          "agreement_id": "i6sjhoa36s1lhtjl07vuuhbm72",
+          "authorisation_mode": "web"
+        },
+        "matchingRules": {
+          "header": {
+            "Location": {
+              "matchers": [
+                {
+                  "regex": "https*:\/\/.*\/v1\/api\/accounts\/123456\/charges\/[a-z0-9]*"
+                }
+              ]
+            }
+          },
+          "body": {
+            "$.links[0].href": {
+              "matchers": [
+                {
+                  "regex": "https*:\/\/.*\/v1\/api\/accounts\/123456\/charges\/[a-z0-9]*"
+                }
+              ]
+            },
+            "$.links[1].href": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.links[2].href": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.links[2].params.chargeTokenId": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.links[3].href": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.links[3].params.chargeTokenId": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.charge_id": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.amount": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.reference": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.email": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.description": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.state.status": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.return_url": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.payment_provider": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.created_date": {
+              "matchers": [{ "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" }]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

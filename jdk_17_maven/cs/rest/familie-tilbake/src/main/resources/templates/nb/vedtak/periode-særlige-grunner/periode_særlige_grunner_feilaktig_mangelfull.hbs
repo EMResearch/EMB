@@ -1,0 +1,126 @@
+{{#switch navfeil=vurderinger.særligeGrunner.navfeil størrelse=vurderinger.særligeGrunner.størrelse tid=vurderinger.særligeGrunner.tid        reduksjon=(neq kravgrunnlag.feilutbetaltBeløp resultat.tilbakekrevesBeløp) annet=vurderinger.særligeGrunner.annet}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Det er lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=true annet=false}}
+        {{#if (eq vurderinger.aktsomhetsresultat "SIMPEL_UAKTSOMHET")}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi vurderer likevel at uaktsomheten din har vært så liten at vi har redusert beløpet du må betale tilbake.
+        {{/if}}
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=true annet=true}}
+        {{#if (eq vurderinger.aktsomhetsresultat "GROV_UAKTSOMHET")}}
+Vi har lagt vekt på at du må ha forstått at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Det er i vurderingen lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+        {{else}}
+Vi har lagt vekt på at du  ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi vurderer likevel at uaktsomheten din har vært så liten at vi har redusert beløpet du må betale tilbake. Det er i vurderingen også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+        {{/if}}
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false        reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok og at vi ikke kunne unngått å betale ut feil beløp. Du må derfor betale hele beløpet tilbake.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false      reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok og at vi ikke kunne unngått å betale ut feil beløp. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false      reduksjon=true annet=false}}
+        {{#if (eq vurderinger.aktsomhetsresultat "SIMPEL_UAKTSOMHET")}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi vurderer likevel at uaktsomheten din har vært så liten at vi har redusert beløpet du må betale tilbake.
+        {{/if}}
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false      reduksjon=true annet=true}}
+        {{#if (eq vurderinger.aktsomhetsresultat "GROV_UAKTSOMHET")}}
+Vi har lagt vekt på at du må ha forstått at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Det er i vurderingen lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+        {{else}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi vurderer likevel at uaktsomheten din har vært så liten at vi har redusert beløpet du må betale tilbake. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+        {{/if}}
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at beløpet er høyt. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at beløpet er høyt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=true annet=false}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake, fordi det feilutbetalte beløpet er lavt.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=true annet=true}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake, fordi det feilutbetalte beløpet er lavt og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at det er kort tid siden feilutbetalingen skjedde. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at det er kort tid siden feilutbetalingen skjedde. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=true annet=false}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det er lang tid siden feilutbetalingen skjedde.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=true annet=true}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det er lang tid siden feilutbetalingen skjedde og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at beløpet er høyt. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at beløpet er høyt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=true annet=false}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake, fordi det feilutbetalte beløpet er lavt.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=true annet=true}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake, fordi det feilutbetalte beløpet er lavt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Det er også kort tid siden utbetalingen skjedde og beløpet er høyt. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Det er også kort tid siden utbetalingen skjedde og beløpet er høyt og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=true annet=false}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det har gått lang tid siden feilutbetalingen skjedde og beløpet er lavt.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=true annet=true}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det har gått lang tid siden feilutbetalingen skjedde og beløpet er lavt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Det er også kort tid siden utbetalingen skjedde og beløpet er høyt. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Det er også kort tid siden utbetalingen skjedde og beløpet er høyt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=true annet=false}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det har gått lang tid siden feilutbetalingen skjedde og beløpet er lavt.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=true annet=true}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det har gått lang tid siden feilutbetalingen skjedde og beløpet er lavt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at det er kort tid siden feilutbetalingen skjedde. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen og at det er kort tid siden feilutbetalingen skjedde og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=true annet=false}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det er lang tid siden feilutbetalingen skjedde.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=true annet=true}}
+Vi har lagt vekt på at du ikke har gitt oss alle nødvendige opplysninger tidsnok til at vi kunne unngå feilutbetalingen. Vi har likevel redusert beløpet du må betale tilbake fordi det er lang tid siden feilutbetalingen skjedde. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+{{/switch}}

@@ -1,0 +1,57 @@
+{
+  "totaler": {
+    "totalbeløp": 531420,
+    "personligeYtelserMedBeløp": [
+      {
+        "personident": "1111111111111",
+        "type": "ORDINÆR_BARNETRYGD",
+        "fullYtelse": true,
+        "beløp": 231000
+      },
+      {
+        "personident": "222222222222",
+        "type": "SMÅBARNSTILLEGG",
+        "fullYtelse": false,
+        "beløp": 18420
+      }
+    ]
+  },
+  "perioder": [
+    {
+      "måned": "2019-01",
+      "totaltBeløp": 1384,
+      "personligeYtelserMedBeløp": [
+        {
+          "personident": "1111111111111",
+          "type": "ORDINÆR_BARNETRYGD",
+          "fullYtelse": true,
+          "beløp": 1054
+        },
+        {
+          "personident": "222222222222",
+          "type": "SMÅBARNSTILLEGG",
+          "fullYtelse": false,
+          "beløp": 330
+        }
+      ]
+    },
+    {
+      "måned": "2019-02",
+      "totalbeløp": 1384,
+      "personligeYtelserMedBeløp": [
+        {
+          "personident": "1111111111111",
+          "type": "ORDINÆR_BARNETRYGD",
+          "fullYtelse": true,
+          "beløp": 1054
+        },
+        {
+          "personident": "222222222222",
+          "type": "SMÅBARNSTILLEGG",
+          "fullYtelse": false,
+          "beløp": 330
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "beskrivelse": "Avslag på behandling med 1 barn med fritekst.",
+  "fom": "2021-09-01",
+  "tom": null,
+  "vedtaksperiodetype": "AVSLAG",
+  "begrunnelser": [],
+  "fritekster": [
+    "Du får ikke barnetrygd fordi test 1",
+    "Du får ikke barnetrygd fordi test 2",
+    "Du får ikke barnetrygd fordi test 3"
+  ],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2020-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "LOVLIG_OPPHOLD",
+          "resultat": "IKKE_OPPFYLT",
+          "periodeFom": "1993-08-10",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": "",
+    "belop": 0,
+    "antallBarn": 0,
+    "barnasFodselsdager": "",
+    "begrunnelser": [
+      {
+        "fritekst": "Du får ikke barnetrygd fordi test 1",
+        "type": "fritekst"
+      },
+      {
+        "fritekst": "Du får ikke barnetrygd fordi test 2",
+        "type": "fritekst"
+      },
+      {
+        "fritekst": "Du får ikke barnetrygd fordi test 3",
+        "type": "fritekst"
+      }
+    ],
+    "type": "avslag"
+  }
+}

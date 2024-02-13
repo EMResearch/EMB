@@ -1,0 +1,255 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/ereg/9[0-9]{8}"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"organisasjonsnummer\":\"999999999\",\"type\":\"Virksomhet\",\"navn\":{\"sammensattnavn\":\"Saltrød og Høneby\",\"navnelinje1\":\"Saltrød og\",\"navnelinje4\":\"Høneby\",\"bruksperiode\":{\"fom\":\"2019-01-14T11:39:39.512\"},\"gyldighetsperiode\":{\"fom\":\"2018-10-28\"}},\"organisasjonDetaljer\":{\"registreringsdato\":\"2018-10-28T00:00:00\",\"enhetstyper\":[{\"enhetstype\":\"BEDR\",\"bruksperiode\":{\"fom\":\"2019-01-14T11:39:39.511\"},\"gyldighetsperiode\":{\"fom\":\"2019-01-14\"}}],\"navn\":[{\"navnelinje1\":\"Saltrød og Høneby\",\"bruksperiode\":{\"fom\":\"2019-01-14T11:39:39.512\"},\"gyldighetsperiode\":{\"fom\":\"2018-10-28\"}}],\"forretningsadresser\":[{\"adresselinje1\":\"Nedre Tyholms vei13, 4836 Arendal\",\"adresselinje3\":\"Nedre Tyholms vei 13, 4836 Arendal\",\"postnummer\":\"4836\",\"landkode\":\"NO\",\"kommunenummer\":\"0906\",\"bruksperiode\":{\"fom\":\"2019-01-14T11:39:39.512\"},\"gyldighetsperiode\":{\"fom\":\"2018-10-28\"}}],\"postadresser\":[{\"adresselinje1\":\"Postboks 502 Lund,4605 KRISTIANSAN\",\"adresselinje2\":\"DS\",\"adresselinje3\":\"Postboks 502 Lund,4605 KRISTIANSA\",\"postnummer\":\"4605\",\"landkode\":\"NO\",\"kommunenummer\":\"1001\",\"bruksperiode\":{\"fom\":\"2019-01-14T11:39:39.512\"},\"gyldighetsperiode\":{\"fom\":\"2018-10-28\"}}],\"sistEndret\":\"2018-10-28\"},\"virksomhetDetaljer\":{\"enhetstype\":\"BEDR\"}}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/ereg/8[0-9]{8}"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "organisasjonsnummer": "885807542",
+          "type": "JuridiskEnhet",
+          "navn": {
+            "sammensattnavn": "ADDPERSONA AS",
+            "navnelinje1": "ADDPERSONA AS",
+            "bruksperiode": {
+              "fom": "2015-02-23T08:04:53.2"
+            },
+            "gyldighetsperiode": {
+              "fom": "2003-06-28"
+            }
+          },
+          "organisasjonDetaljer": {
+            "registreringsdato": "2003-06-28T00:00:00",
+            "stiftelsesdato": "2003-06-16",
+            "enhetstyper": [
+              {
+                "enhetstype": "AS",
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:49:43.852"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2003-06-28"
+                }
+              }
+            ],
+            "navn": [
+              {
+                "sammensattnavn": "ADDPERSONA AS",
+                "navnelinje1": "ADDPERSONA AS",
+                "bruksperiode": {
+                  "fom": "2015-02-23T08:04:53.2"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2003-06-28"
+                }
+              }
+            ],
+            "naeringer": [
+              {
+                "naeringskode": "78.200",
+                "hjelpeenhet": false,
+                "bruksperiode": {
+                  "fom": "2014-05-22T00:42:12.169"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2003-07-01"
+                }
+              }
+            ],
+            "forretningsadresser": [
+              {
+                "type": "Forretningsadresse",
+                "adresselinje1": "Karl Johans gate 8",
+                "postnummer": "0154",
+                "landkode": "NO",
+                "kommunenummer": "0301",
+                "bruksperiode": {
+                  "fom": "2018-04-10T04:00:47.12"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2018-04-09"
+                }
+              }
+            ],
+            "epostadresser": [
+              {
+                "adresse": "post@addpersona.no",
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:49:43.85"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2014-03-18"
+                }
+              }
+            ],
+            "internettadresser": [
+              {
+                "adresse": "www.addpersona.no",
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:49:43.85"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2014-03-18"
+                }
+              }
+            ],
+            "telefonnummer": [
+              {
+                "nummer": "22 41 02 07",
+                "telefontype": "TFON",
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:49:43.852"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2014-03-18"
+                }
+              }
+            ],
+            "mobiltelefonnummer": [
+              {
+                "nummer": "415 77 755",
+                "telefontype": "MTLF",
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:49:43.851"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2014-03-18"
+                }
+              }
+            ],
+            "formaal": [
+              {
+                "formaal": "Hele eller deler av rekrutteringsprosessen, utleie av personell til\nmidlertidige og faste stillinger, HR-rådgivning, karriereveiledning,\nkonsulentvirksomhet og hva som herved står i forbindelse.",
+                "bruksperiode": {
+                  "fom": "2021-12-09T04:00:55.958"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2021-12-08"
+                }
+              }
+            ],
+            "registrertMVA": [
+              {
+                "registrertIMVA": true,
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:49:43.852"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2014-03-18"
+                }
+              }
+            ],
+            "ansatte": [
+              {
+                "antall": 26,
+                "bruksperiode": {
+                  "fom": "2022-12-16T00:59:52.877"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2022-12-14"
+                }
+              }
+            ],
+            "navSpesifikkInformasjon": {
+              "erIA": false,
+              "bruksperiode": {
+                "fom": "1900-01-01T00:00:00"
+              },
+              "gyldighetsperiode": {
+                "fom": "1900-01-01"
+              }
+            },
+            "maalform": "NB",
+            "sistEndret": "2022-12-14"
+          },
+          "juridiskEnhetDetaljer": {
+            "enhetstype": "AS",
+            "sektorkode": "2100",
+            "kapitalopplysninger": [
+              {
+                "kapital": 100000,
+                "kapitalInnbetalt": 100000,
+                "valuta": "NOK",
+                "fritekst": "null",
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:11:43.927"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2014-03-18"
+                }
+              }
+            ],
+            "foretaksregisterRegistreringer": [
+              {
+                "registrert": true,
+                "bruksperiode": {
+                  "fom": "2014-05-21T18:49:43.851"
+                },
+                "gyldighetsperiode": {
+                  "fom": "2014-03-18"
+                }
+              }
+            ]
+          },
+          "fusjoner": [
+            {
+              "juridiskEnhet": {
+                "organisasjonsnummer": "989023438",
+                "type": "JuridiskEnhet",
+                "navn": {
+                  "sammensattnavn": "RABBE & HUSBY HOLDING AS",
+                  "navnelinje1": "RABBE & HUSBY HOLDING AS",
+                  "bruksperiode": {
+                    "fom": "2015-02-23T08:04:53.2"
+                  },
+                  "gyldighetsperiode": {
+                    "fom": "2006-04-11"
+                  }
+                },
+                "organisasjonDetaljer": {
+                  "navn": [
+                    {
+                      "sammensattnavn": "RABBE & HUSBY HOLDING AS",
+                      "navnelinje1": "RABBE & HUSBY HOLDING AS",
+                      "bruksperiode": {
+                        "fom": "2015-02-23T08:04:53.2"
+                      },
+                      "gyldighetsperiode": {
+                        "fom": "2006-04-11"
+                      }
+                    }
+                  ]
+                }
+              },
+              "virkningsdato": "2017-12-11",
+              "bruksperiode": {
+                "fom": "2017-12-12T04:01:20.917"
+              },
+              "gyldighetsperiode": {
+                "fom": "2017-07-01"
+              }
+            }
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

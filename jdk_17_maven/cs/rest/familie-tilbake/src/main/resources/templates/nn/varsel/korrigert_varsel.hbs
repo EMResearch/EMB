@@ -1,0 +1,11 @@
+{{~#* inline "førSkatt"}}{{#if ytelseMedSkatt}} før skatt{{/if}}{{~/inline~}}
+{{~#* inline "duEllerDe"~}}{{#if institusjon}}de{{else}}du{{/if}}{{~/inline~}}
+
+Vi varslet {{#and (not gjelderDødsfall) (not institusjon)}}deg {{/and}}{{{dato varsletDato}}} om at {{#or gjelderDødsfall institusjon}}det var{{else}}du hadde fått{{/or}} utbetalt {{{kroner varsletBeløp}}} for mykje i {{{ytelsesnavnUbestemt}}}{{> førSkatt}}.
+
+Riktig beløp som er utbetalt for mykje, er {{{kroner beløp}}}{{> førSkatt}}.
+
+{{#eq feilutbetaltePerioder.length 1}}Perioden{{else}}Periodane{{/eq}} {{#if gjelderDødsfall}}det er{{else}}{{> duEllerDe}} har fått{{/if}} for mykje utbetalt for, er:
+*-{{#each feilutbetaltePerioder}}
+Frå og med {{{dato fom}}} til og med {{{dato tom}}}.{{/each}}-*
+{{> nn/varsel/varsel_slutt}}

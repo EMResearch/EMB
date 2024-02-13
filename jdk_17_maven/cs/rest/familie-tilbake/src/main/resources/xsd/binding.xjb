@@ -1,0 +1,11 @@
+<bindings version="2.1"
+          xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+    <globalBindings generateElementProperty="false">
+        <xjc:javaType name="java.time.LocalDate" xmlType="xs:date"
+                      adapter="com.migesok.jaxb.adapter.javatime.LocalDateXmlAdapter" />
+        <xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime"
+                      adapter="com.migesok.jaxb.adapter.javatime.LocalDateTimeXmlAdapter" />
+    </globalBindings>
+</bindings>

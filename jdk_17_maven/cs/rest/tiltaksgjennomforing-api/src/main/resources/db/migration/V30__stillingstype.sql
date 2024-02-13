@@ -1,0 +1,1 @@
+alter table avtale_innhold add column stillingstype varchar;

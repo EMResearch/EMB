@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:no:nav:tilbakekreving:typer:v1"
+            xmlns="urn:no:nav:tilbakekreving:typer:v1"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified">
+
+    <xsd:complexType name="MmelDto">
+        <xsd:annotation>
+            <xsd:documentation>MMEL - Inneholder elementene som skal være med i en status output</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="systemId" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="kodeMelding" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="alvorlighetsgrad" type="AlvorlighetsgradDto"/>
+            <xsd:element minOccurs="0" name="beskrMelding" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sqlKode" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sqlState" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sqlMelding" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="mqCompletionKode" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="mqReasonKode" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="programId" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="sectionNavn" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="FnrOrgnrDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="9"/>
+            <xsd:maxLength value="11"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="JaNeiDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="J"/>
+            <xsd:enumeration value="N"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="KodeAksjonDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:length value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="KodeKlasseDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="20"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="TypeGjelderDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="PERSON"/>
+            <xsd:enumeration value="ORGANISASJON"/>
+            <xsd:enumeration value="SAMHANDLER"/>
+            <xsd:enumeration value="APPBRUKER"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="TypeKlasseDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="FEIL"/><!-- feilkonto -->
+            <xsd:enumeration value="JUST"/><!-- justeringskonto -->
+            <xsd:enumeration value="SKAT"/><!-- skatt -->
+            <xsd:enumeration value="TREK"/><!-- trekk -->
+            <xsd:enumeration value="YTEL"/><!-- ytelseskonto -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="SaksbehandlerDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="8"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="AlvorlighetsgradDto">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="00"/>
+            <xsd:enumeration value="04"/>
+            <xsd:enumeration value="08"/>
+            <xsd:enumeration value="12"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="belop">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:totalDigits value="11" />
+            <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="skattProsent">
+        <xsd:restriction base="xsd:decimal">
+            <xsd:totalDigits value="7" />
+            <xsd:fractionDigits value="4" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="PeriodeDto">
+        <xsd:sequence>
+            <xsd:element name="fom" type="xsd:date"/>
+            <xsd:element name="tom" type="xsd:date"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+</xsd:schema>

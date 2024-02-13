@@ -1,0 +1,1 @@
+alter table avtale drop column utkast_akseptert;

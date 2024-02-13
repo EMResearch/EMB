@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urn:endringKravOgVedtakstatus xmlns:urn="urn:no:nav:tilbakekreving:status:v1">
+    <urn:kravOgVedtakstatus>
+        <urn:vedtakId>0</urn:vedtakId>
+        <urn:kodeStatusKrav>ENDR</urn:kodeStatusKrav>
+        <urn:kodeFagomraade>BA</urn:kodeFagomraade>
+        <urn:fagsystemId>testverdi</urn:fagsystemId>
+        <urn:vedtakGjelderId>testverdi</urn:vedtakGjelderId>
+        <urn:typeGjelderId>PERSON</urn:typeGjelderId>
+        <urn:referanse>0</urn:referanse>
+    </urn:kravOgVedtakstatus>
+</urn:endringKravOgVedtakstatus>

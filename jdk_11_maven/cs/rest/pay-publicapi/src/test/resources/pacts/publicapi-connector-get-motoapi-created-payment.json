@@ -1,0 +1,133 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "get a charge request for a moto_api created payment",
+      "providerStates": [
+        {
+          "name": "a charge with authorisation mode moto_api exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "charge_id": "ch_123abc456def"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/api/accounts/123456/charges/ch_123abc456def"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "charge_id": "ch_123abc456def",
+          "amount": 100,
+          "reference": "a reference",
+          "description": "a description",
+          "state": {
+            "status": "created",
+            "finished": false
+          },
+          "payment_provider": "Sandbox",
+          "created_date": "2016-01-01T12:00:00Z",
+          "language": "en",
+          "delayed_capture": false,
+          "moto": true,
+          "authorisation_mode": "moto_api",
+          "links": [
+            {
+              "href": "https://connector/v1/api/accounts/123456/charges/ch_123abc456def",
+              "rel": "self",
+              "method": "GET"
+            },
+            {
+              "rel": "refunds",
+              "href": "url"
+            },
+            {
+              "href": "https://connector/v1/api/charges/authorise",
+              "rel": "auth_url_post",
+              "type": "application/json",
+              "params": {
+                "one_time_token": "token_1234567asdf"
+              },
+              "method": "POST"
+            }
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.charge_id": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.amount": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.reference": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.email": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.description": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.state.status": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.return_url": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.payment_provider": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.moto": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.delayed_capture": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.created_date": {
+              "matchers": [{ "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" }]
+            },
+            "$.links[0].href": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.links[1].href": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.links[2].href": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            },
+            "$.links[2].params.one_time_token": {
+              "matchers": [
+                {"match": "type"}
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

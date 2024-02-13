@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- override spring base logging pattern -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%d [%-5level] [%thread] %logger{5} %replace(- [%X{consumerId}, %X{callId}, %X{userId}] ){'- \[, , \] ',''}- %m%n"/>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+
+    <logger name="no" level="DEBUG"/>
+</configuration>

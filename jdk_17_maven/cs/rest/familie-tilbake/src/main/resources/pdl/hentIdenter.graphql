@@ -1,0 +1,8 @@
+query($ident: ID!) {
+    pdlIdenter: hentIdenter(ident: $ident, historikk: false) {
+        identer{
+            ident
+            gruppe
+        }
+    }
+}

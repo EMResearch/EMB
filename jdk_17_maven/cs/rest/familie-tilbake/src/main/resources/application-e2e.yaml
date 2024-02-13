@@ -1,0 +1,100 @@
+no.nav.security.jwt:
+  issuer.azuread:
+    discoveryurl: http://mock-oauth2-server:1111/v2.0/.well-known/openid-configuration
+    accepted_audience: api://${TILBAKE_CLIENT_ID}/.default
+    cookie_name: azure_token
+  client:
+    registration:
+      familie-integrasjoner:
+        resource-url: ${FAMILIE_INTEGRASJONER_URL}
+        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${FAMILIE_INTEGRASJONER_SCOPE}
+        authentication:
+          client-id: ${TILBAKE_CLIENT_ID}
+          client-secret: ${TILBAKE_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      familie-integrasjoner-clientcredentials:
+        resource-url: ${FAMILIE_INTEGRASJONER_URL}
+        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
+        grant-type: client_credentials
+        scope: ${FAMILIE_INTEGRASJONER_SCOPE}
+        authentication:
+          client-id: ${TILBAKE_CLIENT_ID}
+          client-secret: ${TILBAKE_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      pdl:
+        resource-url: ${PDL_URL}
+        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${PDL_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      pdl-clientcredentials:
+        resource-url: ${PDL_URL}
+        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
+        grant-type: client_credentials
+        scope: ${PDL_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      familie-oppdrag:
+        resource-url: ${FAMILIE_OPPDRAG_URL}
+        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${FAMILIE_OPPDRAG_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      familie-oppdrag-clientcredentials:
+        resource-url: ${FAMILIE_OPPDRAG_URL}
+        token-endpoint-url: ${AZUREAD_TOKEN_ENDPOINT_URL}
+        grant-type: client_credentials
+        scope: ${FAMILIE_OPPDRAG_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+
+logging:
+  config: "classpath:logback-e2e.xml"
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-tilbake:5432/familie-tilbake
+    username: familie
+    password: familie-pwd
+  cloud:
+    vault:
+      database:
+        role: familie
+
+STS_URL: http://nav-auth-mock:8200/nais-sts/token
+PDL_URL: http://familie-mock-server:1337/rest/api/pdl/
+PDL_SCOPE: api://dummy/.default
+SECURITYTOKENSERVICE_URL: https://localhost:8063/soap/SecurityTokenServiceProvider/
+
+FAMILIE_INTEGRASJONER_URL: http://familie-integrasjoner:8085
+FAMILIE_OPPDRAG_URL: http://dummy
+AZUREAD_TOKEN_ENDPOINT_URL: http://mock-oauth2-server:1111/v2.0/token
+
+CREDENTIAL_USERNAME: srvfamilie-tilbake
+CREDENTIAL_PASSWORD:
+API_SCOPE: api://${TILBAKE_CLIENT_ID}/.default
+
+prosessering:
+  fixedDelayString:
+    in:
+      milliseconds: 2500
+
+unleash:
+  enabled: true
+
+NAIS_APP_NAME: familie-klage
+UNLEASH_SERVER_API_URL: http://localhost:4242/api
+UNLEASH_SERVER_API_TOKEN: token
+NAIS_CLUSTER_NAME: dev-gcp

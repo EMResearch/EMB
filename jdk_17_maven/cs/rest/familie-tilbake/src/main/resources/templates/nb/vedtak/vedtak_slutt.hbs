@@ -1,0 +1,59 @@
+{{~#* inline "pronomen"~}}{{#if gjelderDødsfall}}dere{{else}}du{{/if}}{{~/inline~}}
+{{~#* inline "Pronomen"~}}{{#if gjelderDødsfall}}Dere{{else}}Du{{/if}}{{~/inline~}}
+{{#if (neq 1 antallPerioder)}}_{{#if hjemmel.lovhjemmelFlertall}}Lovhjemlene{{else}}Lovhjemmelen{{/if}} vi har brukt
+{{else}}
+
+{{/if}}
+Vedtaket er gjort etter {{{hjemmel.lovhjemmelVedtak}}}.
+{{#if (neq totalresultat.hovedresultat "INGEN_TILBAKEBETALING")}}
+    {{#if skattepliktig}}
+_Skatt og skatteoppgjør
+    {{#if totalresultat.harSkattetrekk }}
+Skatten som er trukket fra beløpet {{#if gjelderDødsfall}}som skal betales{{else}}du skal betale{{/if}} tilbake, er beregnet etter det {{#if gjelderDødsfall}}som{{else}}du{{/if}} har blitt trukket i skatt i gjennomsnitt per måned.{{#if (not gjelderDødsfall)}} Det betyr at beløpet du skal betale tilbake etter skatt, ikke alltid er likt med det beløpet du fikk inn på konto.{{/if}}
+
+    {{/if}}
+NAV gir opplysninger til Skatteetaten{{#if totalresultat.harSkattetrekk }} om skattebeløpet og om beløpet {{#if gjelderDødsfall}}som skal betales{{else}}du skal betale{{/if}} tilbake før skatt er trukket fra{{/if}}. Skatteetaten vil vurdere om det er grunnlag for å endre skatteoppgjør.
+    {{/if}}
+_Hvordan betaler du tilbake?
+    {{#if behandling.erRevurdering}}
+Skatteetaten vil korrigere beløpet {{> pronomen}} skal betale tilbake. {{> Pronomen}} finner mer informasjon på
+skatteetaten.no/betale.
+    {{else}}
+{{> Pronomen}} vil få faktura fra Skatteetaten på det beløpet {{#if gjelderDødsfall}}som skal betales{{else}}du skal betale{{/if}} tilbake.
+
+På fakturaen vil det stå informasjon om nøyaktig beløp, kontonummer og forfallsdato. {{> Pronomen}} trenger ikke å gjøre noe før du får fakturaen.
+
+{{> Pronomen}} finner mer informasjon på skatteetaten.no/betale.
+    {{/if}}
+{{/if}}
+_{{#if gjelderDødsfall}}R{{else}}Du har r{{/if}}ett til å klage
+{{> Pronomen}} kan klage innen {{{konfigurasjon.klagefristIUker}}} uker fra den datoen {{> pronomen}} mottok vedtaket. {{> Pronomen}} finner skjema og informasjon på nav.no/klage.
+{{#if (neq totalresultat.hovedresultat "INGEN_TILBAKEBETALING")}}
+
+    {{#if gjelderDødsfall}}
+Beløpet må betales selv om det klages dette vedtaket. Dette følger av forvaltningsloven § 42. Hvis vedtaket blir gjort om slik at hele eller deler av beløpet likevel ikke skal betales tilbake, betaler vi pengene tilbake.
+    {{else}}
+Du må som hovedregel begynne å betale tilbake beløpet når du får fakturaen, selv om du klager på dette vedtaket. Dette følger av forvaltningsloven § 42. Hvis du får vedtak om at du ikke trengte å betale tilbake hele eller deler av beløpet du skyldte, betaler vi pengene tilbake til deg.
+    {{/if}}
+{{/if}}
+_{{#if gjelderDødsfall}}R{{else}}Du har r{{/if}}ett til innsyn
+{{#if gjelderDødsfall}}
+{{> Pronomen}} kan be om innsyn ved å ta kontakt med oss.
+{{else}}
+På nav.no/dittnav kan du se dokumentene i saken din.
+{{/if}}
+{{> nb/felles/spørsmål_kontaktinformasjon}}
+
+
+Med vennlig hilsen
+{{{avsenderenhet}}}
+
+{venstrejustert}{{{ansvarligSaksbehandler}}}{høyrejustert}{{{ansvarligBeslutter}}}{{#if brevmetadata.finnesAnnenMottaker}}
+
+
+Brev med likt innhold er sendt til {{{annenMottagersNavn}}}{{/if}}
+{{#if harVedlegg}}
+
+
+Vedlegg: Resultatet av tilbakebetalingssaken
+{{/if}}

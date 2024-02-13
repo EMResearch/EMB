@@ -1,0 +1,118 @@
+{
+  "beskrivelse": "Utbetalingsperiode. Reduksjon fra forrige iverksatte behandling. Ett barn bor ikke med søker og skal ikke med i periodeteksten.",
+  "fom": "2021-03-01",
+  "tom": "2021-08-31",
+  "vedtaksperiodetype": "UTBETALING_MED_REDUKSJON_FRA_SIST_IVERKSATTE_BEHANDLING",
+  "begrunnelser": [
+    "Standardbegrunnelse$REDUKSJON_FORELDRENE_BODDE_SAMMEN"
+  ],
+  "fritekster": [],
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "1985-05-24",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "2015-10-05",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1354,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2019-09-25",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1354,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2014-04-14",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2021-02-28",
+      "type": "BARN",
+      "harReduksjonFraForrigeBehandling": true,
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "periodeFom": "2021-02-28",
+          "periodeTom": null,
+          "resultat": "IKKE_OPPFYLT",
+          "utdypendeVilkårsvurderinger": [
+            "VURDERING_ANNET_GRUNNLAG"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "forventetOutput": {
+    "fom": "1. mars 2021",
+    "tom": "til 31. august 2021 ",
+    "belop": 3762,
+    "antallBarn": 3,
+    "barnasFodselsdager": "14.04.14, 05.10.15 og 25.09.19",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "28.02.21",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "februar 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "reduksjonForeldreneBoddeSammen",
+        "belop": 0,
+        "soknadstidspunkt": "",
+        "avtaletidspunktDeltBosted": ""
+      }
+    ],
+    "type": "innvilgelse",
+    "antallBarnMedUtbetaling": 3,
+    "antallBarnMedNullutbetaling": 0,
+    "fodselsdagerBarnMedUtbetaling": "14.04.14, 05.10.15 og 25.09.19",
+    "fodselsdagerBarnMedNullutbetaling": ""
+  }
+}

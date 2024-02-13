@@ -1,0 +1,42 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: tiltaksgjennomforing-wiremock
+  namespace: arbeidsgiver
+  labels:
+    team: arbeidsgiver
+spec:
+  image:  ghcr.io/navikt/tiltaksgjennomforing-api/wiremock:2.27.2
+  replicas:
+    min: 1
+    max: 1
+  port: 8080
+  liveness:
+    path: /ereg/912345678
+    initialDelay: 1
+    timeout: 1
+    periodSeconds: 10
+    failureThreshold: 3
+  readiness:
+    path: /ereg/912345678
+    initialDelay: 1
+    timeout: 1
+    periodSeconds: 10
+    failureThreshold: 3
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1000Mi
+    requests:
+      cpu: 500m
+      memory: 500Mi
+  env:
+  - name: deploytrigger
+    value: "{{deploytrigger}}"
+  filesFrom:
+  - configmap: tiltaksgjennomforing-wiremock
+    mountPath: /home/wiremock/mappings
+  accessPolicy:
+    inbound:
+      rules:
+      - application: tiltaksgjennomforing-api-labs

@@ -1,0 +1,118 @@
+{
+  "beskrivelse": "Innvilget. Fire barn, men kun søker som har utgjørende vilkår",
+  "fom": "2021-11-01",
+  "tom": "2022-02-28",
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$INNVILGET_TREDJELANDSBORGER_LOVLIG_OPPHOLD_FOR_BOSATT_I_NORGE"
+  ],
+  "fritekster": [],
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "1969-07-29",
+      "type": "SØKER",
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [],
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOSATT_I_RIKET",
+          "periodeFom": "2021-10-10",
+          "periodeTom": null,
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        },
+        {
+          "vilkårType": "LOVLIG_OPPHOLD",
+          "periodeFom": "2016-07-01",
+          "periodeTom": null,
+          "resultat": "OPPFYLT",
+          "utdypendeVilkårsvurderinger": [],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2009-04-15",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2003-03-16",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    },
+    {
+      "fødselsdato": "2010-09-06",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2004-03-10",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    }
+  ],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "forventetOutput": {
+    "fom": "1. november 2021",
+    "tom": "til 28. februar 2022 ",
+    "belop": 3162,
+    "antallBarn": 3,
+    "barnasFodselsdager": "10.03.04, 15.04.09 og 06.09.10",
+    "begrunnelser": [
+      {
+        "gjelderSoker": true,
+        "barnasFodselsdatoer": "10.03.04, 15.04.09 og 06.09.10",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 3,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "oktober 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "innvilgetTredjelandsborgerLovligOppholdForBosattINorge",
+        "belop": 3162
+      }
+    ],
+    "type": "innvilgelse"
+  }
+}

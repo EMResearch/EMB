@@ -1,0 +1,48 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "a create charge request when gateway account has moto_api auth mode disabled",
+      "providerStates": [
+        {
+          "name": "a gateway account with MOTO enabled and an external id 667 exists in the database",
+          "params": {
+            "gateway_account_id": "667"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/667/charges",
+        "body": {
+          "amount": 100,
+          "reference": "a reference",
+          "description": "a description",
+          "authorisation_mode": "moto_api"
+        }
+      },
+      "response": {
+        "status": 422,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "error_identifier": "AUTHORISATION_API_NOT_ALLOWED"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

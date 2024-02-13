@@ -1,0 +1,28 @@
+{
+  "errors": [
+    {
+      "message": "Ikke tilgang til å se person",
+      "locations": [
+        {
+          "line": 2,
+          "column": 5
+        }
+      ],
+      "path": [
+        "hentPerson"
+      ],
+      "extensions": {
+        "code": "unauthorized",
+        "details": {
+          "type": "abac-deny",
+          "cause": "cause-0001-manglerrolle",
+          "policy": "adressebeskyttelse_strengt_fortrolig_adresse"
+        },
+        "classification": "ExecutionAborted"
+      }
+    }
+  ],
+  "data": {
+    "hentPerson": null
+  }
+}

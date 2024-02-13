@@ -1,0 +1,166 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "get payment events",
+      "providerStates": [
+        {
+          "name": "Gateway account 42 exists and has a charge with id abc123 and has CREATED and AUTHORISATION_REJECTED charge events",
+          "params": {
+            "gateway_account_id": "42",
+            "charge_id": "abc123"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/api/accounts/42/charges/abc123/events"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "charge_id": "abc123",
+          "events": [
+            {
+              "type": "PAYMENT",
+              "submitted_by": null,
+              "state": {
+                "status": "created",
+                "finished": false
+              },
+              "amount": 100,
+              "updated": "2019-08-06T10:34:43.487Z",
+              "refund_reference": null
+            },
+            {
+              "type": "PAYMENT",
+              "submitted_by": null,
+              "state": {
+                "status": "failed",
+                "finished": true,
+                "code": "P0010",
+                "message": "Payment method rejected"
+              },
+              "amount": 100,
+              "updated": "2019-08-06T10:34:48.487Z",
+              "refund_reference": null
+            }
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.charge_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[0].type": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[0].state.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[0].state.finished": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[0].amount": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[0].updated": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                }
+              ]
+
+            },
+            "$.events[1].type": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[1].state.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[1].state.finished": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[1].state.code": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[1].state.message": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[1].amount": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.events[1].updated": {
+              "matchers": [
+                {
+                  "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                }
+              ]
+
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

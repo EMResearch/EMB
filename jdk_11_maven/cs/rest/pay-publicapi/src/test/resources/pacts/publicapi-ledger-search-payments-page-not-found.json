@@ -1,0 +1,57 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "Search payments with a page number that does not exist",
+      "providerStates": [
+        {
+          "name": "a payment transaction exists",
+          "params": {
+            "transaction_external_id": "charge97837509646393e3C",
+            "gateway_account_id": "123456"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction",
+        "query": {
+          "account_id": [
+            "123456"
+          ],
+          "status_version": [
+            "1"
+          ],
+          "transaction_type": [
+            "PAYMENT"
+          ],
+          "exact_reference_match": [
+            "true"
+          ],
+          "page": [
+            "999"
+          ],
+          "display_size": [
+            "500"
+          ]
+        }
+      },
+      "response": {
+        "status": 404
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

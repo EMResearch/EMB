@@ -1,0 +1,25 @@
+query {
+  mineNotifikasjoner(merkelapp: String!) {
+    ... on NotifikasjonConnection {
+		edges {
+      cursor
+      node {
+      	__typename
+        ... on Beskjed {
+          metadata {
+            id
+          }
+        }
+        ... on Oppgave {
+          metadata {
+            id
+          }
+        }
+      }
+    }
+      pageInfo {
+        hasNextPage
+      }
+    }
+  }
+}

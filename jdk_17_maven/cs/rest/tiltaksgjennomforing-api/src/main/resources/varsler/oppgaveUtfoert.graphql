@@ -1,0 +1,14 @@
+mutation OppgaveUtfoert($id: ID!) {
+  oppgaveUtfoert(id: $id){
+        __typename
+    		... on OppgaveUtfoertVellykket {
+          id
+        }
+    		... on Error {
+          feilmelding
+        }
+    		... on NotifikasjonFinnesIkke {
+          feilmelding
+        }
+  }
+}

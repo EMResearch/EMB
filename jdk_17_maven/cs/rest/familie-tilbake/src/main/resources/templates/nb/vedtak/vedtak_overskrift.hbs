@@ -1,0 +1,23 @@
+{{#switch totalresultat.hovedresultat}}
+    {{#case "FULL_TILBAKEBETALING"}}
+        {{#if gjelderDødsfall}}
+Feilutbetalt {{{ytelsesnavnUbestemt}}} må betales tilbake
+        {{else}}
+Du må betale tilbake {{{ytelsesnavnBestemt}}}
+        {{/if}}
+    {{/case}}
+    {{#case "DELVIS_TILBAKEBETALING"}}
+        {{#if gjelderDødsfall}}
+Feilutbetalt {{{ytelsesnavnUbestemt}}} må betales tilbake
+        {{else}}
+Du må betale tilbake {{{ytelsesnavnBestemt}}}
+        {{/if}}
+    {{/case}}
+    {{#case "INGEN_TILBAKEBETALING"}}
+        {{#if gjelderDødsfall}}
+Feilutbetalt {{{ytelsesnavnUbestemt}}} må ikke betales tilbake
+        {{else}}
+Du må ikke betale tilbake {{{ytelsesnavnBestemt}}}
+        {{/if}}
+    {{/case}}
+{{/switch}}

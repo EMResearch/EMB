@@ -1,0 +1,21 @@
+{{~#* inline "skulle-forstått" ~}}
+    {{{lookup-map vurderinger.aktsomhetsresultat SIMPEL_UAKTSOMHET="burde ha forstått" GROV_UAKTSOMHET="må ha forstått"}}}
+{{~/inline~}}
+{{#if vurderinger.særligeGrunner}}
+__Er det særlege grunnar til å redusere beløpet?
+    {{#if vurderinger.særligeGrunner.fritekst}}
+{{{vurderinger.særligeGrunner.fritekst}}}
+
+    {{/if}}
+    {{#if (not gjelderDødsfall)}}
+        {{#if (eq vurderinger.vilkårsvurderingsresultat "FORSTO_BURDE_FORSTÅTT") }}
+{{> nn/vedtak/periode-særlige-grunner/periode_særlige_grunner_forstod}}
+        {{else}}
+{{> nn/vedtak/periode-særlige-grunner/periode_særlige_grunner_feilaktig_mangelfull}}
+        {{/if}}
+        {{#if (neq kravgrunnlag.feilutbetaltBeløp resultat.tilbakekrevesBeløp)}}
+
+Du må betale {{{kroner resultat.tilbakekrevesBeløpMedRenter}}}{{> før-skatt}}.
+        {{/if}}
+    {{/if}}
+{{/if}}

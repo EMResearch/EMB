@@ -1,0 +1,3 @@
+# DISABLED: Turned this off since it's currently generating very noisy notifications to the team and reviewers can't
+# tell the difference between being explicitly added as a reviewer versus by way of this group.
+# * @navikt/arbeidsgiver

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="urn:no:nav:tilbakekreving:kravgrunnlag:detalj:v1"
+            xmlns="urn:no:nav:tilbakekreving:kravgrunnlag:detalj:v1"
+            xmlns:typer="urn:no:nav:tilbakekreving:typer:v1"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="urn:no:nav:tilbakekreving:typer:v1" schemaLocation="typer/typer.xsd"/>
+
+    <xsd:element name="detaljertKravgrunnlagMelding">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="detaljertKravgrunnlag" type="DetaljertKravgrunnlagDto"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:complexType name="HentKravgrunnlagDetaljDto">
+        <xsd:annotation>
+            <xsd:documentation>420 - Hent kravgrunnlag</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kodeAksjon" type="typer:KodeAksjonDto"/>
+            <xsd:element name="kravgrunnlagId" type="xsd:integer"/>
+            <xsd:element name="saksbehId" type="typer:SaksbehandlerDto"/>
+            <xsd:element name="enhetAnsvarlig" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DetaljertKravgrunnlagDto">
+        <xsd:annotation>
+            <xsd:documentation>431 - Detaljert kravgrunnlag</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kravgrunnlagId" type="xsd:integer"/>
+            <xsd:element name="vedtakId" type="xsd:integer"/>
+            <xsd:element name="kodeStatusKrav" type="xsd:string"/>
+            <xsd:element name="kodeFagomraade" type="xsd:string"/>
+            <xsd:element name="fagsystemId" type="xsd:string"/>
+            <xsd:element name="datoVedtakFagsystem" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="vedtakIdOmgjort" type="xsd:integer" minOccurs="0"/>
+            <xsd:element name="vedtakGjelderId" type="typer:FnrOrgnrDto"/>
+            <xsd:element name="typeGjelderId" type="typer:TypeGjelderDto"/>
+            <xsd:element name="utbetalesTilId" type="typer:FnrOrgnrDto"/>
+            <xsd:element name="typeUtbetId" type="typer:TypeGjelderDto"/>
+            <xsd:element name="kodeHjemmel" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="renterBeregnes" type="typer:JaNeiDto" minOccurs="0"/>
+            <xsd:element name="enhetAnsvarlig" type="xsd:string"/>
+            <xsd:element name="enhetBosted" type="xsd:string"/>
+            <xsd:element name="enhetBehandl" type="xsd:string"/>
+            <xsd:element name="kontrollfelt" type="xsd:string"/>
+            <xsd:element name="saksbehId" type="typer:SaksbehandlerDto"/>
+            <xsd:element name="referanse" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="tilbakekrevingsPeriode" type="DetaljertKravgrunnlagPeriodeDto" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DetaljertKravgrunnlagPeriodeDto">
+        <xsd:annotation>
+            <xsd:documentation>432 - Detaljert kravgrunnlag periode</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="periode" type="typer:PeriodeDto"/>
+            <xsd:element name="belopSkattMnd" type="typer:belop"/>
+            <xsd:element name="tilbakekrevingsBelop" type="DetaljertKravgrunnlagBelopDto" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DetaljertKravgrunnlagBelopDto">
+        <xsd:annotation>
+            <xsd:documentation>433 - Detaljert kravgrunnlag belop</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="kodeKlasse" type="typer:KodeKlasseDto"/>
+            <xsd:element name="typeKlasse" type="typer:TypeKlasseDto"/>
+            <xsd:element name="belopOpprUtbet" type="typer:belop" minOccurs="0"/>
+            <xsd:element name="belopNy" type="typer:belop"/>
+            <xsd:element name="belopTilbakekreves" type="typer:belop" minOccurs="0"/>
+            <xsd:element name="belopUinnkrevd" type="typer:belop" minOccurs="0"/>
+            <xsd:element name="skattProsent" type="typer:skattProsent"/>
+            <xsd:element name="kodeResultat" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="kodeAArsak" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="kodeSkyld" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

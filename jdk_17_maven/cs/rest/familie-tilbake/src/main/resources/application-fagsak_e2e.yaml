@@ -1,0 +1,56 @@
+no.nav.security.jwt:
+  issuer.azuread:
+    discoveryurl: http://mock-oauth2-server:1111/v2.0/.well-known/openid-configuration
+    accepted_audience: api://${TILBAKE_CLIENT_ID}/.default
+    proxyurl:
+    cookie_name: azure_token
+  client:
+    registration:
+      familie-integrasjoner:
+        resource-url: ${FAMILIE_INTEGRASJONER_URL}
+        token-endpoint-url: http://mock-oauth2-server:1111/v2.0/token
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${FAMILIE_INTEGRASJONER_SCOPE}
+        authentication:
+          client-id: ${TILBAKE_CLIENT_ID}
+          client-secret: ${TILBAKE_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      familie-integrasjoner-clientcredentials:
+        resource-url: ${FAMILIE_INTEGRASJONER_URL}
+        token-endpoint-url: http://mock-oauth2-server:1111/v2.0/token
+        grant-type: client_credentials
+        scope: ${FAMILIE_INTEGRASJONER_SCOPE}
+        authentication:
+          client-id: ${TILBAKE_CLIENT_ID}
+          client-secret: ${TILBAKE_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+
+logging:
+  config: "classpath:logback-e2e.xml"
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-tilbake:5432/familie-tilbake
+    username: familie
+    password: familie-pwd
+  cloud:
+    vault:
+      database:
+        role: familie
+
+unleash:
+  enabled: true
+
+STS_URL: http://nav-auth-mock:8200/nais-sts/token
+PDL_URL: http://familie-mock-server:1337/rest/api/pdl/
+SECURITYTOKENSERVICE_URL: https://localhost:8063/soap/SecurityTokenServiceProvider/
+
+FAMILIE_INTEGRASJONER_URL: http://familie-integrasjoner:8085/api
+
+CREDENTIAL_USERNAME: srvfamilie-tilbake
+CREDENTIAL_PASSWORD:
+
+NAIS_APP_NAME: familie-klage
+UNLEASH_SERVER_API_URL: http://localhost:4242/api
+UNLEASH_SERVER_API_TOKEN: token
+NAIS_CLUSTER_NAME: dev-gcp

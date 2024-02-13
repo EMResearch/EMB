@@ -1,0 +1,17 @@
+apiVersion: unleash.nais.io/v1
+kind: ApiToken
+metadata:
+  name: familie-klage
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+spec:
+  unleashInstance:
+    apiVersion: unleash.nais.io/v1
+    kind: RemoteUnleash
+    name: teamfamilie
+  secretName: familie-tilbake-unleash-api-token
+
+  # Specify which environment the API token should be created for.
+  # Can be one of: development, or production.
+  environment: development

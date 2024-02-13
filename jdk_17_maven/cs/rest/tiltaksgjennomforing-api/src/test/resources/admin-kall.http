@@ -1,0 +1,30 @@
+### Annuller en tilskuddsperiode
+# Husk å bytte ut UUID med tilskuddsperiodens id, og SESSION_ID med sesjons-id'en du får fra cookies i frontend
+POST https://tiltaksgjennomforing.intern.nav.no/tiltaksgjennomforing/api/utvikler-admin/annuller-tilskuddsperiode/<UUID>
+Cookie: io.nais.wonderwall.session=<SESSION_ID>
+
+### Lag tilskuddsperioder for en enkelt avtale
+# Husk å bytte ut UUID med avtalens id, og SESSION_ID med sesjons-id'en du får fra cookies i frontend
+POST https://tiltaksgjennomforing.intern.nav.no/tiltaksgjennomforing/api/utvikler-admin/lag-tilskuddsperioder-for-en-avtale/<UUID>/2023-02-01
+Cookie: io.nais.wonderwall.session=<SESSION_ID>
+
+### Reberegn ubehandlet perioder
+POST https://tiltaksgjennomforing.intern.nav.no/tiltaksgjennomforing/api/utvikler-admin/reberegn-ubehandlede-tilskuddsperioder/<UUID>
+Cookie: io.nais.wonderwall.session=<SESSION_ID>
+
+
+### Annuller perioder med sluttdato før oppgitt dato på avtale og lag nye med status behandlet i arena
+POST https://tiltaksgjennomforing.intern.nav.no/tiltaksgjennomforing/api/utvikler-admin/annuller-og-generer-behandlet-i-arena-perioder/58f5f3ff-fd7b-469b-9e7b-6c43b2888fba/2023-02-01
+Cookie: io.nais.wonderwall.session=<SESSION_ID>
+
+
+### Patch Dvh meldinger
+POST https://tiltaksgjennomforing.intern.nav.no/tiltaksgjennomforing/api/utvikler-admin/dvh-melding/patch
+Content-Type: application/json
+Cookie: io.nais.wonderwall.session=<SESSION_ID>
+
+{
+  "avtaleIder": [
+    "AVTALE-ID-HER"
+  ]
+}

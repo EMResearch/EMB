@@ -1,0 +1,17 @@
+{
+  "data": {
+    "person": {
+      "bostedsadresse": [
+        {
+          "utenlandskAdresse": {
+            "adressenavnNummer": "Widbrook Way",
+            "postkode": "SL68YA",
+            "bySted": "Maidenhead",
+            "regionDistriktOmraade": "Berkshire",
+            "landkode": "GBR"
+          }
+        }
+      ]
+    }
+  }
+}

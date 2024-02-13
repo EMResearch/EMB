@@ -1,0 +1,130 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "get charge which has a fee and a net amount",
+      "providerStates": [
+        {
+          "name": "a charge with fee and net_amount exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "charge_id": "ch_123abc456def"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/api/accounts/123456/charges/ch_123abc456def"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "amount": 100,
+          "fee": 5,
+          "net_amount": 345,
+          "state": {
+            "finished": true,
+            "status": "success"
+          },
+          "description": "Test description",
+          "reference": "aReference",
+          "language": "en",
+          "links": [
+            {
+              "rel": "self",
+              "method": "GET",
+              "href": "https://connector/v1/api/accounts/123456/charges/ch_123abc456def"
+            },
+            {
+              "rel": "refunds",
+              "method": "GET",
+              "href": "https://connector/v1/api/accounts/123456/charges/ch_123abc456def/refunds"
+            }
+          ],
+          "charge_id": "ch_123abc456def",
+          "gateway_transaction_id": "gateway-tx-123456",
+          "return_url": "https://somewhere.gov.uk/rainbow/1",
+          "payment_provider": "sandbox",
+          "created_date": "2018-10-16T10:46:02.121Z",
+          "refund_summary": {
+            "status": "available",
+            "user_external_id": null,
+            "amount_available": 350,
+            "amount_submitted": 0
+          },
+          "settlement_summary": {
+            "capture_submit_time": null,
+            "captured_date": null
+          },
+          "delayed_capture": false,
+          "moto": false
+        },
+        "matchingRules": {
+          "body": {
+            "$.reference": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.description": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.links[0].href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/api\/accounts\/123456\/charges\/ch_123abc456def"
+                }
+              ]
+            },
+            "$.links[1].href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/api\/accounts\/123456\/charges\/ch_123abc456def\/refunds"
+                }
+              ]
+            },
+            "$.links[2].href": {
+              "matchers": [
+                {
+                  "regex": "http.*:\/\/.*\/v1\/api\/accounts\/123456\/charges\/ch_123abc456def\/capture"
+                }
+              ]
+            },
+            "$.return_url": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.created_date": {
+              "matchers": [{ "date": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" }]
+            },
+            "$.refund_summary.amount_available": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.gateway_transaction_id": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.fee": {
+              "matchers": [{"match": "type"}]
+            },
+            "$.net_amount": {
+              "matchers": [{"match": "type"}]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

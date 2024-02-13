@@ -1,0 +1,17 @@
+spring:
+  flyway:
+    locations: filesystem:./src/test/resources/db/migration-tests,filesystem:./src/main/resources/db/migration
+
+AZURE_OPENID_CONFIG_TOKEN_ENDPOINT: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/token
+AZURE_APP_CLIENT_ID: dummy
+
+# Kreves for at unleash mock skal fungere:
+UNLEASH_SERVER_API_URL: http://dummy/api/
+UNLEASH_SERVER_API_TOKEN: dummy-token
+NAIS_APP_NAME: familie-ba-sak
+
+# Disabler unleash her for å unngå feilmeldinger tilknyttet oppkobling når vi uansett mocker alle unleash-kall i testene.
+unleash:
+  enabled: false
+
+prosessering.rolle: "928636f4-fd0d-4149-978e-a6fb68bb19de" # 0000-GA-STDAPPS

@@ -1,0 +1,52 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "an authorise charge with moto api and invalid one time token",
+      "providerStates": [
+        {
+          "name": "a charge with authorisation mode moto_api and one_time_token exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "charge_id": "ch_e36c168c41a03",
+            "one_time_token": "onetime-12345-token",
+            "one_time_token_used": "false"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/charges/authorise",
+        "body": {
+          "one_time_token": "invalid-token",
+          "card_number": "4242424242424242",
+          "cvc": "123",
+          "expiry_date": "09/29",
+          "cardholder_name": "Joe Boggs"
+        }
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "error_identifier": "ONE_TIME_TOKEN_INVALID",
+          "message": [
+            "The one_time_token is not valid"
+          ]
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

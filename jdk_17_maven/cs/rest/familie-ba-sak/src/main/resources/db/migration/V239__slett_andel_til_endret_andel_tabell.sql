@@ -1,0 +1,1 @@
+drop table andel_til_endret_andel;

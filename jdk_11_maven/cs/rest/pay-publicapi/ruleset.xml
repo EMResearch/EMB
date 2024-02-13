@@ -1,0 +1,125 @@
+<ruleset name="GOV.UK Pay PMD Rules"
+        xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>GOV.UK Pay PMD rules, primarily for use by Codacy</description>
+
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="AbstractClassWithoutAbstractMethod"/>
+
+        <!-- Some tests use hard-coded IP addresses --> 
+        <exclude name="AvoidUsingHardCodedIP"/>
+
+        <exclude name="GuardLogStatement"/>
+
+        <exclude name="JUnitAssertionsShouldIncludeMessage"/>
+
+        <exclude name="JUnitTestContainsTooManyAsserts"/>
+
+        <!-- Some tests e.g. REST Assured do not use asserts -->
+        <exclude name="JUnitTestsShouldIncludeAssert"/>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml">
+        <!-- Some integration test classes have no constructors -->
+        <exclude name="AtLeastOneConstructor"/>
+
+        <exclude name="DefaultPackage"/>
+
+        <!-- Some Pact test superclasses use `@State` on empty methods to make them no-ops -->
+        <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
+
+        <exclude name="LocalVariableCouldBeFinal"/>
+
+        <exclude name="LongVariable"/>
+
+        <exclude name="MethodArgumentCouldBeFinal"/>
+
+        <exclude name="OnlyOneReturn"/>
+
+        <!-- Would flag `var thing = dao.findThing().orElseThrow(() -> new Exception("Fail early if not found!"));` -->
+        <exclude name="PrematureDeclaration"/>
+
+        <exclude name="ShortClassName"/>
+
+        <exclude name="ShortVariable"/>
+
+        <exclude name="TooManyStaticImports"/>
+
+        <!-- JPA requires entities to have a no-args constructor — we don’t want to rely on the default constructor
+             because it’s easy to add another constructor that causes the default one to go away without realising,
+             causing JPA problems at run time, so we instead explicitly include a no-args constructor even though it’s
+             “unnecessary” -->
+        <exclude name="UnnecessaryConstructor"/>
+
+        <!-- Sometimes we use strictly unnecessary parentheses for clarity e.g. `if ((a && b) || c)` -->
+        <exclude name="UselessParentheses"/>
+
+        <!-- Too rigid for us: since we deal with money, we might represent £125.50 as `125_50` -->
+        <exclude name="UseUnderscoresInNumericLiterals"/>
+
+        <!-- Deprecated rules -->
+        <exclude name="AbstractNaming"/>
+        <exclude name="AvoidFinalLocalVariable"/>
+        <exclude name="AvoidPrefixingMethodParameters"/>
+        <exclude name="ForLoopsMustUseBraces"/>
+        <exclude name="IfElseStmtsMustUseBraces"/>
+        <exclude name="IfStmtsMustUseBraces"/>
+        <exclude name="MIsLeadingVariableName"/>
+        <exclude name="SuspiciousConstantFieldName"/>
+        <exclude name="VariableNamingConventions"/>
+        <exclude name="WhileLoopsMustUseBraces"/>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/ClassNamingConventions">
+        <properties>
+            <!-- We don’t require utility classes to end with “Utils” or “Helper” -->
+            <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/LinguisticNaming">
+        <properties>
+            <!-- A method named `isNotString()` might return a `Function` rather than a `boolean` -->
+            <property name="checkBooleanMethod" value="false"/>
+
+            <!-- A test that tests a getter may start with “get” but have a `void` return type -->
+            <property name="checkGetters" value="false"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/codestyle.xml/MethodNamingConventions">
+        <properties>
+            <!-- Some test method names use underscores for readability -->
+            <property name="junit4TestPattern" value="[a-z][a-zA-Z0-9_]*[a-zA-Z0-9]"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml">
+        <exclude name="AvoidDuplicateLiterals"/>
+
+        <exclude name="AvoidFieldNameMatchingMethodName"/>
+
+        <exclude name="AvoidFieldNameMatchingTypeName"/>
+
+        <!-- Would flag fields that store injected dependencies etc. -->
+        <exclude name="BeanMembersShouldSerialize"/>
+
+        <exclude name="DataflowAnomalyAnalysis"/>
+
+        <!-- We never use Java serialisation -->
+        <exclude name="MissingSerialVersionUID"/>
+
+        <exclude name="NullAssignment"/>
+
+        <!-- Would flag some Pact tests -->
+        <exclude name="TestClassWithoutTestCases"/>
+
+        <!-- Deprecated rules -->
+        <exclude name="LoggerIsNotStaticFinal"/>
+    </rule>
+
+    <rule ref="category/xml/errorprone.xml"/>
+
+</ruleset>

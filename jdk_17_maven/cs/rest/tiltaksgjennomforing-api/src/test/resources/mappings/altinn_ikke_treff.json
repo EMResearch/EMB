@@ -1,0 +1,72 @@
+{
+  "mappings": [
+    {
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters" : {
+          "subject" : {
+            "matches" : "^\\d{11}$"
+          },
+          "serviceCode": {
+            "matches": "5332|5516|^$"
+          },
+          "serviceEdition": {
+            "matches": "1|2|3|4|5|^$"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters" : {
+          "subject" : {
+            "matches" : "^\\d{11}$"
+          },
+          "serviceCode": {
+            "absent": true
+          },
+          "serviceEdition": {
+            "absent": true
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPath": "/altinn-tilgangsstyring/ekstern/altinn/api/serviceowner/reportees",
+        "queryParameters" : {
+          "subject" : {
+            "doesNotMatch" : "^\\d{11}$"
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "statusMessage": "Invalid social security number"
+      }
+    }
+  ]
+}

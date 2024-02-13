@@ -1,0 +1,2 @@
+alter table avtale add column gjeldende_innhold_id uuid references avtale_innhold(id);
+update avtale set gjeldende_innhold_id=(select id from avtale_innhold ai where avtale.id=ai.avtale and versjon=(select max(versjon) from avtale_innhold ai2 where ai2.avtale=avtale.id));

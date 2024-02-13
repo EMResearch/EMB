@@ -1,0 +1,193 @@
+{{> nn/vedtak/periode-fakta/periode_fakta_felles}}
+{{#switch fakta.hendelsestype}}
+    {{#case "VILKÅR_BARN"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "FULLTIDSPLASS_BARNEHAGE"}}
+Du har fått kontantstøtte etter at barnet var tildelt fulltidsplass i barnehage. Når barnet  er tildelt barnehageplass med 33 timar eller meir i veka, er dette rekna som fulltidsplass.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "DELTIDSPLASS_BARNEHAGEPLASS"}}
+Du har fått kontantstøtte etter at barnet var tildelt deltidsplass i barnehage. Når barnet  er tildelt barnehageplass med mindre enn 33 timar i veka, er dette rekna som deltidsplass.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_IKKE_BOSATT"}}
+Du har fått kontantstøtte sjølv om barn ikkje var busett i Noreg.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_IKKE_OPPHOLDSTILLATELSE"}}
+Du har fått kontantstøtte for barn som ikkje hadde opphaldsløyve i Noreg i meir enn 12 månader.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_FLYTTET_FRA_NORGE"}}
+Du har fått kontantstøtte for barn som har flytta frå Noreg.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_OVER_2_ÅR"}}
+Du har fått kontantstøtte etter at barn har fylt 2 år.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "VILKÅR_SØKER"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "DEN_ANDRE_FORELDEREN_IKKE_MEDLEM_FOLKETRYGDEN"}}
+Den andre forelderen har ikkje vore medlem i folketrygda i 5 år. Begge foreldra må ha vore medlem i folketrygda i 5 år for å få kontantstøtte.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "DEN_ANDRE_FORELDEREN_IKKE_MEDLEM_FOLKETRYGDEN_ELLER_EØS"}}
+Den andre forelderen har ikkje vore medlem i folketrygda eller i trygdeordningar i andre EØS-land i til saman i 5 år. Begge foreldra må fylle kravet om medlemskap for å få kontantstøtte.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SØKER_IKKE_MEDLEM_FOLKETRYGDEN"}}
+Du har ikkje vore medlem i folketrygda i 5 år og har derfor ikkje rett til kontantstøtte.
+
+Du har fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt.
+            {{/case}}
+            {{#case "SØKER_IKKE_MEDLEM_FOLKETRYGDEN_ELLER_EØS"}}
+Du har ikkje vore medlem i folketrygda eller i trygdeordningar i andre EØS-land i til saman 5 år.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BEGGE_FORELDRENE_IKKE_MEDLEM_FOLKETRYGDEN"}}
+Du og den andre forelderen har ikkje vore medlem i folketrygda i 5 år. Begge foreldra må ha vore medlem i folketrygda i 5 år for å få kontantstøtte.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BEGGE_FORELDRENE_IKKE_MEDLEM_FOLKETRYGDEN_ELLER_EØS"}}
+Du og den andre forelderen har ikkje vore medlem i folketrygda eller i trygdeordningar i andre EØS-land i til saman 5 år. Begge foreldra må fylle kravet om medlemskap for å få kontantstøtte.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_BOR_IKKE_HOS_SØKER"}}
+Du har fått kontantstøtte for barn som ikkje bur fast hos deg.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "UTENLANDSOPPHOLD_OVER_3_MÅNEDER"}}
+Du har fått kontantstøtte når du har vore i utlandet. Når opphald i utlandet er meir enn 3 månader, har du ikkje rett til kontantstøtte.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SØKER_FLYTTET_FRA_NORGE"}}
+Du har fått kontantstøtte etter at du flytta frå Noreg.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden
+            {{/case}}
+            {{#case "SØKER_IKKE_BOSATT"}}
+Du har fått kontantstøtte sjølv om du ikkje var busett i Noreg.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SØKER_IKKE_OPPHOLDSTILLATELSE"}}
+Du har fått kontantstøtte utan at du hadde opphaldsløyve i Noreg.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SØKER_IKKE_OPPHOLDSTILLATELSE_I_MER_ENN_12_MÅNEDER"}}
+Du har fått kontantstøtte sjølv om du ikkje hadde opphaldsløyve i Noreg i meir enn 12 månader.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "BARN_I_FOSTERHJEM_ELLER_INSTITUSJON"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BARN_I_FOSTERHJEM"}}
+Du har fått kontantstøtte når barnet bodde i fosterhjem.
+
+Derfor har du fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mye utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_I_INSTITUSJON"}}
+Du har fått kontantstøtte når barnet bodde i institusjon.
+
+Derfor har du fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mye utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "KONTANTSTØTTENS_STØRRELSE"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "FULLTIDSPLASS_BARNEHAGE"}}
+Du har fått kontantstøtte etter at barnet var tildelt fulltidsplass i barnehage. Når barnet  er tildelt barnehageplass med 33 timar eller meir i veka, er det rekna som fulltidsplass.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "DELTIDSPLASS_BARNEHAGEPLASS"}}
+Du har fått kontantstøtte etter at barnet var tildelt deltidsplass i barnehage. Når barnet  er tildelt barnehageplass med mindre enn 33 timar i veka, er dette rekna som deltidsplass.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "ØKT_TIMEANTALL_I_BARNEHAGE"}}
+Du har fått kontantstøtte etter at barnet var tildelt fleire timar i barnehage. Når barnet  er tildelt meir opphaldstid i veka enn tidligare, får du mindre i kontantstøtte.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "SATSENDRING"}}
+Du har fått kontantstøtte med feil beløp fordi det har vore ei satsendring.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+
+    {{#case "STØTTEPERIODE"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "BARN_2_ÅR"}}
+Du har fått kontantstøtte etter at barn har fylt 2 år.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "UTBETALING"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "DELT_BOSTED_AVTALE_OPPHØRT"}}
+Du har fått kontantstøtte etter at avtalen om delt bustad er opphørt.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "DOBBELUTBETALING"}}
+Du har fått kontantstøtte for samme barn og i same tidsrom som den andre forelderen.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "KONTANTSTØTTE_FOR_ADOPTERTE_BARN"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "MER_ENN_11_MÅNEDER"}}
+Du har fått kontantstøtte i meir enn 11 månader. Kontantstøtte for adopterte barn kan maksimalt gjevast for 11 månader.
+
+Derfor har du fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+            {{#case "BARN_STARTET_PÅ_SKOLEN"}}
+Du har fått kontantstøtte etter at barn har byrja på skulen. Kontantstøtte for adopterte barn kan gjevast fram til barnet byrjar på skulen.
+
+Du har derfor fått {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje utbetalt i denne perioden.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+    {{#case "ANNET_KS"}}
+        {{#switch fakta.hendelsesundertype}}
+            {{#case "ANNET_FRITEKST"}}
+            {{/case}}
+            {{#case "BARN_DØD"}}
+Vi har fått melding om at barnet ditt døydde. Kontantstøtta skulle vore stansa frå og med {{{dato opphørsdatoDødtBarn}}}. Kontantstøtta er utbetalt etter denne datoen.
+
+Det er derfor utbetalt {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje
+            {{/case}}
+            {{#case "BRUKER_DØD"}}
+Vi har fått melding om at <søkers navn> døydde. Kontantstøtta skulle vore stansa frå og med {{{dato opphørsdatoDødtBarn}}}. Kontantstøtta er utbetalt etter denne datoen.
+
+Det er derfor utbetalt {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner for mykje.
+            {{/case}}
+        {{/switch}}
+    {{/case}}
+{{/switch}}

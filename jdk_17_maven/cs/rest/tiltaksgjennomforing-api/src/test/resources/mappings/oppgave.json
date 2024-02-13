@@ -1,0 +1,31 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "urlPattern": "/api/v1/oppgaver",
+        "headers": {
+          "X-Correlation-ID": {
+            "matches": ".*"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "equalToJson": "{\n  \"aktoerId\": \"2135315926224\",\n  \"tema\": \"TIL\",\n  \"prioritet\": \"NORM\",\n  \"oppgavetype\": \"VURD_HENV\",\n  \"behandlingstype\":\"ae0034\"\n}",
+            "ignoreArrayOrder": true,
+            "ignoreExtraElements": true
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n    \"id\": 315992387,\n    \"tildeltEnhetsnr\": \"0219\",\n    \"aktoerId\": \"2796812837591\",\n    \"tema\": \"TIL\",\n    \"oppgavetype\": \"VURD_HENV\",\n    \"behandlingstype\": \"ae0034\",\n    \"versjon\": 1,\n    \"opprettetAv\": \"srvtiltaksgjennomf\",\n    \"prioritet\": \"HOY\",\n    \"status\": \"OPPRETTET\",\n    \"metadata\": {},\n    \"aktivDato\": \"2020-10-07\",\n    \"opprettetTidspunkt\": \"2020-10-07T11:16:15.551+02:00\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}
+
+

@@ -1,0 +1,37 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "connector"
+  },
+  "interactions": [
+    {
+      "description": "cancel an already canceled charge",
+      "providerStates": [
+        {
+          "name": "a canceled charge exists",
+          "params": {
+            "gateway_account_id": "123456",
+            "charge_id": "charge8133029783750964630"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/v1/api/accounts/123456/charges/charge8133029783750964630/cancel"
+      },
+      "response": {
+        "status": 400
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

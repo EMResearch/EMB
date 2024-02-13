@@ -1,0 +1,90 @@
+{
+  "beskrivelse": "Fortsatt innvilget 2 barn fra august 2021",
+  "fom": "2021-09-01",
+  "tom": "2021-12-31",
+  "vedtaksperiodetype": "FORTSATT_INNVILGET",
+  "begrunnelser": [
+    "Standardbegrunnelse$FORTSATT_INNVILGET_SØKER_OG_BARN_BOSATT_I_RIKET",
+    "Standardbegrunnelse$FORTSATT_INNVILGET_BOR_MED_SØKER"
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2020-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2020-12-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "Du får:",
+    "tom": "",
+    "belop": 2108,
+    "antallBarn": 2,
+    "barnasFodselsdager": "20.01.20 og 20.12.20",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "20.01.20 og 20.12.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "20.01.20 og 20.12.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 2,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 2,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "fortsattInnvilgetSokerOgBarnBosattIRiket",
+        "belop": 2108
+      },
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "20.01.20 og 20.12.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "20.01.20 og 20.12.20",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 2,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 2,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "fortsattInnvilgetBorMedSoker",
+        "belop": 2108
+      }
+    ],
+    "type": "fortsattInnvilget"
+  }
+}

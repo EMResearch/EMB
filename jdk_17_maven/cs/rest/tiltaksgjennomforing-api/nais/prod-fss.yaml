@@ -1,0 +1,79 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: tiltaksgjennomforing-api
+  namespace: arbeidsgiver
+  labels:
+    team: arbeidsgiver
+spec:
+  env:
+    - name: MILJO
+      value: prod-fss
+  azure:
+    application:
+      enabled: true
+      allowAllUsers: true
+      tenant: nav.no
+      claims:
+        groups:
+          # Beslutter-gruppe
+          - id: 156f4f79-6909-4be1-8045-323f55590898
+          # Team Tiltak
+          - id: fb516b74-0f2e-4b62-bad8-d70b82c3ae0b
+        extra:
+          - "NAVident"
+  kafka:
+    pool: nav-prod
+  image: {{image}}
+  team: arbeidsgiver
+  port: 8080
+  liveness:
+    path: /tiltaksgjennomforing-api/internal/healthcheck
+    initialDelay: 30
+    timeout: 1
+    periodSeconds: 30
+    failureThreshold: 10
+  readiness:
+    path: /tiltaksgjennomforing-api/internal/healthcheck
+    initialDelay: 30
+    timeout: 1
+    periodSeconds: 30
+    failureThreshold: 10
+  replicas:
+    min: 3
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 12000Mi
+    requests:
+      cpu: 500m
+      memory: 6000Mi
+  ingresses:
+    - https://arbeidsgiver.nais.adeo.no/tiltaksgjennomforing-api/
+  leaderElection: true
+  vault:
+    enabled: true
+  webproxy: true
+  strategy:
+    type: RollingUpdate
+  tokenx:
+    enabled: true
+  prometheus:
+    enabled: true
+    path: /tiltaksgjennomforing-api/internal/actuator/prometheus
+  accessPolicy:
+    inbound:
+      rules:
+        - application: tiltak-proxy
+        - application: min-side-arbeidsgiver
+          namespace: fager
+          cluster: prod-gcp
+    outbound:
+      rules:
+        - application: poao-tilgang
+          namespace: poao
+      external:
+        - host: team-tiltak-unleash-api.nav.cloud.nais.io
+  envFrom:
+    - configmap: loginservice-idporten
+    - secret: tiltaksgjennomforing-api-unleash-api-token

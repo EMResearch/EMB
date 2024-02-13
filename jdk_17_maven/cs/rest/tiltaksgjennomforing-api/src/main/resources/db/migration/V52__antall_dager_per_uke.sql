@@ -1,0 +1,1 @@
+alter table avtale_innhold add column antall_dager_per_uke integer;

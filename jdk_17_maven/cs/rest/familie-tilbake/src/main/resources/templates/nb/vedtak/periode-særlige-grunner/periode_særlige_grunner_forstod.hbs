@@ -1,0 +1,114 @@
+{{#switch navfeil=vurderinger.særligeGrunner.navfeil størrelse=vurderinger.særligeGrunner.størrelse tid=vurderinger.særligeGrunner.tid        reduksjon=(neq kravgrunnlag.feilutbetaltBeløp resultat.tilbakekrevesBeløp) annet=vurderinger.særligeGrunner.annet}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du {{> skulle-forstått}} at beløpet du fikk utbetalt var feil, og det er ingen bestemte grunner til å redusere beløpet. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=false annet=true}}
+Selv om du {{> skulle-forstått}} at du fikk for mye utbetalt, har vi vurdert om det er grunner til å redusere beløpet. Det er lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Vi har kommet fram til at du må betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=true annet=false}}
+Vi har lagt vekt på at feilutbetalingen ikke var tydelig nok, selv om du {{> skulle-forstått}} at du fikk for mye utbetalt. Derfor har vi redusert beløpet du må betale tilbake.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=false     reduksjon=true annet=true}}
+Vi har lagt vekt på at feilutbetalingen ikke var tydelig nok, selv om du {{> skulle-forstått}} at du fikk for mye utbetalt. Derfor har vi redusert beløpet du må betale tilbake. Det er i vurderingen også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false        reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at beløpet var feil. Du må derfor betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false      reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at beløpet var feil. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Du må derfor betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false      reduksjon=true annet=false}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=false      reduksjon=true annet=true}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til og at det feilutbetalte beløpet er høyt. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til og at det feilutbetalte beløpet er høyt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=true annet=false}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Fordi det feilutbetalte beløpet er lavt, har vi redusert beløpet du må betale tilbake.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=false      reduksjon=true annet=true}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi beløpet er lavt og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til og at det er kort tid siden feilutbetalingen skjedde. Du må derfor betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til og at det er kort tid siden feilutbetalingen skjedde. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du derfor betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=true annet=false}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Fordi det er lenge siden feilutbetalingen skjedde, har vi redusert beløpet du må betale tilbake.
+    {{/case}}
+    {{#case navfeil=false størrelse=false tid=true      reduksjon=true annet=true}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi det er lenge siden feilutbetalingen skjedde og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til og at det feilutbetalte beløpet er høyt. Du må derfor betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til og at det feilutbetalte beløpet er høyt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Du må derfor betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=true annet=false}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye og beløpet er lavt.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=false       reduksjon=true annet=true}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye og beløpet er lavt. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har også lagt vekt på at det feilutbetalte beløpet er høyt og at det er kort tid siden utbetalingen skjedde. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til og at det feilutbetalte beløpet er høyt. Vi har også lagt vekt på at det er kort tid siden utbetalingen skjedde og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=true annet=false}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye, beløpet er lavt og det er lenge siden feilutbetalingen skjedde.
+    {{/case}}
+    {{#case navfeil=true størrelse=true tid=true        reduksjon=true annet=true}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye, beløpet er lavt og det er lenge siden feilutbetalingen skjedde. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du {{> skulle-forstått}} at beløpet var feil. Vi har også lagt vekt på at det feilutbetalte beløpet er høyt og at det er kort tid siden utbetalingen skjedde. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Vi har lagt vekt på at du {{> skulle-forstått}} at beløpet var feil og at det feilutbetalte beløpet er høyt. Vi har også lagt vekt på at det er kort tid siden utbetalingen skjedde og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=true annet=false}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi beløpet er lavt og det er lenge siden feilutbetalingen skjedde.
+    {{/case}}
+    {{#case navfeil=false størrelse=true tid=true       reduksjon=true annet=true}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi beløpet er lavt og det er lenge siden feilutbetalingen skjedde. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=false annet=false}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har også lagt vekt på at det er kort tid siden utbetalingen skjedde. Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=false annet=true}}
+Vi har vurdert om det er grunner til å redusere beløpet. Selv om vi kunne unngått at du fikk for mye utbetalt, har vi lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har også lagt vekt på at det er kort tid siden utbetalingen skjedde og {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+
+Derfor må du betale tilbake hele beløpet.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=true annet=false}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye og det er lenge siden feilutbetalingen skjedde.
+    {{/case}}
+    {{#case navfeil=true størrelse=false tid=true       reduksjon=true annet=true}}
+Vi har lagt vekt på at du {{> skulle-forstått}} at du fikk penger du ikke har rett til. Vi har likevel redusert beløpet du må betale tilbake fordi vi kunne unngått at du fikk utbetalt for mye og det er lenge siden feilutbetalingen skjedde. Det er også lagt vekt på {{{vurderinger.særligeGrunner.fritekstAnnet}}}
+    {{/case}}
+{{/switch}}

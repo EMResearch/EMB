@@ -1,0 +1,1 @@
+alter table tilskudd_periode add column enhet varchar(4);

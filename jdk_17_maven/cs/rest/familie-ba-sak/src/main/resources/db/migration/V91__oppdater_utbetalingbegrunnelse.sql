@@ -1,0 +1,3 @@
+ALTER TABLE UTBETALING_BEGRUNNELSE
+    RENAME COLUMN resultat TO begrunnelse_type;
+

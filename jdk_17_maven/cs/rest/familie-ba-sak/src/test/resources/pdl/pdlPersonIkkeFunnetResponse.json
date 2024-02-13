@@ -1,0 +1,22 @@
+{
+  "errors": [
+    {
+      "message": "Fant ikke person",
+      "extensions": {
+        "code": "not_found"
+      },
+      "path": [
+        "person"
+      ]
+    },
+    {
+      "message": "Ikke tilgang",
+      "path": [
+        "person"
+      ]
+    }
+  ],
+  "data": {
+    "person": null
+  }
+}

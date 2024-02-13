@@ -1,0 +1,2 @@
+ALTER TABLE po_doedsfall
+    ADD COLUMN IF NOT EXISTS manuell_registrert BOOLEAN DEFAULT FALSE NOT NULL;

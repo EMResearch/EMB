@@ -1,0 +1,85 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: familie-ba-sak
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+
+spec:
+  image: {{image}}
+  port: 8089
+  leaderElection: true
+  liveness:
+    path: /internal/health
+    initialDelay: 20
+    failureThreshold: 10
+  readiness:
+    path: /internal/health
+    initialDelay: 20
+    failureThreshold: 10
+  prometheus:
+    enabled: true
+    path: /internal/prometheus
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      memory: 64Mi
+      cpu: 200m
+    requests:
+      memory: 32Mi
+      cpu: 50m
+  ingresses: # Optional. List of ingress URLs that will route HTTP traffic to the application.
+    - https://familie-ba-sak.dev-fss-pub.nais.io # Deprecated - erstattes av dev.adeo.no
+    - https://familie-ba-sak.dev.adeo.no
+  secureLogs:
+    enabled: true
+  kafka:
+    pool: nav-dev
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: preprod
+    - name: SRVUSER_BA_SAK_SECRET
+      value: /var/run/secrets/srvfamilie-ba-sak/password
+  azure:
+    application:
+      enabled: true
+      allowAllUsers: false
+      claims:
+        groups:
+          - id: "928636f4-fd0d-4149-978e-a6fb68bb19de"  # 0000-GA-STDAPPS
+          - id: "93a26831-9866-4410-927b-74ff51a9107c"  # VEILEDER_ROLLE
+          - id: "d21e00a4-969d-4b28-8782-dc818abfae65"  # SAKSBEHANDLER_ROLLE
+          - id: "9449c153-5a1e-44a7-84c6-7cc7a8867233"  # BESLUTTER_ROLLE
+        extra:
+          - "NAVident"
+  accessPolicy:
+    inbound:
+      rules:
+        - application: familie-ba-sak-frontend
+        - application: familie-ba-sak-frontend
+          cluster: dev-gcp
+        - application: familie-prosessering
+          cluster: dev-gcp
+        - application: familie-ba-skatteetaten-api
+          cluster: dev-gcp
+        - application: familie-ba-migrering
+          cluster: dev-gcp
+        - application: bidrag-grunnlag-feature
+          namespace: bidrag
+          cluster: dev-gcp
+        - application: bidrag-grunnlag
+          namespace: bidrag
+          cluster: dev-gcp
+    outbound:
+      rules:
+        - application: familie-brev
+          cluster: dev-gcp
+        - application: familie-integrasjoner
+        - application: familie-ba-infotrygd-feed
+        - application: familie-ba-infotrygd
+        - application: familie-ef-sak
+          cluster: dev-gcp

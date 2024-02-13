@@ -1,0 +1,51 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 0
+  adminConnectors:
+    - type: http
+      port: 0
+
+logging:
+  level: INFO
+  appenders:
+    - type: logstash-console
+      threshold: ALL
+      target: stdout
+      customFields:
+        container: "publicapi"
+
+baseUrl: http://publicapi.url/
+connectorUrl: http://connector_card.url/
+publicAuthUrl: http://publicauth.url/v1/auth
+ledgerUrl: http://ledger.url/
+
+jerseyClientConfig:
+  disabledSecureConnection: "true"
+
+rateLimiter:
+  noOfReq: 1000
+  perMillis: 1000
+  noOfReqForPost: 1000
+  noOfReqPerNode: 1
+  noOfReqForPostPerNode: 1
+  elevatedAccounts:
+  noOfReqForElevatedAccounts: 1000
+  noOfPostReqForElevatedAccounts: 1000
+  lowTrafficAccounts:
+  noOfReqForLowTrafficAccounts: 1
+  noOfPostReqForLowTrafficAccounts: 1
+  intervalInMillisForLowTrafficAccounts: 1000
+
+redis:
+  endpoint: localhost:6379
+  ssl: false
+  commandTimeout: 250ms
+  connectTimeout: 500ms
+
+allowHttpForReturnUrl: false
+
+apiKeyHmacSecret: qwer9yuhgf
+
+# Caching authenticator.
+authenticationCachePolicy: expireAfterWrite=3s

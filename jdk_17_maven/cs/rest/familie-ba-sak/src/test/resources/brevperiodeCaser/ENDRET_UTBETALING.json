@@ -1,0 +1,83 @@
+{
+  "beskrivelse": "Innvilget 1 barn bor med søker fra august 2021 på behandling med 1 barn",
+  "fom": "2021-09-01",
+  "tom": "2021-12-31",
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$ENDRET_UTBETALINGSPERIODE_DELT_BOSTED_INGEN_UTBETALING_NY"
+  ],
+  "fritekster": [],
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2019-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2021-05-01",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [
+            "DELT_BOSTED"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2021-09",
+            "tom": "2021-12"
+          },
+          "årsak": "DELT_BOSTED",
+          "søknadstidspunkt": "2021-01-31"
+        }
+      ],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 0,
+          "erPåvirketAvEndring": true,
+          "prosent": 0
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": []
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. september 2021",
+    "tom": " til 31. desember 2021",
+    "belop": 0,
+    "antallBarn": 1,
+    "barnasFodselsdager": "20.01.19",
+    "begrunnelser": [
+      {
+        "gjelderSoker": false,
+        "barnasFodselsdatoer": "20.01.19",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "20.01.19",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 0,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 1,
+        "maanedOgAarBegrunnelsenGjelderFor": "august 2021",
+        "maalform": "bokmaal",
+        "apiNavn": "endretUtbetalingDeltBostedIngenUtbetaling",
+        "belop": 0,
+        "soknadstidspunkt": "31.01.21"
+      }
+    ],
+    "type": "innvilgelseIngenUtbetaling"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/norg2/api/v1/enhet/navkontor/\\d{6}"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "enhetId": 100000047,
+          "navn": "NAV St. Hanshaugen",
+          "enhetNr": "0313",
+          "antallRessurser": 199,
+          "status": "Aktiv",
+          "orgNivaa": "EN",
+          "type": "LOKAL",
+          "organisasjonsnummer": "993585653",
+          "underEtableringDato": "1970-01-01",
+          "aktiveringsdato": "1970-01-01",
+          "underAvviklingDato": null,
+          "nedleggelsesdato": null,
+          "oppgavebehandler": true,
+          "versjon": 35,
+          "sosialeTjenester": "--> Kontoret har tilpasset åpningstid pga Korona-viruset: 10 - 14. NAV St. Hanshaugen tilbyr ...",
+          "kanalstrategi": null,
+          "orgNrTilKommunaltNavKontor": "971179686"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/norg2/api/v1/enhet/\\d{4}"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {
+          "enhetId": 100000193,
+          "navn": "NAV Agder",
+          "enhetNr": "1000",
+          "antallRessurser": 80,
+          "status": "Aktiv",
+          "orgNivaa": "FYLKE",
+          "type": "FYLKE",
+          "organisasjonsnummer": null,
+          "underEtableringDato": "1970-01-01",
+          "aktiveringsdato": "1970-01-01",
+          "underAvviklingDato": null,
+          "nedleggelsesdato": null,
+          "oppgavebehandler": true,
+          "versjon": 8,
+          "sosialeTjenester": "Besøksadresse: Holthes vei 4\nPostadresse: Postboks 1853 Stoa, 4858 ARENDAL\nFaksnummer: 38530101\nEnhets-ID: 1000\n  \nTelefontid: 08.00-15.30\nBesøkstid: 08.00-15.30\nVarelevering: 08.00-15.30 (ytterdør er låst, men nummeret til resepsjonist er skiltet)\n\nHenvendelser til fylkesadministrasjonen settes internt til vårt sentralbordnummer som er 76 123.\nOpplys gjerne om nytt felles sentralbordnummer for fylkesadministrasjonen som er 22 82 20 00.\n\nVirkemidler/Tiltak, Saksbehandling av Tiltakspenger og tilleggstønader TA:  enhetnr 1087\nNAV Spesialtjenester Agder (tidligere ARK):  enhetsnr 1096\nArbeidslivssentret: enhetsnr 1091",
+          "kanalstrategi": null,
+          "orgNrTilKommunaltNavKontor": null
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

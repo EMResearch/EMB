@@ -1,0 +1,14 @@
+{
+  "data": {
+    "person": {
+      "statsborgerskap": [
+        {
+          "land": "NOR",
+          "bekreftelsesdato": "2020-01-20",
+          "gyldigFraOgMed": "2020-01-20",
+          "gyldigTilOgMed": null
+        }
+      ]
+    }
+  }
+}

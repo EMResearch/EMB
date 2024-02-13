@@ -1,0 +1,25 @@
+<h4>Oversikt over resultatet av tilbakebetalingssaken</h4>
+    <table>
+        <thead>
+        <tr>
+            <th class="periode">Periode</th>
+            <th>Feilutbetalt beløp</th>
+            <th>Tilbakebetaling</th>
+            <th class="sum">Beløp du skal betale tilbake</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="periode">01.01.2019 – 31.01.2019</td>
+            <td class="tall">30 001 kroner</td>
+            <td>Hele beløpet</td>
+            <td class="tall sum">30 001 kroner</td>
+        </tr>
+        <tr>
+            <td class="periode sumrad">Sum</td>
+            <td class="tall sumrad"></td>
+            <td class="sumrad"></td>
+            <td class="tall sum sumrad">30 001 kroner</td>
+        </tr>
+        </tbody>
+    </table>

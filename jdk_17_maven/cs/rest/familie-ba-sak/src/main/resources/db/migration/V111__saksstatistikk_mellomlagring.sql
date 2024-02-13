@@ -1,0 +1,13 @@
+CREATE TABLE SAKSSTATISTIKK_MELLOMLAGRING
+(
+    ID               BIGINT                              NOT NULL PRIMARY KEY,
+    OFFSET_VERDI     BIGINT                              NOT NULL,
+    FUNKSJONELL_ID   VARCHAR                             NOT NULL,
+    TYPE             VARCHAR                             NOT NULL,
+    KONTRAKT_VERSJON VARCHAR                             NOT NULL,
+    JSON             text                                NOT NULL,
+    KONVERTERT_TID   TIMESTAMP(3) DEFAULT LOCALTIMESTAMP,
+    OPPRETTET_TID    TIMESTAMP(3) DEFAULT LOCALTIMESTAMP NOT NULL
+);
+
+CREATE SEQUENCE SAKSSTATISTIKK_MELLOMLAGRING_SEQ INCREMENT BY 50 START WITH 1000000 NO CYCLE;

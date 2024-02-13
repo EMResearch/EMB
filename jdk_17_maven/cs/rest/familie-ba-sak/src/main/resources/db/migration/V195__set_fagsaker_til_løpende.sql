@@ -1,0 +1,3 @@
+update fagsak
+set status = 'LØPENDE'
+where ID in (1049294, 1057632, 1064151, 1070301, 1071501, 1072057, 1073351)

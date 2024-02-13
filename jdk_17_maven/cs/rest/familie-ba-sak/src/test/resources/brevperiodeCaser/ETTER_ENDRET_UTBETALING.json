@@ -1,0 +1,118 @@
+{
+  "beskrivelse": "Innvilget delt bosted barn og utvidet. Barn og utvidet endret utbetaling i forrige periode.",
+  "fom": "2019-07-01",
+  "tom": "2020-02-29",
+  "vedtaksperiodetype": "UTBETALING",
+  "begrunnelser": [
+    "Standardbegrunnelse$ETTER_ENDRET_UTBETALING_HAR_AVTALE_DELT_BOSTED"
+  ],
+  "fritekster": [],
+  "utvidetScenario": "IKKE_UTVIDET_YTELSE",
+  "uregistrerteBarn": [],
+  "erFørsteVedtaksperiodePåFagsak": false,
+  "brevMålform": "NB",
+  "personerPåBehandling": [
+    {
+      "fødselsdato": "2015-01-20",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [
+        {
+          "vilkårType": "BOR_MED_SØKER",
+          "resultat": "OPPFYLT",
+          "periodeFom": "2019-05-01",
+          "periodeTom": null,
+          "utdypendeVilkårsvurderinger": [
+            "DELT_BOSTED"
+          ],
+          "erEksplisittAvslagPåSøknad": false,
+          "standardbegrunnelser": []
+        }
+      ],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2019-06",
+            "tom": "2019-06"
+          },
+          "årsak": "DELT_BOSTED",
+          "søknadstidspunkt": "2021-01-31",
+          "avtaletidspunktDeltBosted": "2021-04-02"
+        }
+      ],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 527,
+          "erPåvirketAvEndring": false,
+          "prosent": 50
+        }
+      ]
+    },
+    {
+      "fødselsdato": "2012-06-13",
+      "type": "BARN",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [],
+      "utbetalinger": [
+        {
+          "ytelseType": "ORDINÆR_BARNETRYGD",
+          "utbetaltPerMnd": 1054,
+          "erPåvirketAvEndring": false,
+          "prosent": 100
+        }
+      ]
+    },
+    {
+      "fødselsdato": "1993-08-10",
+      "type": "SØKER",
+      "overstyrteVilkårresultater": [],
+      "andreVurderinger": [],
+      "endredeUtbetalinger": [
+        {
+          "periode": {
+            "fom": "2019-06",
+            "tom": "2019-06"
+          },
+          "årsak": "DELT_BOSTED",
+          "søknadstidspunkt": "2021-01-31",
+          "avtaletidspunktDeltBosted": "2021-04-02"
+        }
+      ],
+      "utbetalinger": [
+        {
+          "ytelseType": "UTVIDET_BARNETRYGD",
+          "utbetaltPerMnd": 527,
+          "erPåvirketAvEndring": false,
+          "prosent": 50
+        }
+      ]
+    }
+  ],
+  "forventetOutput": {
+    "fom": "1. juli 2019",
+    "tom": "til 29. februar 2020 ",
+    "belop": 2108,
+    "antallBarn": 2,
+    "barnasFodselsdager": "13.06.12 og 20.01.15",
+    "begrunnelser": [
+      {
+        "gjelderSoker": true,
+        "barnasFodselsdatoer": "20.01.15",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarUtbetaling": "20.01.15",
+        "fodselsdatoerBarnOppfyllerTriggereOgHarNullutbetaling": "",
+        "antallBarn": 1,
+        "antallBarnOppfyllerTriggereOgHarUtbetaling": 1,
+        "antallBarnOppfyllerTriggereOgHarNullutbetaling": 0,
+        "maanedOgAarBegrunnelsenGjelderFor": "juni 2019",
+        "maalform": "bokmaal",
+        "apiNavn": "etterEndretUtbetalingAvtaleDeltBosted",
+        "belop": 2108,
+        "soknadstidspunkt": "31.01.21",
+        "sokersRettTilUtvidet": "sokerFaarUtvidet"
+      }
+    ],
+    "type": "innvilgelse"
+  }
+}

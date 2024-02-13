@@ -1,0 +1,11 @@
+{
+  "perioder": [
+    {
+      "stønadstype": "UTVIDET",
+      "fomMåned": "2017-01",
+      "tomMåned": "2018-12",
+      "beløp": 970,
+      "manueltBeregnet": false
+    }
+  ]
+}

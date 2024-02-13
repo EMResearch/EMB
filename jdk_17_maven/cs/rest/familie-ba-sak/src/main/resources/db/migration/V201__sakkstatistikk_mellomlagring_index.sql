@@ -1,0 +1,1 @@
+create index saksstatistikk_mellomlagring_type_id_idx on saksstatistikk_mellomlagring (type_id);

@@ -1,0 +1,11 @@
+mutation SlettingAvNotifikasjoner($id: ID!) {
+  softDeleteNotifikasjon(id: $id) {
+    __typename
+    ... on SoftDeleteNotifikasjonVellykket {
+      id
+    }
+    ... on NotifikasjonFinnesIkke {
+      feilmelding
+    }
+  }
+}

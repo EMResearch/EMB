@@ -1,0 +1,17 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "urlPattern": "/sts/sts/token.*"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\"access_token\":\"fdg\",\"token_type\":\"asfsdg\",\"expires_in\":325}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

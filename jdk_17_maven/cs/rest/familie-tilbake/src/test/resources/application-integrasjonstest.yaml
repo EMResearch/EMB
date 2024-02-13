@@ -1,0 +1,27 @@
+server:
+  port: 9093
+
+
+prosessering:
+  enabled: false
+
+no.nav.security.jwt:
+  issuer.azuread:
+    discoveryurl: http://localhost:${mock-oauth2-server.port}/issuer1/.well-known/openid-configuration
+    accepted_audience: aud-localhost
+    cookie_name: localhost-idtoken
+
+AZURE_APP_WELL_KNOWN_URL: testverdi
+AZURE_OPENID_CONFIG_TOKEN_ENDPOINT: testverdi
+FAMILIE_INTEGRASJONER_URL: http://localhost:8085
+FAMILIE_OPPDRAG_URL: http://localhost:8087
+
+CREDENTIAL_USERNAME: not-a-real-srvuser
+CREDENTIAL_PASSWORD: not-a-real-pw
+API_SCOPE: dummy
+AUTHORIZATION_URL: testverdi
+
+NAIS_APP_NAME: familie-klage
+UNLEASH_SERVER_API_URL: http://localhost:4242/api
+UNLEASH_SERVER_API_TOKEN: token
+NAIS_CLUSTER_NAME: dev-gcp

@@ -1,0 +1,1 @@
+alter table bjelle_varsel add column varslbar_hendelse_type varchar;

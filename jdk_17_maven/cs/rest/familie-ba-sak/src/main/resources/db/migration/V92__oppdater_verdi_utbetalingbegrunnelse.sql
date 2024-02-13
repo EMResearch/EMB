@@ -1,0 +1,3 @@
+UPDATE UTBETALING_BEGRUNNELSE
+SET begrunnelse_type = 'INNVILGELSE'
+WHERE begrunnelse_type = 'INNVILGET';

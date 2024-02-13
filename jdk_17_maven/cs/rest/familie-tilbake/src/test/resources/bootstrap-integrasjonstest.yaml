@@ -1,0 +1,4 @@
+spring:
+  cloud:
+    vault:
+      enabled: false

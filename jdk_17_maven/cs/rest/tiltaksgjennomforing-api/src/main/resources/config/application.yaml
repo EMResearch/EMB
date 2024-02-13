@@ -1,0 +1,112 @@
+server.servlet.context-path: /tiltaksgjennomforing-api
+
+management.endpoints.web:
+  exposure.include: info, health, metrics, prometheus
+  base-path: /internal/actuator
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+  application:
+    name: tiltaksgjennomforing-api
+  main:
+    banner-mode: "off"
+  jmx:
+    enabled: false
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: ${spring.application.name}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+#TODO: Feil pakke: Flytt Kafka avien verdier her under tiltaksgjennomforing.kafka
+no.nav.gcp.kafka.aiven:
+  bootstrap-servers: ${KAFKA_BROKERS}
+  truststore-path: ${KAFKA_TRUSTSTORE_PATH}
+  truststore-password: ${KAFKA_CREDSTORE_PASSWORD}
+  keystore-path: ${KAFKA_KEYSTORE_PATH}
+  keystore-password: ${KAFKA_CREDSTORE_PASSWORD}
+  schema-registry-url: ${KAFKA_SCHEMA_REGISTRY}
+  schema-registry-credentials-source: USER_INFO
+  schema-registry-user-info: "${KAFKA_SCHEMA_REGISTRY_USER}:${KAFKA_SCHEMA_REGISTRY_PASSWORD}"
+  security-protocol: SSL
+
+tiltaksgjennomforing:
+  beslutter-ad-gruppe:
+    id: ${beslutter.ad.gruppe}
+  kafka:
+    enabled: true
+  persondata:
+    uri: http://pdl-api.pdl.svc.nais.local/graphql
+  dokgen:
+    uri: http://tiltak-dokgen.arbeidsgiver.svc.nais.local/template/tiltak-avtale/create-pdf
+  notifikasjoner:
+    uri: https://ag-notifikasjon-produsent-api.dev.intern.nav.no/api/graphql
+    lenke: https://arbeidsgiver.nav.no/tiltaksgjennomforing/avtale/
+  dvh-melding:
+    fixed-delay: 600000
+  avtale-hendelse-melding:
+    fixed-delay: 120
+  tilskuddsperioder:
+    tiltakstyper: SOMMERJOBB,MIDLERTIDIG_LONNSTILSKUDD,VARIG_LONNSTILSKUDD
+  salesforcekontorer:
+    enheter: ${tiltaksgjennomforing.salesforce.enheter}
+
+no.nav.security.jwt:
+  client:
+    registration:
+      aad-graph:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: https://graph.microsoft.com/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      aad:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      aad-anonym:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+
+caches:
+  ehcaches:
+    - name: pdl_cache
+      expiryInMinutes: 60
+      maximumSize: 1000
+    - name: norgnavn_cache
+      expiryInMinutes: 60
+      maximumSize: 1000
+    - name: norggeoenhet_cache
+      expiryInMinutes: 60
+      maximumSize: 1000
+    - name: arena_cache
+      expiryInMinutes: 60
+      maximumSize: 1000
+    - name: abac_cache
+      expiryInMinutes: 30
+      maximumSize: 1000
+    - name: axsys_cache
+      expiryInMinutes: 60
+      maximumSize: 1000

@@ -1,0 +1,175 @@
+application:
+  name: familie-tilbake
+
+server:
+  port: 8030
+  servlet:
+    context-path: /
+
+spring:
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+  main.banner-mode: "off"
+  data:
+    jdbc:
+      repositories:
+        enabled: true
+  main:
+    allow-bean-definition-overriding: true
+  flyway:
+    enabled: true
+    placeholders:
+      ignoreIfProd:
+  datasource:
+    hikari:
+      maximum-pool-size: 4
+      connection-test-query: "select 1"
+      max-lifetime: 30000
+      minimum-idle: 1
+      data-source-properties.stringtype: unspecified # Nødvendig for å kunde sende en String til et json-felt i PostgresSql
+  aop:
+    auto: true
+    proxy-target-class: true
+
+springdoc:
+  packages-to-scan: "no.nav.familie.tilbake"
+  paths-to-match: "/api/**"
+  swagger-ui:
+    oauth:
+      use-pkce-with-authorization-code-grant: true
+      client-id: ${AZURE_APP_CLIENT_ID}
+      scope-separator: ","
+    disable-swagger-default-url: true
+
+no.nav.security.jwt:
+  issuer.azuread:
+    discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
+    accepted_audience: ${AZURE_APP_CLIENT_ID}
+    cookie_name: azure_token
+  client:
+    registration:
+      familie-integrasjoner:
+        resource-url: ${FAMILIE_INTEGRASJONER_URL}
+        token-endpoint-url: ${AZURE_OPENID_CONFIG_TOKEN_ENDPOINT}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${FAMILIE_INTEGRASJONER_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      familie-integrasjoner-clientcredentials:
+        resource-url: ${FAMILIE_INTEGRASJONER_URL}
+        token-endpoint-url: ${AZURE_OPENID_CONFIG_TOKEN_ENDPOINT}
+        grant-type: client_credentials
+        scope: ${FAMILIE_INTEGRASJONER_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      pdl:
+        resource-url: ${PDL_URL}
+        token-endpoint-url: ${AZURE_OPENID_CONFIG_TOKEN_ENDPOINT}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${PDL_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      pdl-clientcredentials:
+        resource-url: ${PDL_URL}
+        token-endpoint-url: ${AZURE_OPENID_CONFIG_TOKEN_ENDPOINT}
+        grant-type: client_credentials
+        scope: ${PDL_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      familie-oppdrag:
+        resource-url: ${FAMILIE_OPPDRAG_URL}
+        token-endpoint-url: ${AZURE_OPENID_CONFIG_TOKEN_ENDPOINT}
+        grant-type: urn:ietf:params:oauth:grant-type:jwt-bearer
+        scope: ${FAMILIE_OPPDRAG_SCOPE}
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      familie-oppdrag-clientcredentials:
+          resource-url: ${FAMILIE_OPPDRAG_URL}
+          token-endpoint-url: ${AZURE_OPENID_CONFIG_TOKEN_ENDPOINT}
+          grant-type: client_credentials
+          scope: ${FAMILIE_OPPDRAG_SCOPE}
+          authentication:
+            client-id: ${AZURE_APP_CLIENT_ID}
+            client-secret: ${AZURE_APP_CLIENT_SECRET}
+            client-auth-method: client_secret_basic
+
+management:
+  endpoint.health.show-details: always
+  endpoints.web:
+    exposure.include: info, health, metrics, prometheus
+    base-path: "/internal"
+    path-mapping:
+      info: "status/isAlive"
+  metrics.export.prometheus.enabled: true
+  health:
+    db:
+      enabled: true
+
+unleash:
+  enabled: true
+
+prosessering:
+  continuousRunning.enabled: true
+  maxantall: 1
+  fixedDelayString:
+    in:
+      milliseconds: 4000
+  delete:
+    after:
+      weeks: 4
+
+oppdrag.mq:
+  queuemanager: QM1
+  kravgrunnlag: DEV.QUEUE.1
+  channel: DEV.ADMIN.SVRCONN
+  hostname: localhost
+  port: 1414
+  user: admin
+  password: passw0rd
+  enabled: true
+
+rolle:
+  barnetrygd:
+    veileder: ""
+    saksbehandler: ""
+    beslutter: ""
+  enslig:
+    veileder: ""
+    saksbehandler: ""
+    beslutter: ""
+  kontantstøtte:
+    veileder: ""
+    saksbehandler: ""
+    beslutter: ""
+  teamfamilie:
+    forvalter: ""
+  prosessering: ""
+
+SECURITYTOKENSERVICE_URL: https://sts-q1.preprod.local/SecurityTokenServiceProvider/ # brukes kun av integrasjonstester
+STS_URL: https://security-token-service.dev.adeo.no/security-token-service/rest/v1/sts/token?grant_type=client_credentials&scope=openid # brukes kun av integrasjonstester
+PDL_URL: https://pdl-api-q1.dev-fss-pub.nais.io
+FAMILIE_TILBAKE_FRONTEND_CLIENT_ID: "dummy"
+FORELDELSE_ANTALL_MÅNED: 30
+PROXY_URL: http://webproxy-nais.nav.no:8088
+CRON_HÅNDTER_GAMMEL_KRAVGRUNNLAG: 0 0 7 ? * MON-FRI
+CRON_AUTOMATISK_SAKSBEHANDLING: 0 0 8 ? * MON-FRI
+CRON_AUTOMATISK_GJENOPPTA: 0 0 6 ? * MON-FRI
+AUTHORIZATION_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/authorize
+TOKEN_URL: https://login.microsoftonline.com/navq.onmicrosoft.com/oauth2/v2.0/token
+API_SCOPE: api://${AZURE_APP_CLIENT_ID}/.default
+
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_BARNETRYGD: 8
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_BARNETILSYN: 8
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_OVERGANGSSTØNAD: 8
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_SKOLEPENGER: 8
+AUTOMATISK_SAKSBEHANDLING_ALDERGRENSE_KONTANTSTØTTE: 8
+

@@ -1,0 +1,11 @@
+{{~#* inline "førSkatt"}}{{#if ytelseMedSkatt}} før skatt{{/if}}{{~/inline~}}
+{{~#* inline "duEllerDere"~}}{{#if institusjon}}dere{{else}}du{{/if}}{{~/inline~}}
+
+Vi varslet {{#and (not gjelderDødsfall) (not institusjon)}}deg {{/and}}{{{dato varsletDato}}} om at {{#or gjelderDødsfall institusjon}}det var{{else}}du hadde fått{{/or}} utbetalt {{{kroner varsletBeløp}}} for mye i {{{ytelsesnavnUbestemt}}}{{> førSkatt}}.
+
+Riktig beløp som er utbetalt for mye, er {{{kroner beløp}}}{{> førSkatt}}.
+
+{{#eq feilutbetaltePerioder.length 1}}Perioden{{else}}Periodene{{/eq}} {{#if gjelderDødsfall}}det er{{else}}{{> duEllerDere}} har fått{{/if}} for mye utbetalt for, er:
+*-{{#each feilutbetaltePerioder }}
+Fra og med {{{dato fom}}} til og med {{{dato tom}}}.{{/each}}-*
+{{> nb/varsel/varsel_slutt}}

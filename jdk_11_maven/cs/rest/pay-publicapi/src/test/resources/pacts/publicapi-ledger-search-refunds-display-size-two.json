@@ -1,0 +1,151 @@
+{
+  "consumer": {
+    "name": "publicapi"
+  },
+  "provider": {
+    "name": "ledger"
+  },
+  "interactions": [
+    {
+      "description": "Return all refunds when refunds exist, filtering by from and to date, with display size of two",
+      "providerStates": [
+        {
+          "name": "refund transactions exists for a gateway account",
+          "params": {
+            "gateway_account_id": "777"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/v1/transaction",
+        "query": {
+          "account_id": [
+            "777"
+          ],
+          "status_version": ["1"],
+          "transaction_type": ["REFUND"],
+          "page": [
+            "1"
+          ],
+          "display_size": [
+            "2"
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "total": 2,
+          "count": 2,
+          "page": 1,
+          "results": [
+            {
+              "transaction_id": "111111",
+              "created_date": "2018-09-22T10:14:16.067Z",
+              "state": {
+                "status": "success",
+                "finished": true
+              },
+              "parent_transaction_id": "someExternalId1",
+              "amount": 150
+            },
+            {
+              "transaction_id": "222222",
+              "created_date": "2018-10-22T10:16:16.067Z",
+              "state": {
+                "status": "success",
+                "finished": true
+              },
+              "parent_transaction_id": "someExternalId2",
+              "amount": 250
+            }
+          ],
+          "_links": {
+            "self": {
+              "href": "http://ledger.service.backend/v1/transaction?account_id=777&transaction_type=REFUND&page=1&display_size=2"
+            }
+          }
+        },
+        "matchingRules": {
+          "body": {
+            "$.total": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.count": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.page": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].transaction_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].created_date": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].state.status": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].parent_transaction_id": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.results[*].amount": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$._links.self.href": {
+              "matchers": [
+                {
+                  "regex":  "http:\/\/.*\/v1\/transaction\\?account_id=777&transaction_type=REFUND&page=1&display_size=2"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pact-specification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.5.16"
+    }
+  }
+}

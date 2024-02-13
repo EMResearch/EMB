@@ -1,0 +1,147 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+  kafka:
+    bootstrap-servers: b27apvl00045.preprod.local:8443, b27apvl00046.preprod.local:8443, b27apvl00047.preprod.local:8443
+    properties:
+      security.protocol: SASL_SSL
+      sasl:
+        mechanism: PLAIN
+        jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${tiltaksgjennomforing.serviceuser.username}" password="${tiltaksgjennomforing.serviceuser.password}";
+      ssl.truststore:
+        location: ${javax.net.ssl.trustStore}
+        password: ${javax.net.ssl.trustStorePassword}
+  sql:
+    init:
+      platform: postgres
+
+no.nav.security.jwt:
+  issuer:
+    aad:
+      discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
+      accepted_audience: ${AZURE_APP_CLIENT_ID}
+    tokenx:
+      discoveryurl: ${TOKEN_X_WELL_KNOWN_URL}
+      accepted_audience: ${TOKEN_X_CLIENT_ID}
+    system:
+      discoveryurl: http://security-token-service.default.svc.nais.local/rest/v1/sts/.well-known/openid-configuration
+      accepted_audience: ${tiltaksgjennomforing.audience.system}
+  client:
+    registration:
+      notifikasjoner:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://dev-gcp.fager.notifikasjon-produsent-api/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      kontoregister:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://dev-fss.okonomi.sokos-kontoregister-q2/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      veilarbarena:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://dev-fss.pto.veilarbarena/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      poao-tilgang:
+        token-endpoint-url: https://login.microsoftonline.com/${AZURE_APP_TENANT_ID}/oauth2/v2.0/token
+        grant-type: client_credentials
+        scope: api://dev-fss.poao.poao-tilgang/.default
+        authentication:
+          client-id: ${AZURE_APP_CLIENT_ID}
+          client-secret: ${AZURE_APP_CLIENT_SECRET}
+          client-auth-method: client_secret_basic
+      tokenx-altinn:
+        token-endpoint-url: ${TOKEN_X_TOKEN_ENDPOINT}
+        grant-type: urn:ietf:params:oauth:grant-type:token-exchange
+        authentication:
+          client-id: ${TOKEN_X_CLIENT_ID}
+          client-jwk: /var/run/secrets/nais.io/jwker/TOKEN_X_PRIVATE_JWK
+          client-auth-method: private_key_jwt
+        token-exchange:
+          audience: dev-gcp:arbeidsgiver:altinn-rettigheter-proxy
+
+tiltaksgjennomforing:
+  kontoregister:
+    uri: https://sokos-kontoregister-q2.dev.adeo.no/kontoregister/api/v1/hent-kontonummer-for-organisasjon/
+    consumerId: ${tiltaksgjennomforing.serviceuser.username}
+    azureConfig: true
+    realClient: true
+  database:
+    database-navn: tiltaksgjennomforing-preprod
+    database-url: ${spring.datasource.url}
+    vault-sti: postgresql/preprod-fss
+    minimum-idle: 1
+    maximum-pool-size: 8
+    max-lifetime: 300000
+  altinn-tilgangsstyring:
+    uri: https://api-gw-q1.adeo.no
+    proxyUri: https://altinn-rettigheter-proxy.dev.intern.nav.no/altinn-rettigheter-proxy
+    beOmRettighetBaseUrl: https://min-side-arbeidsgiver.dev.nav.no/min-side-arbeidsgiver/?fragment=be-om-tilgang
+    ltsMidlertidigServiceCode: 5516
+    ltsMidlertidigServiceEdition: 1
+    ltsVarigServiceCode: 5516
+    ltsVarigServiceEdition: 2
+    sommerjobbServiceCode: 5516
+    sommerjobbServiceEdition: 3
+    mentorServiceCode: 5516
+    mentorServiceEdition: 4
+    inkluderingstilskuddServiceCode: 5516
+    inkluderingstilskuddServiceEdition: 5
+    arbtreningServiceCode: 5332
+    arbtreningServiceEdition: 1
+  altinn-varsel:
+    uri: https://pep-gw-q1.oera-q.local:9443/ekstern/altinn/notificationagencyexternalbasic/v1
+  ereg:
+    uri: https://ereg-services-q1.dev.intern.nav.no/api/v2/organisasjon
+  sts:
+    username: ${tiltaksgjennomforing.serviceuser.username}
+    password: ${tiltaksgjennomforing.serviceuser.password}
+    ws-uri: https://sts-q1.preprod.local/SecurityTokenServiceProvider/
+    rest-uri: http://security-token-service.default.svc.nais.local/rest/v1/sts/token
+  axsys:
+    uri: https://axsys.nais.preprod.local/api/v1/tilgang
+    nav-consumer-id: ${tiltaksgjennomforing.serviceuser.username}
+  abac:
+    uri: https://abac-veilarb-q1.dev.intern.nav.no/application/asm-pdp/authorize
+    nav-consumer-id: ${tiltaksgjennomforing.serviceuser.username}
+  oppgave:
+    oppgave-uri: https://oppgave.nais.preprod.local/api/v1/oppgaver
+  unleash:
+    enabled: true
+    api-uri: ${UNLEASH_SERVER_API_URL}/api
+    api-token: ${UNLEASH_SERVER_API_TOKEN}
+  consumer:
+    system:
+      id: ${tiltaksgjennomforing.consumer.system}
+  veilarbarena:
+    url: https://veilarbarena.dev.intern.nav.no/veilarbarena/api/arena/status
+    nav-consumer-id: ${tiltaksgjennomforing.serviceuser.username}
+  poao-tilgang:
+    url: http://poao-tilgang.poao.svc.nais.local
+  norg2:
+    geografisk:
+      url: https://app-q1.adeo.no/norg2/api/v1/enhet/navkontor/
+    enhet:
+      url: https://app-q1.adeo.no/norg2/api/v1/enhet/
+  notifikasjoner:
+    uri: https://ag-notifikasjon-produsent-api.intern.dev.nav.no/api/graphql
+    lenke: https://tiltaksgjennomforing.dev.nav.no/tiltaksgjennomforing/avtale/
+    enabled: true
+  dvh-melding:
+    gruppe-tilgang: ${beslutter.ad.gruppe}
+  utvikler-tilgang:
+    gruppe-tilgang: ${beslutter.ad.gruppe}
+
+http:
+  proxy:
+    parametername: nothing

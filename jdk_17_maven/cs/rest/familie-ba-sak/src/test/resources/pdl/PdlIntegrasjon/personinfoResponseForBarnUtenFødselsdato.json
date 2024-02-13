@@ -1,0 +1,75 @@
+{
+  "data": {
+    "pdlIdenter": {
+      "identer": [
+        {
+          "ident": "92345678902",
+          "historisk": false,
+          "gruppe": "FOLKEREGISTERIDENT"
+        }
+      ]
+    },
+    "person": {
+      "folkeregisteridentifikator": [
+        {
+          "identifikasjonsnummer": "92345678902",
+          "status": "I_BRUK",
+          "type": "FNR"
+        }
+      ],
+      "navn": [
+        {
+          "fornavn": "BARN",
+          "etternavn": "FYR"
+        }
+      ],
+      "foedsel": [],
+      "kjoenn": [
+        {
+          "kjoenn": "MANN"
+        }
+      ],
+      "bostedsadresse": [
+        {
+          "vegadresse": {
+            "matrikkelId": "1234",
+            "husnummer": "3",
+            "husbokstav": null,
+            "bruksenhetsnummer": null,
+            "adressenavn": "OTTO SVERDRUPS VEG",
+            "kommunenummer": "1566",
+            "tilleggsnavn": null,
+            "postnummer": "6650"
+          },
+          "matrikkeladresse": null,
+          "ukjentBosted": null
+        }
+      ],
+      "sivilstand": [
+        {
+          "type": "UGIFT"
+        }
+      ],
+      "forelderBarnRelasjon": [
+        {
+          "relatertPersonsIdent": "22345678901",
+          "relatertPersonsRolle": "MOR"
+        }
+      ],
+      "adressebeskyttelse": [
+        {
+          "gradering": "UGRADERT"
+        }
+      ],
+      "statsborgerskap": [
+        {
+          "land": "NOR",
+          "gyldigFraOgMed": "2005-01-20",
+          "gyldigTilOgMed": null
+        }
+      ],
+      "doedsfall": [],
+      "kontaktinformasjonForDoedsbo": []
+    }
+  }
+}

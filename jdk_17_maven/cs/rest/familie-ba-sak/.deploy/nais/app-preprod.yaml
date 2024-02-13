@@ -1,0 +1,141 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: familie-ba-sak
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-next-upstream-tries: '1'
+spec:
+  envFrom:
+    - secret: familie-ba-sak
+    - secret: familie-ba-sak-unleash-api-token
+  image: {{image}}
+  port: 8089
+  leaderElection: true
+  liveness:
+    path: /internal/health/liveness
+    initialDelay: 30
+    failureThreshold: 10
+  readiness:
+    path: /internal/health/readyness
+    initialDelay: 30
+    failureThreshold: 10
+  prometheus:
+    enabled: true
+    path: /internal/prometheus
+  gcp: # Database
+    sqlInstances:
+      - type: POSTGRES_15 # IF This is changed, all data will be lost. Read on nais.io how to upgrade
+        tier: db-custom-1-3840
+        name: familie-ba-sak
+        autoBackupTime: "02:00"
+        pointInTimeRecovery: true
+        diskAutoresize: true
+        highAvailability: false
+        databases:
+          - name: familie-ba-sak
+            envVarPrefix: DB
+  azure:
+    application:
+      enabled: true
+      allowAllUsers: false
+      claims:
+        extra:
+          - "NAVident"
+        groups:
+          - id: "928636f4-fd0d-4149-978e-a6fb68bb19de"  # 0000-GA-STDAPPS
+          - id: "93a26831-9866-4410-927b-74ff51a9107c"  # VEILEDER_ROLLE
+          - id: "d21e00a4-969d-4b28-8782-dc818abfae65"  # SAKSBEHANDLER_ROLLE
+          - id: "9449c153-5a1e-44a7-84c6-7cc7a8867233"  # BESLUTTER_ROLLE
+          - id: "c62e908a-cf20-4ad0-b7b3-3ff6ca4bf38b"  # teamfamilie-forvaltning
+          - id: "5ef775f2-61f8-4283-bf3d-8d03f428aa14"  # 0000-GA-Strengt_Fortrolig_Adresse
+          - id: "ea930b6b-9397-44d9-b9e6-f4cf527a632a"  # 0000-GA-Fortrolig_Adresse
+      replyURLs:
+        - "https://familie-ba-sak.intern.dev.nav.no/swagger-ui/oauth2-redirect.html"
+        - "http://localhost:8089/swagger-ui/oauth2-redirect.html"
+      singlePageApplication: true
+  accessPolicy:
+    inbound:
+      rules:
+        - application: familie-ba-sak-frontend
+          cluster: dev-gcp
+        - application: familie-ba-sak-frontend-lokal
+          cluster: dev-gcp
+        - application: familie-baks-mottak
+          cluster: dev-gcp
+        - application: familie-prosessering
+          cluster: dev-gcp
+        - application: familie-ba-skatteetaten-api
+          cluster: dev-gcp
+        - application: familie-klage
+          cluster: dev-gcp
+        - application: familie-ba-statistikk
+          cluster: dev-fss
+        - application: bidrag-grunnlag-feature
+          namespace: bidrag
+          cluster: dev-gcp
+        - application: bidrag-grunnlag
+          namespace: bidrag
+          cluster: dev-gcp
+        - application: omsorgsopptjening-start-innlesning
+          namespace: pensjonopptjening
+          cluster: dev-gcp
+    outbound:
+      rules:
+        - application: familie-brev
+          cluster: dev-gcp
+        - application: familie-integrasjoner
+          cluster: dev-fss
+        - application: familie-ba-infotrygd-feed
+          cluster: dev-fss
+        - application: familie-ba-infotrygd
+          cluster: dev-fss
+        - application: familie-ef-sak
+          cluster: dev-gcp
+        - application: familie-tilbake
+          cluster: dev-gcp
+        - application: familie-oppdrag
+          cluster: dev-fss
+        - application: familie-klage
+          cluster: dev-gcp
+      external:
+        - host: xsrv1mh6.api.sanity.io
+        - host: unleash.nais.io
+        - host: pdl-api.dev-fss-pub.nais.io
+        - host: familie-integrasjoner.dev-fss-pub.nais.io
+        - host: familie-oppdrag.dev-fss-pub.nais.io
+        - host: familie-ba-statistikk.dev-fss-pub.nais.io
+        - host: familie-ba-infotrygd.dev-fss-pub.nais.io
+        - host: familie-ba-infotrygd-feed.dev-fss-pub.nais.io
+        - host: sdw-wsrest.ecb.europa.eu
+        - host: sentry.gc.nav.no
+        - host: data-api.ecb.europa.eu
+        - host: teamfamilie-unleash-api.nav.cloud.nais.io
+  replicas:
+    min: 2
+    max: 2
+  resources:
+    limits:
+      memory: 1024Mi
+    requests:
+      memory: 1024Mi
+      cpu: 500m
+  ingresses:
+    - https://familie-ba-sak.intern.dev.nav.no
+  secureLogs:
+    enabled: true
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: preprod
+
+    - name: JAVA_OPTS
+      value: "-XX:MinRAMPercentage=25.0 -XX:MaxRAMPercentage=75.0 -XX:+HeapDumpOnOutOfMemoryError"
+  kafka:
+    pool: nav-dev
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 99%
+

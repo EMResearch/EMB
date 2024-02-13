@@ -1,0 +1,119 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: familie-tilbake
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+
+spec:
+  envFrom:
+    - secret: familie-tilbake
+    - secret: familie-tilbake-unleash-api-token
+  image: {{ image }}
+  port: 8030
+  leaderElection: true
+  liveness:
+    path: /internal/status/isAlive
+    initialDelay: 30
+    failureThreshold: 10
+  readiness:
+    path: /internal/status/isAlive
+    initialDelay: 30
+    failureThreshold: 10
+  prometheus:
+    enabled: true
+    path: /internal/prometheus
+  vault:
+    enabled: false
+  gcp: # Database
+    sqlInstances:
+      - type: POSTGRES_14
+        tier: db-custom-1-3840
+        name: familie-tilbake
+        autoBackupTime: "03:00"
+        databases:
+          - name: familie-tilbake
+            envVarPrefix: DB
+  azure:
+    application:
+      claims:
+        extra:
+          - "NAVident"
+        groups:
+          - id: d21e00a4-969d-4b28-8782-dc818abfae65 # 0000-GA-Barnetrygd
+          - id: 9449c153-5a1e-44a7-84c6-7cc7a8867233 # 0000-GA-Barnetrygd-Beslutter
+          - id: 93a26831-9866-4410-927b-74ff51a9107c # 0000-GA-Barnetrygd-Veileder
+          - id: ee5e0b5e-454c-4612-b931-1fe363df7c2c # 0000-GA-Enslig-Forsorger-Saksbehandler
+          - id: 01166863-22f1-4e16-9785-d7a05a22df74 # 0000-GA-Enslig-Forsorger-Beslutter
+          - id: 19dcbfde-4cdb-4c64-a1ea-ac9802b03339 # 0000-GA-Enslig-Forsorger-Veileder
+          - id: 71f503a2-c28f-4394-a05a-8da263ceca4a  # 0000-GA-Kontantstøtte-Veilder
+          - id: c7e0b108-7ae6-432c-9ab4-946174c240c0  # 0000-GA-Kontantstøtte
+          - id: 52fe1bef-224f-49df-a40a-29f92d4520f8  # 0000-GA-Kontantstøtte-Beslutter
+          - id: c62e908a-cf20-4ad0-b7b3-3ff6ca4bf38b # teamfamilie-forvaltning
+          - id: 928636f4-fd0d-4149-978e-a6fb68bb19de # 0000-GA-STDAPPS - tilgang til prosessering
+      enabled: true
+      tenant: trygdeetaten.no
+      replyURLs:
+        - "https://familie-tilbake.intern.dev.nav.no/swagger-ui/oauth2-redirect.html"
+      singlePageApplication: true
+  accessPolicy:
+    inbound:
+      rules:
+        - application: familie-ba-sak
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: familie-ks-sak
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: familie-ef-sak
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: familie-ef-iverksett
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: familie-ks-sak
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: familie-tilbake-frontend
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: ida
+          namespace: traktor
+          cluster: prod-fss
+        - application: familie-prosessering
+          namespace: teamfamilie
+          cluster: dev-gcp
+        - application: familie-prosessering-lokal
+          namespace: teamfamilie
+          cluster: dev-gcp
+    outbound:
+      rules:
+        - application: familie-historikk
+      external:
+        - host: teamfamilie-unleash-api.nav.cloud.nais.io
+        - host: familie-integrasjoner.dev-fss-pub.nais.io
+        - host: pdl-api.dev-fss-pub.nais.io
+        - host: b27apvl220.preprod.local
+          ports:
+            - name: mq
+              port: 1413
+              protocol: TCP
+  replicas:
+    min: 2
+    max: 4
+  resources:
+    limits:
+      memory: 1024Mi
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  ingresses:
+    - https://familie-tilbake.intern.dev.nav.no
+  secureLogs:
+    enabled: true
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: dev
+  kafka:
+    pool: nav-dev

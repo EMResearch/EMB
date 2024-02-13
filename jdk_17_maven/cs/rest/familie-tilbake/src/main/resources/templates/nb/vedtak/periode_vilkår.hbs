@@ -1,0 +1,111 @@
+{{~#* inline "pronomen"~}}{{#if gjelderDødsfall}}dere{{else}}du{{/if}}{{~/inline~}}
+{{~#* inline "Pronomen"~}}{{#if gjelderDødsfall}}Dere{{else}}Du{{/if}}{{~/inline~}}
+{{~#* inline "forsettTekst"~}}
+    {{#switch vurderinger.vilkårsvurderingsresultat}}
+        {{#case "FORSTO_BURDE_FORSTÅTT"}}
+Selv hvis du har meldt fra til oss, kan vi kreve tilbake det du har fått for mye hvis du forsto at beløpet var feil. At du må betale tilbake, betyr ikke at du selv har skyld i feilutbetalingen.
+
+Ut fra informasjonen du har fått, legger vi til grunn at du forsto at du fikk utbetalt for mye. Derfor kan vi kreve tilbake.
+        {{/case}}
+        {{#case "FEIL_OPPLYSNINGER_FRA_BRUKER"}}
+Etter vår vurdering forsto du at opplysningene du ga oss var uriktige. Derfor kan vi kreve pengene tilbake.
+        {{/case}}
+        {{#case "MANGELFULLE_OPPLYSNINGER_FRA_BRUKER"}}
+Etter vår vurdering forsto du at du ikke ga oss alle opplysningene vi trengte tidsnok for å sikre at du fikk riktig utbetaling. Derfor kan vi kreve pengene tilbake.
+        {{/case}}
+    {{/switch}}
+{{~/inline~}}
+{{#* inline "fritekst"}}
+{{#if vurderinger.fritekst}}
+
+{{{vurderinger.fritekst}}}
+{{/if}}
+{{/inline}}
+{{#* inline "fritekst-brukerdød-tilbakekreves"}}
+{{#if vurderinger.fritekst}}
+{{#if (eq fakta.hendelsesundertype "BRUKER_DØD") }}
+
+{{/if}}
+{{{vurderinger.fritekst}}}
+{{/if}}
+{{/inline}}
+{{#* inline "ikke-krev-småbeløp"}}
+{{> Pronomen}} har fått vite om {{> pronomen}} har rett til {{{ytelsesnavnUbestemt}}} og hvor mye {{> pronomen}} har rett til. Selv om {{> pronomen}} burde forstått at beløpet var feil, er beløpet lavere enn {{{kroner konfigurasjon.fireRettsgebyr}}}. {{> Pronomen}} må derfor ikke betale tilbake beløpet.
+{{/inline}}
+{{#if (not vurderinger.harForeldelsesavsnitt) }}
+__Hvordan har vi kommet fram til at {{#if gjelderDødsfall}}{{{ytelsesnavnBestemt}}}{{else}}du{{/if}} {{#if (not resultat.tilbakekrevesBeløp)}}ikke {{/if}}må betale{{#if gjelderDødsfall}}s{{/if}} tilbake?
+{{/if}}
+{{#if gjelderDødsfall}}
+    {{#if resultat.tilbakekrevesBeløp}}
+        {{#if (eq fakta.hendelsesundertype "BRUKER_DØD") }}
+Det burde vært oppdaget og meldt ifra om at {{{ytelsesnavnUbestemt}}} ble utbetalt etter at {{{søker.navn}}} døde.
+        {{/if}}
+{{> fritekst-brukerdød-tilbakekreves}}
+    {{else}}
+        {{#if vurderinger.unntasInnkrevingPgaLavtBeløp}}
+Selv om dere burde forstått at {{{ytelsesnavnBestemt}}} er utbetalt ved en feil, kreves ikke pengene tilbake. Det er fordi feilutbetalt beløp er lavere enn  {{{kroner konfigurasjon.fireRettsgebyr}}}.
+        {{else}}
+Dere har ikke fått den informasjonen dere trengte for å forstå at beløpet som ble utbetalt var feil. {{kroner kravgrunnlag.feilutbetaltBeløp}} kroner skal derfor ikke betales tilbake.
+        {{/if}}
+{{> fritekst}}
+    {{/if}}
+{{else}}
+    {{#if (eq vurderinger.vilkårsvurderingsresultat "FORSTO_BURDE_FORSTÅTT")}}
+        {{#if (eq vurderinger.aktsomhetsresultat "SIMPEL_UAKTSOMHET")}}
+            {{#if vurderinger.unntasInnkrevingPgaLavtBeløp}}
+            {{> ikke-krev-småbeløp}}
+            {{else}}
+Du har fått vite om du har rett til {{{ytelsesnavnUbestemt}}} og hvor mye du har rett til. Selv hvis du har meldt fra til oss, kan vi kreve tilbake det du har fått for mye hvis du burde forstått at beløpet var feil. At du må betale tilbake, betyr ikke at du selv har skyld i feilutbetalingen.
+{{> fritekst}}
+
+Ut fra informasjonen du har fått, burde du etter vår vurdering forstått at du fikk for mye utbetalt. Derfor kan vi kreve tilbake.
+            {{/if}}
+        {{/if}}
+        {{#if (eq vurderinger.aktsomhetsresultat "GROV_UAKTSOMHET")}}
+Du har fått vite om du har rett til {{{ytelsesnavnUbestemt}}} og hvor mye du har rett til. Selv hvis du har meldt fra til oss, kan vi kreve tilbake det du har fått for mye hvis du må ha forstått at beløpet var feil. At du må betale tilbake, betyr ikke at du selv har skyld i feilutbetalingen.
+{{> fritekst}}
+
+Ut fra informasjonen du har fått, må du etter vår vurdering ha forstått at du fikk for mye utbetalt. Derfor kan vi kreve tilbake.
+        {{/if}}
+    {{/if}}
+    {{#if (eq vurderinger.vilkårsvurderingsresultat "FEIL_OPPLYSNINGER_FRA_BRUKER")}}
+        {{#if (eq vurderinger.aktsomhetsresultat "SIMPEL_UAKTSOMHET")}}
+            {{#if vurderinger.unntasInnkrevingPgaLavtBeløp}}
+            {{> ikke-krev-småbeløp}}
+            {{else}}
+Du har fått vite om du har rett til {{{ytelsesnavnUbestemt}}} og hvor mye du har rett til. Etter vår vurdering burde du forstått at opplysningene du ga oss var uriktige. Derfor kan vi kreve pengene tilbake.
+{{> fritekst}}
+            {{/if}}
+        {{/if}}
+        {{#if (eq vurderinger.aktsomhetsresultat "GROV_UAKTSOMHET")}}
+Du har fått vite om du har rett til {{{ytelsesnavnUbestemt}}} og hvor mye du har rett til. Etter vår vurdering må du ha forstått at opplysningene du ga oss var uriktige. Derfor kan vi kreve pengene tilbake.
+{{> fritekst}}
+        {{/if}}
+    {{/if}}
+    {{#if (eq vurderinger.vilkårsvurderingsresultat "MANGELFULLE_OPPLYSNINGER_FRA_BRUKER")}}
+        {{#if (eq vurderinger.aktsomhetsresultat "SIMPEL_UAKTSOMHET")}}
+            {{#if vurderinger.unntasInnkrevingPgaLavtBeløp}}
+            {{> ikke-krev-småbeløp}}
+            {{else}}
+Du har fått vite om du har rett til {{{ytelsesnavnUbestemt}}} og hvor mye du har rett til. Etter vår vurdering burde du forstått at du ikke ga oss alle opplysningene vi trengte tidsnok for å sikre at du fikk riktig utbetaling. Derfor kan vi kreve pengene tilbake.
+{{> fritekst}}
+            {{/if}}
+        {{/if}}
+        {{#if (eq vurderinger.aktsomhetsresultat "GROV_UAKTSOMHET")}}
+Du har fått vite om du har rett til {{{ytelsesnavnUbestemt}}} og hvor mye du har rett til. Etter vår vurdering må du ha forstått at du ikke ga oss alle opplysningene vi trengte tidsnok for å sikre at du fikk riktig utbetaling. Derfor kan vi kreve pengene tilbake.
+{{> fritekst}}
+        {{/if}}
+    {{/if}}
+    {{#if (eq vurderinger.vilkårsvurderingsresultat "GOD_TRO")}}
+        {{#if vurderinger.beløpIBehold}}
+Vi har ikke gitt deg den informasjonen du trengte for å forstå at beløpet du fikk utbetalt var feil. Du har opplyst at du ikke har brukt {{{kroner vurderinger.beløpIBehold}}}. Disse kan vi kreve betale, selv om du ikke forstod at utbetalingen var feil.
+        {{else}}
+Vi har ikke gitt deg den informasjonen du trengte for å forstå at beløpet du fikk utbetalt var feil. Du må derfor ikke betale tilbake.
+        {{/if}}
+{{> fritekst}}
+    {{/if}}
+    {{#if (eq vurderinger.aktsomhetsresultat "FORSETT")}}
+Du har fått vite om du har rett til {{{ytelsesnavnUbestemt}}} og hvor mye du har rett til. {{> forsettTekst ~}}
+{{>fritekst}}
+    {{/if}}
+{{/if}}
